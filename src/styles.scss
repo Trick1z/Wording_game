@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "~devextreme/dist/css/dx.light.css";
+
+
+::ng-deep .dx-datagrid .dx-header-row > td {
+  text-align: center;
+}
