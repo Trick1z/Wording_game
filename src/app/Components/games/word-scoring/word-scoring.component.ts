@@ -7,12 +7,12 @@ import { Component } from '@angular/core';
 })
 export class WordScoringComponent {
 
-isVip : boolean = true ;
+isVip : boolean = false ;
 
   wordList: WordList[] = [
     {
       word: "asd",
-      score: 20,
+      score: 2022,
       date: new Date("2025-08-05")
     },
     {
