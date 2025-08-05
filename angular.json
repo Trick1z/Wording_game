@@ -2,6 +2,23 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
+  "schematics": {
+    "@schematics/angular:component": {
+      "skipTests": true
+    },
+    "@schematics/angular:class": {
+      "skipTests": true
+    },
+    "@schematics/angular:directive": {
+      "skipTests": true
+    },
+    "@schematics/angular:pipe": {
+      "skipTests": true
+    },
+    "@schematics/angular:service": {
+      "skipTests": true
+    }
+  },
   "projects": {
     "ClientApp": {
       "projectType": "application",
@@ -30,7 +47,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "node_modules/devextreme/dist/css/dx.material.blue.light.css",
+              "src/styles.scss",
+              "node_modules/devextreme/dist/css/dx.light.css"
             ],
             "scripts": []
           },
