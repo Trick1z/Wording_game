@@ -1,18 +1,18 @@
 <div class="container">
-    <div class="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
+    <div class="px-6 py-24 bg-white isolate sm:py-32 lg:px-8">
         <div aria-hidden="true"
-            class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
+            class="absolute inset-x-0 overflow-hidden -top-40 -z-10 transform-gpu blur-3xl sm:-top-80">
             <div style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
                 class="relative left-1/2 -z-10 aspect-1155/678 w-144.5 max-w-none -translate-x-1/2 rotate-30 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-40rem)] sm:w-288.75">
             </div>
         </div>
-        <div class="mx-auto max-w-2xl text-center">
-            <h2 class="text-4xl font-semibold tracking-tight text-balance text-gray-900 sm:text-5xl">สร้างบัญชี</h2>
+        <div class="max-w-2xl mx-auto text-center">
+            <h2 class="text-4xl font-semibold tracking-tight text-gray-900 text-balance sm:text-5xl">สร้างบัญชี</h2>
         </div>
-        <form action="#" method="POST" class="mx-auto mt-16 max-w-xl sm:mt-20">
-            <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+        <form action="#" method="POST" class="max-w-xl mx-auto mt-16 sm:mt-20">
+            <!-- <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                 <div>
-                    <label for="username" class="block text-sm/6 font-semibold text-gray-900">ชื่อผู้ใช้</label>
+                    <label for="username" class="block font-semibold text-gray-900 text-sm/6">ชื่อผู้ใช้</label>
                     <div class="mt-2.5">
                         <input id="username" type="text" name="username" autocomplete="given-name"
                             class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600" />
@@ -26,7 +26,7 @@
             <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
 
                 <div>
-                    <label for="password" class="block text-sm/6 font-semibold text-gray-900">รหัสผ่าน</label>
+                    <label for="password" class="block font-semibold text-gray-900 text-sm/6">รหัสผ่าน</label>
                     <div class="mt-2.5">
                         <input id="password" type="text" name="password" autocomplete="family-name"
                             class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600" />
@@ -37,58 +37,45 @@
 
                 <div>
                     <label for="confirm-password"
-                        class="block text-sm/6 font-semibold text-gray-900">ยืนยันรหัสผ่าน</label>
+                        class="block font-semibold text-gray-900 text-sm/6">ยืนยันรหัสผ่าน</label>
                     <div class="mt-2.5">
                         <input id="confirm-password" type="text" name="confirm-password" autocomplete="family-name"
                             class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600" />
                     </div>
                 </div>
-            </div>
+            </div> -->
+            <dx-form class="flex justify-center max-w-md mx-auto mt-16 text-end sm:mt-20" id="form"
+                [formData]="registerData" [colCount]="1">
+                <dxi-item itemType="group">
+                    <!-- <dxi-item itemType="group" captionTemplate="user" caption="Main Information"> -->
 
-            <label for="select" class="block text-sm/6 font-medium text-gray-900">ประเภท</label>
-            <el-select id="select" name="selected" value="4" class="mt-2 block">
-                <button type="button"
-                    class="grid w-full cursor-default grid-cols-1 rounded-md bg-white py-1.5 pr-2 pl-3 text-left text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-indigo-600 sm:text-sm/6">
-                    <el-selectedcontent class="col-start-1 row-start-1 flex items-center gap-3 pr-6">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                            alt="" class="size-5 shrink-0 rounded-full" />
-                        <span class="block truncate">Tom Cook</span>
-                    </el-selectedcontent>
-                    <svg viewBox="0 0 16 16" fill="currentColor" data-slot="icon" aria-hidden="true"
-                        class="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-500 sm:size-4">
-                        <path
-                            d="M5.22 10.22a.75.75 0 0 1 1.06 0L8 11.94l1.72-1.72a.75.75 0 1 1 1.06 1.06l-2.25 2.25a.75.75 0 0 1-1.06 0l-2.25-2.25a.75.75 0 0 1 0-1.06ZM10.78 5.78a.75.75 0 0 1-1.06 0L8 4.06 6.28 5.78a.75.75 0 0 1-1.06-1.06l2.25-2.25a.75.75 0 0 1 1.06 0l2.25 2.25a.75.75 0 0 1 0 1.06Z"
-                            clip-rule="evenodd" fill-rule="evenodd" />
-                    </svg>
-                </button>
+                    <dxi-item  dataField="username" [isRequired]="true" [label]="{ text: 'ชื่อผู้ใช้' }"></dxi-item>
+                    <dxi-item dataField="password"  [isRequired]="true" [label]="{ text: 'รหัสผ่าน' }"></dxi-item>
+                    <dxi-item dataField="confirmPassword" [isRequired]="true" [label]="{ text: 'ยืนยันรหัสผ่าน' }"></dxi-item>
 
-                <el-options anchor="bottom start" popover
-                    class="max-h-56 w-(--button-width) overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 [--anchor-gap:--spacing(1)] focus:outline-hidden data-leave:transition data-leave:transition-discrete data-leave:duration-100 data-leave:ease-in data-closed:data-leave:opacity-0 sm:text-sm">
-                    <el-option value="1"
-                        class="group/option relative block cursor-default py-2 pr-9 pl-3 text-gray-900 select-none focus:bg-indigo-600 focus:text-white focus:outline-hidden">
-                        <div class="flex items-center">
-                            <img src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                alt="" class="size-5 shrink-0 rounded-full" />
-                            <span class="ml-3 block truncate font-normal group-aria-selected/option:font-semibold">Wade
-                                Cooper</span>
-                        </div>
-                        <span
-                            class="absolute inset-y-0 right-0 flex items-center pr-4 text-indigo-600 group-not-aria-selected/option:hidden group-focus/option:text-white in-[el-selectedcontent]:hidden">
-                            <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true"
-                                class="size-5">
-                                <path
-                                    d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-                                    clip-rule="evenodd" fill-rule="evenodd" />
-                            </svg>
-                        </span>
-                    </el-option>
+                    <dxi-item dataField="isVip" [isRequired]="true" [label]="{ text: 'ประเภท' }" editorType="dxSelectBox" [editorOptions]="{ 
+    dataSource: customerRole, 
+    valueExpr: 'value', 
+    displayExpr: 'name' 
+  }">
+                        <!-- <dxi-validation-rule type="required" message="Country is required">
+                        </dxi-validation-rule> -->
+                    </dxi-item>
+                </dxi-item>
 
-                </el-options>
-            </el-select>
+
+
+
+
+            </dx-form>
+
+
+
 
             <div class="mt-10">
                 <button type="submit"
-                    class="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">สร้างบัญชีผู้ใช้</button>
+                    class="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    (click)="onSubmit()">สร้างบัญชีผู้ใช้</button>
             </div>
         </form>
     </div>
