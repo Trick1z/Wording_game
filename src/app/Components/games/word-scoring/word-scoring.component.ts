@@ -7,4 +7,56 @@ import { Component } from '@angular/core';
 })
 export class WordScoringComponent {
 
+isVip : boolean = true ;
+
+  wordList: WordList[] = [
+    {
+      word: "asd",
+      score: 20,
+      date: new Date("2025-08-05")
+    },
+    {
+      word: "asd",
+      score: 20,
+      date: new Date("2025-08-05")
+    },
+    {
+      word: "asd",
+      score: 20,
+      date: new Date("2025-08-05")
+    },
+    // {
+    //   word: "asd",
+    //   score: 20,
+    //   date: new Date("2025-08-05")
+    // },
+    // {
+    //   word: "asd",
+    //   score: 20,
+    //   date: new Date("2025-08-05")
+    // },
+    // {
+    //   word: "asd",
+    //   score: 20,
+    //   date: new Date("2025-08-05")
+    // },
+  
+  ]
+
+  convertStar(length : number ){
+
+      return "*".repeat(length)
+
+      
+
+
+  }
+}
+
+interface WordList {
+  word: string
+  score: number
+  date: Date
+
+
 }
