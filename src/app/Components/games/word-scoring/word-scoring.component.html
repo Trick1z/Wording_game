@@ -66,15 +66,10 @@
             <dxo-editing mode="row"> </dxo-editing>
             <dxi-column dataField="word" [width]="160" [caption]="'คำ'"></dxi-column>
 
-            <dxi-column dataField="score" [width]="80" [caption]="'คะแนน'"></dxi-column>
+            <dxi-column cellTemplate="scoreTemplate" dataField="score" [width]="80" [caption]="'คะแนน'"></dxi-column>
 
 
-
-            <dxi-column alignment="center" dataField="date" caption="วันที่">
-                <ng-template dxTemplate="cell" let-data>
-                    {{ data.value | date : "dd/MM/yyyy" }}
-                </ng-template>
-            </dxi-column>
+            <dxi-column cellTemplate="dateTemplate" alignment="center" dataField="date" caption="วันที่"> </dxi-column>
 
             <dxi-column [caption]="'#'" [width]="210" cellTemplate="cellTemplateButton"></dxi-column>
 
@@ -85,10 +80,23 @@
                     </dx-button>
                 </div>
                 <div class="btn">
-                    <dx-button stylingMode="contained" text="Delete" type="danger" [width]="70">
+                    <dx-button stylingMode="contained" text="Delete" type="danger" [width]="90">
                     </dx-button>
                 </div>
             </div>
+
+
+            <div *dxTemplate="let cell of 'scoreTemplate'">
+                {{ cell.value | number:'1.0-0' }}
+            </div>
+
+            <div *dxTemplate="let cell of 'dateTemplate'">
+                {{ cell.value | date : "dd / MM / yyyy" }}
+            </div>
+
+
+
+
             <dxo-paging [pageSize]="10"></dxo-paging>
             <dxo-search-panel [visible]="true"></dxo-search-panel>
         </dx-data-grid>
@@ -101,18 +109,17 @@
             <dxo-editing mode="row" [allowAdding]="false" [allowUpdating]="false" [allowDeleting]="false">
             </dxo-editing>
             <dxo-editing mode="row"> </dxo-editing>
-            <dxi-column dataField="word" caption="คำ" [width]="300" cellTemplate="wordTemplate">
+            <dxi-column  dataField="word" caption="คำ" [width]="300" cellTemplate="wordTemplate">
             </dxi-column>
 
-            <dxi-column dataField="score" [width]="80" [caption]="'คะแนน'" cellTemplate="scoreTemplate"></dxi-column>
+            <dxi-column  cellTemplate="scoreTemplate" dataField="score" [width]="80" [caption]="'คะแนน'">
+            </dxi-column>
 
 
 
 
-            <dxi-column alignment="center" dataField="date" caption="วันที่">
-                <ng-template dxTemplate="cell" let-data>
-                    {{ data.value | date : "dd / MM / yyyy" }}
-                </ng-template>
+            <dxi-column cellTemplate="dateTemplate" alignment="center" dataField="date" caption="วันที่">
+                
             </dxi-column>
 
             <dxi-column [caption]="'#'" [width]="210" cellTemplate="cellTemplateButton"></dxi-column>
@@ -121,7 +128,7 @@
                 *dxTemplate="let data of 'cellTemplateButton'">
 
                 <div class="btn">
-                    <dx-button stylingMode="contained" text="Delete" type="danger" [width]="70">
+                    <dx-button stylingMode="contained" text="Delete" type="danger" [width]="90">
                     </dx-button>
                 </div>
             </div>
@@ -133,6 +140,17 @@
             <div class="" *dxTemplate="let cell of 'scoreTemplate'">
                 {{ convertStar(cell.value.toString().length) }}
             </div>
+
+              <!-- <div *dxTemplate="let cell of 'scoreTemplate'">
+                {{ cell.value | number:'1.0-0' }}
+            </div> -->
+
+            <div *dxTemplate="let cell of 'dateTemplate'">
+                {{ cell.value | date : "dd / MM / yyyy" }}
+            </div>
+
+
+
             <dxo-paging [pageSize]="10"></dxo-paging>
             <dxo-search-panel [visible]="true"></dxo-search-panel>
         </dx-data-grid>
