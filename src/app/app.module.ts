@@ -9,8 +9,10 @@ import { HomeComponent } from './Components/views/home/home.component';
 import { WordScoringComponent } from './Components/games/word-scoring/word-scoring.component';
 import { FormsModule } from '@angular/forms';
 import dxDataGrid from 'devextreme/ui/data_grid';
-import { DxButtonModule, DxDataGridModule } from 'devextreme-angular';
+import { DxButtonModule, DxDataGridModule, DxFormModule, DxSelectBoxModule } from 'devextreme-angular';
 import { NavbarTopComponent } from './Components/navbar/navbar-top/navbar-top.component';
+import { LandingComponent } from './Components/Pages/landing/landing.component';
+import dxForm from 'devextreme/ui/form';
 
 @NgModule({
   declarations: [
@@ -19,12 +21,14 @@ import { NavbarTopComponent } from './Components/navbar/navbar-top/navbar-top.co
     RegisterComponent,
     HomeComponent,
     WordScoringComponent,
-    NavbarTopComponent
+    NavbarTopComponent,
+    LandingComponent
   ],
   imports: [
-    BrowserModule, FormsModule,
-    AppRoutingModule
-    ,DxDataGridModule,DxButtonModule
+    BrowserModule, FormsModule, 
+    DxSelectBoxModule,AppRoutingModule,
+    DxDataGridModule, DxButtonModule,
+    DxFormModule
   ],
   providers: [],
   bootstrap: [AppComponent],
