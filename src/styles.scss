@@ -4,6 +4,23 @@
 @import "~devextreme/dist/css/dx.light.css";
 
 
-::ng-deep .dx-datagrid .dx-header-row > td {
+::ng-deep .dx-datagrid .dx-header-row>td {
   text-align: center;
+}
+
+
+
+.dx-datagrid .dx-datagrid-headers .dx-header-row>td {
+  vertical-align: middle !important;
+}
+
+.dx-datagrid-rowsview .dx-datagrid-table .dx-freespace-row,
+.dx-datagrid-rowsview .dx-datagrid-table .dx-virtual-row {
+  border-top: 0;
+  border-bottom: 0;
+  height: 0px !important;
+}
+
+.dx-datagrid .dx-row>td {
+  padding: 6px;
 }
