@@ -6,8 +6,12 @@ export class AuthRoute {
     // register path
     static Register: string = `register`;
     static RegisterFullPath: string = `${AuthRoute.prefix}/${AuthRoute.Register}`;
+   
+    // static LandingPage: string = `Landing`;
+    // static LandingPageFullPath: string = `${AuthRoute.prefix}/${AuthRoute.LandingPage}`;
     
 }
+
 export class ViewsRoute {
     static prefix: string = `view`;
 
