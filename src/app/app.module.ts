@@ -9,10 +9,11 @@ import { HomeComponent } from './Components/views/home/home.component';
 import { WordScoringComponent } from './Components/games/word-scoring/word-scoring.component';
 import { FormsModule } from '@angular/forms';
 import dxDataGrid from 'devextreme/ui/data_grid';
-import { DxButtonModule, DxDataGridModule, DxFormModule, DxSelectBoxModule } from 'devextreme-angular';
+import { DxButtonModule, DxDataGridModule, DxFormModule, DxPopupModule, DxSelectBoxModule } from 'devextreme-angular';
 import { NavbarTopComponent } from './Components/navbar/navbar-top/navbar-top.component';
 import { LandingComponent } from './Components/Pages/landing/landing.component';
 import dxForm from 'devextreme/ui/form';
+import { EditPopupComponent } from './Components/games/word-scoring/edit-popup/edit-popup.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +23,14 @@ import dxForm from 'devextreme/ui/form';
     HomeComponent,
     WordScoringComponent,
     NavbarTopComponent,
-    LandingComponent
+    LandingComponent,
+    EditPopupComponent
   ],
   imports: [
     BrowserModule, FormsModule, 
     DxSelectBoxModule,AppRoutingModule,
     DxDataGridModule, DxButtonModule,
-    DxFormModule
+    DxFormModule,DxPopupModule
   ],
   providers: [],
   bootstrap: [AppComponent],
