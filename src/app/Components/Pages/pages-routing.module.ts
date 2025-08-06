@@ -15,6 +15,10 @@ const routes: Routes = [
         path: AuthRoute.Register ,
         component: RegisterComponent
     },
+    // {
+    //     path: AuthRoute.LandingPage ,
+    //     component: RegisterComponent
+    // },
 ]
 
 
