@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import Swal from 'sweetalert2';
+import { RegisterData } from '../../models/auth.model';
 
 @Component({
   selector: 'app-register',
@@ -50,11 +51,3 @@ export class RegisterComponent {
     return console.log(this.registerData);
   }
 }
-
-interface RegisterData {
-  username: string | null
-  password: string | null
-  confirmPassword: string | null
-  isVip: boolean | null
-
-} 
