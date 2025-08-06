@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthRoute } from 'src/app/Constants/routes.const';
 import Swal from 'sweetalert2';
+import { UserData } from '../../models/auth.model';
 
 @Component({
   selector: 'app-login',
@@ -45,7 +46,3 @@ export class LoginComponent {
   }
 }
 
-interface UserData {
-  username: string | null
-  password: string | null
-}
