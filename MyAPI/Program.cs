@@ -1,4 +1,23 @@
+﻿using Domain.Models;
+using Microsoft.EntityFrameworkCore;
+using Services.Auth;
+using Services.CalculateScore;
+using Services.Word;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<MYGAMEContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// ✅ Register LoginService
+builder.Services.AddScoped<LoginService>();
+builder.Services.AddScoped<RegisterService>();
+builder.Services.AddScoped<CalculateScore>();
+builder.Services.AddScoped<WordDataService>();
+
+
+
+
 
 // Add services to the container.
 

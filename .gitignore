@@ -1,0 +1,10 @@
+.vs/
+
+Domain/bin
+Domain/obj
+MyApp/bin
+MyApp/obj
+MyApi/bin
+MyApi/obj
+Services/bin
+Services/obj
