@@ -1,4 +1,5 @@
-﻿using Domain.Models;
+﻿using Domain.Interfaces;
+using Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Services.Auth;
 using Services.CalculateScore;
@@ -10,10 +11,17 @@ builder.Services.AddDbContext<MYGAMEContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // ✅ Register LoginService
-builder.Services.AddScoped<LoginService>();
-builder.Services.AddScoped<RegisterService>();
+//builder.Services.AddScoped<ILoginService, LoginService>();
+builder.Services.AddScoped<ILoginService, LoginService>();
+
+builder.Services.AddScoped<IMemberRegisterService,MemberRegisterService>();
+builder.Services.AddScoped<IUserRegisterService, UserRegisterService>();
+builder.Services.AddScoped<IUserRegisterService, UserRegisterService>();
+
+
 builder.Services.AddScoped<CalculateScore>();
 builder.Services.AddScoped<WordDataService>();
+
 
 
 

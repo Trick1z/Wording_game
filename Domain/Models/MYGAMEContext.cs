@@ -13,14 +13,53 @@ public partial class MYGAMEContext : DbContext
     {
     }
 
+    public virtual DbSet<Form> Form { get; set; }
+
+    public virtual DbSet<FormTask> FormTask { get; set; }
+
     public virtual DbSet<Member> Member { get; set; }
 
     public virtual DbSet<SystemConfig> SystemConfig { get; set; }
+
+    public virtual DbSet<User> User { get; set; }
 
     public virtual DbSet<Word> Word { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Form>(entity =>
+        {
+            entity.Property(e => e.ClosedTime).HasColumnType("datetime");
+            entity.Property(e => e.CreatedTime).HasColumnType("datetime");
+            entity.Property(e => e.Description)
+                .HasMaxLength(512)
+                .IsUnicode(false);
+            entity.Property(e => e.ModifiredTime).HasColumnType("datetime");
+            entity.Property(e => e.Status)
+                .IsRequired()
+                .HasMaxLength(50)
+                .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<FormTask>(entity =>
+        {
+            entity.HasKey(e => e.TaskId);
+
+            entity.Property(e => e.ApproveTime).HasColumnType("datetime");
+            entity.Property(e => e.Status)
+                .IsRequired()
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.TaskName)
+                .IsRequired()
+                .HasMaxLength(512)
+                .IsUnicode(false);
+            entity.Property(e => e.Type)
+                .IsRequired()
+                .HasMaxLength(50)
+                .IsUnicode(false);
+        });
+
         modelBuilder.Entity<Member>(entity =>
         {
             entity.HasKey(e => e.UserId);
@@ -50,6 +89,24 @@ public partial class MYGAMEContext : DbContext
                 .IsUnicode(false);
             entity.Property(e => e.ConfigValue)
                 .HasMaxLength(100)
+                .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<User>(entity =>
+        {
+            entity.Property(e => e.CreatedTime).HasColumnType("datetime");
+            entity.Property(e => e.ModifiedTime).HasColumnType("datetime");
+            entity.Property(e => e.Password)
+                .IsRequired()
+                .HasMaxLength(512)
+                .IsUnicode(false);
+            entity.Property(e => e.Role)
+                .IsRequired()
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Username)
+                .IsRequired()
+                .HasMaxLength(50)
                 .IsUnicode(false);
         });
 

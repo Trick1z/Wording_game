@@ -16,11 +16,23 @@
    "T4TemplatePath": null,
    "Tables": [
       {
+         "Name": "[dbo].[Form]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[FormTask]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[Member]",
          "ObjectType": 0
       },
       {
          "Name": "[dbo].[SystemConfig]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[User]",
          "ObjectType": 0
       },
       {

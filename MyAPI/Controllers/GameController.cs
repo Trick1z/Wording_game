@@ -14,7 +14,7 @@ namespace MyAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class WordController : ControllerBase
+    public class GameController : ControllerBase
     {
 
         private readonly MYGAMEContext _context;
@@ -23,7 +23,7 @@ namespace MyAPI.Controllers
 
 
         // ✅ ASP.NET Core จะ Inject LoginService ให้เอง
-        public WordController( MYGAMEContext context , CalculateScore calculateScore , WordDataService wordDataService)
+        public GameController( MYGAMEContext context , CalculateScore calculateScore , WordDataService wordDataService)
         {
             _context = context;
             _calculateScore = calculateScore;

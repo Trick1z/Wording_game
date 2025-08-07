@@ -125,6 +125,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Braintree": {
+              "target": "Package",
+              "version": "[5.34.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Abstractions": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            },
             "Microsoft.Extensions.Identity.Core": {
               "target": "Package",
               "version": "[9.0.8, )"
