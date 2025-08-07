@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace Domain.Interfaces
 {
-    public interface ILoginService
+    public interface IUserLoginService
     {
-        public Task<string> UserLoginAsync(LoginViewModel request);
 
+
+        public Task<string> UserLoginAsync(LoginViewModel request);
     }
 }

@@ -18,4 +18,6 @@ public partial class User
     public DateTime CreatedTime { get; set; }
 
     public DateTime ModifiedTime { get; set; }
+
+    public virtual ICollection<FormTask> FormTask { get; set; } = new List<FormTask>();
 }

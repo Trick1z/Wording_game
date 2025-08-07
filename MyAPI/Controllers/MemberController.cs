@@ -18,7 +18,6 @@ namespace MyAPI.Controllers
         private readonly IMemberRegisterService _registerService;
 
 
-        // ✅ ASP.NET Core จะ Inject LoginService ให้เอง
         public MemberController(ILoginService loginService, IMemberRegisterService registerService)
         {
             _loginService = loginService;
@@ -29,7 +28,7 @@ namespace MyAPI.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginViewModel request)
         {
-            return Ok(await _loginService.LoginAsync(request));
+            return Ok(await _loginService.UserLoginAsync(request));
         }
 
         [HttpPost("register")]

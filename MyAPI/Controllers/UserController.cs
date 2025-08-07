@@ -12,22 +12,25 @@ namespace MyAPI.Controllers
     [Route("api/[controller]")]
     public class UserController : Controller
     {
-        //private readonly CalculateScore _calculateScore;
-        //private readonly WordDataService _wordDataService;
         private readonly IUserRegisterService _userRegisterService;
+        private readonly IUserLoginService _userLoginService;
 
-        // ✅ ASP.NET Core จะ Inject LoginService ให้เอง
-        public UserController(IUserRegisterService userRegisterService)
+        public UserController(IUserRegisterService userRegisterService , IUserLoginService userLoginService)
         {
 
             _userRegisterService = userRegisterService;
-            //_wordDataService = wordDataService;
+            _userLoginService = userLoginService;
         }
 
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] UserRegisterViewModel request)
         {
             return Ok(await _userRegisterService.UserRegisterAsync(request));
+        }
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginViewModel request)
+        {
+            return Ok(await _userLoginService.UserLoginAsync(request));
         }
 
 

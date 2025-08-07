@@ -13,10 +13,10 @@ builder.Services.AddDbContext<MYGAMEContext>(options =>
 // ✅ Register LoginService
 //builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddScoped<ILoginService, LoginService>();
-
 builder.Services.AddScoped<IMemberRegisterService,MemberRegisterService>();
 builder.Services.AddScoped<IUserRegisterService, UserRegisterService>();
-builder.Services.AddScoped<IUserRegisterService, UserRegisterService>();
+//builder.Services.AddScoped<IUserLoginService, LoginService>();
+builder.Services.AddScoped<IUserLoginService, UserLoginService>();
 
 
 builder.Services.AddScoped<CalculateScore>();

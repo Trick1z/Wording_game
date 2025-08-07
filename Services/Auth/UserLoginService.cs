@@ -1,18 +1,21 @@
-﻿using Azure.Core;
-using Domain.Interfaces;
+﻿using Domain.Interfaces;
 using Domain.Models;
 using Domain.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Services.Auth
 {
-    public class LoginService : ILoginService
+    public class UserLoginService : IUserLoginService
     {
         private readonly MYGAMEContext _context;
 
-        public LoginService(MYGAMEContext context)
+        public UserLoginService(MYGAMEContext context)
         {
             _context = context;
         }
@@ -27,17 +30,16 @@ namespace Services.Auth
             }
 
             //checked user in db
-            var user = await _context.Member
+            var user = await _context.User
             .FirstOrDefaultAsync(u => u.Username == request.Username);
 
             if (user == null)
             {
-              return "Username and password are incorrect.";
+                return "Username and password are incorrect.";
             }
 
             var hasher = new PasswordHasher<object>();
             var result = hasher.VerifyHashedPassword(null, user.Password, request.Password);
-
 
 
             if (result == PasswordVerificationResult.Success)
@@ -46,7 +48,8 @@ namespace Services.Auth
             }
 
             return "Somthing when wrong !";
-
         }
+
+       
     }
 }

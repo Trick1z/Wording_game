@@ -20,4 +20,8 @@ public partial class FormTask
     public DateTime ApproveTime { get; set; }
 
     public string TaskName { get; set; }
+
+    public virtual User Assignment { get; set; }
+
+    public virtual Form Form { get; set; }
 }
