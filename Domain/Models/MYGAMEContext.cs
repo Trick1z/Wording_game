@@ -31,6 +31,7 @@ public partial class MYGAMEContext : DbContext
         {
             entity.Property(e => e.ClosedTime).HasColumnType("datetime");
             entity.Property(e => e.CreatedTime).HasColumnType("datetime");
+            entity.Property(e => e.Description).HasMaxLength(512);
             entity.Property(e => e.ModifiredTime).HasColumnType("datetime");
             entity.Property(e => e.Status)
                 .IsRequired()
@@ -43,18 +44,17 @@ public partial class MYGAMEContext : DbContext
             entity.HasKey(e => e.TaskId);
 
             entity.Property(e => e.ApproveTime).HasColumnType("datetime");
+            entity.Property(e => e.Category)
+                .IsRequired()
+                .HasMaxLength(50)
+                .IsUnicode(false);
             entity.Property(e => e.Status)
                 .IsRequired()
                 .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.TaskName)
                 .IsRequired()
-                .HasMaxLength(512)
-                .IsUnicode(false);
-            entity.Property(e => e.Type)
-                .IsRequired()
-                .HasMaxLength(50)
-                .IsUnicode(false);
+                .HasMaxLength(512);
 
             entity.HasOne(d => d.Assignment).WithMany(p => p.FormTask)
                 .HasForeignKey(d => d.AssignmentId)

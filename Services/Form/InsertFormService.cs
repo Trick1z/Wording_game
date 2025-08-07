@@ -16,65 +16,82 @@ namespace Services.Form
 {
     public class InsertFormService : IInsertFormService
     {
-
-        //    [ {
-        //        task : "ยืม",
-        //        type : "borrow"},
-        //`       {
-        //        task : "ซ่อม",
-        //        type : "repair"},
-        //        {
-        //        task: "โปรแกรม",
-        //        type: "software"},
-        //]
-
         private readonly MYGAMEContext _context;
-
-       
 
         public InsertFormService(MYGAMEContext context)
         {
             _context = context;
         }
 
-        //public async Task<bool> InsertFormAsync(InsertFormViewModel model)
-        //{
-        //    using var transaction = await _context.Database.BeginTransactionAsync();
+        public async Task<int> CreateFormAsync(InsertFormViewModel request)
+        {
+            using var transaction = await _context.Database.BeginTransactionAsync();
 
-        //    try
-        //    {
-        //        // 1. Insert Form
-        //        Form form = new Form
-        //        {
-        //            UserId = model.UserId
-        //        };
+            var dateNow = DateTime.Now;
 
-        //        _context.Forms.Add(form);
-        //        await _context.SaveChangesAsync();
+            try
+            {
+                var form = new Domain.Models.Form
+                {
+                    MemberId = request.UserId,
+                    Description = request.Description,
+                    Status = "Pending",
+                    CreatedTime = dateNow
+                };
+                AddFormData(form);
+                await OnSaveChange();
 
-        //        // 2. Insert FormTasks
-        //        var tasks = model.FormTask.Select(t => new FormTask
-        //        {
-        //            TaskName = t.TaskName,
-        //            TaskType = t.TaskType,
-        //            FormId = form.Id
-        //        }).ToList();
+                foreach (var item in request.FormTask)
+                {
+                    var assignedUserId = await GetUserByType(item.Category);
 
-        //        _context.FormTasks.AddRange(tasks);
-        //        await _context.SaveChangesAsync();
+                    var task = new FormTask
+                    {
+                        TaskName = item.TaskName,
+                        FormId = form.FormId,
+                        Category = item.Category,
+                        AssignmentId = assignedUserId,
+                        Status = "Pending"
+                    };
 
-        //        // 3. Commit transaction
-        //        await transaction.CommitAsync();
-        //        return true;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        await transaction.RollbackAsync();
-        //        // Log exception if needed
-        //        return false;
-        //    }
-        //}
+                    _context.FormTask.Add(task);
+                }
 
+                await _context.SaveChangesAsync();
+                await transaction.CommitAsync();
+
+                return form.FormId;
+            }
+            catch
+            {
+                await transaction.RollbackAsync();
+                throw;
+            }
+        }
+
+        private async Task OnSaveChange()
+        {
+            await _context.SaveChangesAsync();
+        }
+
+        private void AddFormData(Domain.Models.Form form)
+        {
+            _context.Form.Add(form);
+        }
+
+        private async Task<int> GetUserByType(string category)
+        {
+            var role = category;
+
+            var user = await _context.User
+                .Where(u => u.Role == role)
+                .FirstOrDefaultAsync();
+
+            if (user == null)
+                throw new Exception($"ไม่พบผู้ดูแลประเภทงาน: {category}");
+
+            return user.Id;
+        }
 
 
 

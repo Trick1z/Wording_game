@@ -3,6 +3,7 @@ using Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Services.Auth;
 using Services.CalculateScore;
+using Services.Form;
 using Services.Word;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +18,7 @@ builder.Services.AddScoped<IMemberRegisterService,MemberRegisterService>();
 builder.Services.AddScoped<IUserRegisterService, UserRegisterService>();
 //builder.Services.AddScoped<IUserLoginService, LoginService>();
 builder.Services.AddScoped<IUserLoginService, UserLoginService>();
+builder.Services.AddScoped<IInsertFormService , InsertFormService>();
 
 
 builder.Services.AddScoped<CalculateScore>();

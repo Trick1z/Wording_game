@@ -11,6 +11,7 @@ namespace Domain.ViewModels
     public class InsertFormViewModel
     {
         public int UserId { get; set; }
+        public string Description { get; set; }
         public List<FormTaskViewModel> FormTask { get; set; }
 
 
@@ -18,7 +19,7 @@ namespace Domain.ViewModels
 
     public class FormTaskViewModel { 
         public string TaskName { get; set; }
-        public string TaskType { get; set; }
+        public string Category { get; set; }
      
     }
 }

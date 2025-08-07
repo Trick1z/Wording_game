@@ -7,28 +7,48 @@
       "RelativeMoniker": "D:0:0:{EC00B47E-5214-4CCE-94F3-932A4C1927DD}|Services\\Services.csproj|solutionrelative:services\\form\\insertformservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1440376-258F-4A9A-B10B-C911F8C85D70}|Domain\\Domain.csproj|d:\\codes\\playgrounds\\game\\domain\\viewmodels\\insertformviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1440376-258F-4A9A-B10B-C911F8C85D70}|Domain\\Domain.csproj|solutionrelative:domain\\viewmodels\\insertformviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C1440376-258F-4A9A-B10B-C911F8C85D70}|Domain\\Domain.csproj|d:\\codes\\playgrounds\\game\\domain\\interfaces\\iinsertformservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C1440376-258F-4A9A-B10B-C911F8C85D70}|Domain\\Domain.csproj|solutionrelative:domain\\interfaces\\iinsertformservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1440376-258F-4A9A-B10B-C911F8C85D70}|Domain\\Domain.csproj|d:\\codes\\playgrounds\\game\\domain\\interfaces\\iuserregisterservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1440376-258F-4A9A-B10B-C911F8C85D70}|Domain\\Domain.csproj|solutionrelative:domain\\interfaces\\iuserregisterservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C1440376-258F-4A9A-B10B-C911F8C85D70}|Domain\\Domain.csproj|d:\\codes\\playgrounds\\game\\domain\\viewmodels\\insertformviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1440376-258F-4A9A-B10B-C911F8C85D70}|Domain\\Domain.csproj|solutionrelative:domain\\viewmodels\\insertformviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{554CACFB-431C-4862-B658-7973ED89973B}|MyAPI\\MyAPI.csproj|d:\\codes\\playgrounds\\game\\myapi\\controllers\\insertformcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{554CACFB-431C-4862-B658-7973ED89973B}|MyAPI\\MyAPI.csproj|solutionrelative:myapi\\controllers\\insertformcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1440376-258F-4A9A-B10B-C911F8C85D70}|Domain\\Domain.csproj|d:\\codes\\playgrounds\\game\\domain\\models\\form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1440376-258F-4A9A-B10B-C911F8C85D70}|Domain\\Domain.csproj|solutionrelative:domain\\models\\form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{554CACFB-431C-4862-B658-7973ED89973B}|MyAPI\\MyAPI.csproj|d:\\codes\\playgrounds\\game\\myapi\\controllers\\membercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{554CACFB-431C-4862-B658-7973ED89973B}|MyAPI\\MyAPI.csproj|solutionrelative:myapi\\controllers\\membercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{554CACFB-431C-4862-B658-7973ED89973B}|MyAPI\\MyAPI.csproj|d:\\codes\\playgrounds\\game\\myapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{554CACFB-431C-4862-B658-7973ED89973B}|MyAPI\\MyAPI.csproj|solutionrelative:myapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1440376-258F-4A9A-B10B-C911F8C85D70}|Domain\\Domain.csproj|d:\\codes\\playgrounds\\game\\domain\\models\\word.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1440376-258F-4A9A-B10B-C911F8C85D70}|Domain\\Domain.csproj|solutionrelative:domain\\models\\word.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C1440376-258F-4A9A-B10B-C911F8C85D70}|Domain\\Domain.csproj|d:\\codes\\playgrounds\\game\\domain\\models\\mygamecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C1440376-258F-4A9A-B10B-C911F8C85D70}|Domain\\Domain.csproj|solutionrelative:domain\\models\\mygamecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{554CACFB-431C-4862-B658-7973ED89973B}|MyAPI\\MyAPI.csproj|d:\\codes\\playgrounds\\game\\myapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{554CACFB-431C-4862-B658-7973ED89973B}|MyAPI\\MyAPI.csproj|solutionrelative:myapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC00B47E-5214-4CCE-94F3-932A4C1927DD}|Services\\Services.csproj|d:\\codes\\playgrounds\\game\\services\\auth\\userloginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC00B47E-5214-4CCE-94F3-932A4C1927DD}|Services\\Services.csproj|solutionrelative:services\\auth\\userloginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1440376-258F-4A9A-B10B-C911F8C85D70}|Domain\\Domain.csproj|d:\\codes\\playgrounds\\game\\domain\\interfaces\\iuserregisterservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1440376-258F-4A9A-B10B-C911F8C85D70}|Domain\\Domain.csproj|solutionrelative:domain\\interfaces\\iuserregisterservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1440376-258F-4A9A-B10B-C911F8C85D70}|Domain\\Domain.csproj|d:\\codes\\playgrounds\\game\\domain\\models\\form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1440376-258F-4A9A-B10B-C911F8C85D70}|Domain\\Domain.csproj|solutionrelative:domain\\models\\form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C1440376-258F-4A9A-B10B-C911F8C85D70}|Domain\\Domain.csproj|d:\\codes\\playgrounds\\game\\domain\\models\\formtask.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -55,16 +75,8 @@
       "RelativeMoniker": "D:0:0:{EC00B47E-5214-4CCE-94F3-932A4C1927DD}|Services\\Services.csproj|solutionrelative:services\\auth\\userregisterservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EC00B47E-5214-4CCE-94F3-932A4C1927DD}|Services\\Services.csproj|d:\\codes\\playgrounds\\game\\services\\auth\\userloginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC00B47E-5214-4CCE-94F3-932A4C1927DD}|Services\\Services.csproj|solutionrelative:services\\auth\\userloginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{EC00B47E-5214-4CCE-94F3-932A4C1927DD}|Services\\Services.csproj|d:\\codes\\playgrounds\\game\\services\\auth\\loginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EC00B47E-5214-4CCE-94F3-932A4C1927DD}|Services\\Services.csproj|solutionrelative:services\\auth\\loginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{554CACFB-431C-4862-B658-7973ED89973B}|MyAPI\\MyAPI.csproj|d:\\codes\\playgrounds\\game\\myapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{554CACFB-431C-4862-B658-7973ED89973B}|MyAPI\\MyAPI.csproj|solutionrelative:myapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C1440376-258F-4A9A-B10B-C911F8C85D70}|Domain\\Domain.csproj|d:\\codes\\playgrounds\\game\\domain\\interfaces\\iloginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -73,14 +85,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C1440376-258F-4A9A-B10B-C911F8C85D70}|Domain\\Domain.csproj|d:\\codes\\playgrounds\\game\\domain\\interfaces\\iuserloginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C1440376-258F-4A9A-B10B-C911F8C85D70}|Domain\\Domain.csproj|solutionrelative:domain\\interfaces\\iuserloginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{554CACFB-431C-4862-B658-7973ED89973B}|MyAPI\\MyAPI.csproj|d:\\codes\\playgrounds\\game\\myapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{554CACFB-431C-4862-B658-7973ED89973B}|MyAPI\\MyAPI.csproj|solutionrelative:myapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{554CACFB-431C-4862-B658-7973ED89973B}|MyAPI\\MyAPI.csproj|d:\\codes\\playgrounds\\game\\myapi\\controllers\\membercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{554CACFB-431C-4862-B658-7973ED89973B}|MyAPI\\MyAPI.csproj|solutionrelative:myapi\\controllers\\membercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{554CACFB-431C-4862-B658-7973ED89973B}|MyAPI\\MyAPI.csproj|d:\\codes\\playgrounds\\game\\myapi\\controllers\\gamecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -111,10 +115,6 @@
       "RelativeMoniker": "D:0:0:{C1440376-258F-4A9A-B10B-C911F8C85D70}|Domain\\Domain.csproj|solutionrelative:domain\\exceptions\\validateexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1440376-258F-4A9A-B10B-C911F8C85D70}|Domain\\Domain.csproj|d:\\codes\\playgrounds\\game\\domain\\models\\word.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1440376-258F-4A9A-B10B-C911F8C85D70}|Domain\\Domain.csproj|solutionrelative:domain\\models\\word.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C1440376-258F-4A9A-B10B-C911F8C85D70}|Domain\\Domain.csproj|d:\\codes\\playgrounds\\game\\domain\\exceptions\\globalexceptionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C1440376-258F-4A9A-B10B-C911F8C85D70}|Domain\\Domain.csproj|solutionrelative:domain\\exceptions\\globalexceptionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -126,17 +126,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 296,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 8,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Codes\\PlayGrounds\\game\\MyAPI\\Program.cs",
               "RelativeDocumentMoniker": "MyAPI\\Program.cs",
               "ToolTip": "D:\\Codes\\PlayGrounds\\game\\MyAPI\\Program.cs",
               "RelativeToolTip": "MyAPI\\Program.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAABEAAABAAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-07T02:53:19.351Z",
               "IsPinned": true,
@@ -144,7 +144,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 9,
               "Title": "UserLoginService.cs",
               "DocumentMoniker": "D:\\Codes\\PlayGrounds\\game\\Services\\Auth\\UserLoginService.cs",
               "RelativeDocumentMoniker": "Services\\Auth\\UserLoginService.cs",
@@ -158,46 +158,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "InsertFormService.cs",
-              "DocumentMoniker": "D:\\Codes\\PlayGrounds\\game\\Services\\Form\\InsertFormService.cs",
-              "RelativeDocumentMoniker": "Services\\Form\\InsertFormService.cs",
-              "ToolTip": "D:\\Codes\\PlayGrounds\\game\\Services\\Form\\InsertFormService.cs",
-              "RelativeToolTip": "Services\\Form\\InsertFormService.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAQwCMAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T08:04:58.076Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Domain",
-              "DocumentMoniker": "D:\\Codes\\PlayGrounds\\game\\Domain\\Domain.csproj",
-              "RelativeDocumentMoniker": "Domain\\Domain.csproj",
-              "ToolTip": "D:\\Codes\\PlayGrounds\\game\\Domain\\Domain.csproj",
-              "RelativeToolTip": "Domain\\Domain.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-08-07T02:27:39.438Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Form.cs",
-              "DocumentMoniker": "D:\\Codes\\PlayGrounds\\game\\Domain\\Models\\Form.cs",
-              "RelativeDocumentMoniker": "Domain\\Models\\Form.cs",
-              "ToolTip": "D:\\Codes\\PlayGrounds\\game\\Domain\\Models\\Form.cs",
-              "RelativeToolTip": "Domain\\Models\\Form.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T06:01:58.007Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 12,
               "Title": "FormTask.cs",
               "DocumentMoniker": "D:\\Codes\\PlayGrounds\\game\\Domain\\Models\\FormTask.cs",
               "RelativeDocumentMoniker": "Domain\\Models\\FormTask.cs",
@@ -210,20 +171,72 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "MYGAMEContext.cs",
               "DocumentMoniker": "D:\\Codes\\PlayGrounds\\game\\Domain\\Models\\MYGAMEContext.cs",
               "RelativeDocumentMoniker": "Domain\\Models\\MYGAMEContext.cs",
               "ToolTip": "D:\\Codes\\PlayGrounds\\game\\Domain\\Models\\MYGAMEContext.cs",
               "RelativeToolTip": "Domain\\Models\\MYGAMEContext.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABEAAAAAAAAAAAA3wBYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-07T06:01:07.078Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Word.cs",
+              "DocumentMoniker": "D:\\Codes\\PlayGrounds\\game\\Domain\\Models\\Word.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\Word.cs",
+              "ToolTip": "D:\\Codes\\PlayGrounds\\game\\Domain\\Models\\Word.cs",
+              "RelativeToolTip": "Domain\\Models\\Word.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T02:26:12.894Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "InsertFormService.cs",
+              "DocumentMoniker": "D:\\Codes\\PlayGrounds\\game\\Services\\Form\\InsertFormService.cs",
+              "RelativeDocumentMoniker": "Services\\Form\\InsertFormService.cs",
+              "ToolTip": "D:\\Codes\\PlayGrounds\\game\\Services\\Form\\InsertFormService.cs",
+              "RelativeToolTip": "Services\\Form\\InsertFormService.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAmwC0AAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T08:04:58.076Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 11,
+              "Title": "Form.cs",
+              "DocumentMoniker": "D:\\Codes\\PlayGrounds\\game\\Domain\\Models\\Form.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\Form.cs",
+              "ToolTip": "D:\\Codes\\PlayGrounds\\game\\Domain\\Models\\Form.cs",
+              "RelativeToolTip": "Domain\\Models\\Form.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T06:01:58.007Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Domain",
+              "DocumentMoniker": "D:\\Codes\\PlayGrounds\\game\\Domain\\Domain.csproj",
+              "RelativeDocumentMoniker": "Domain\\Domain.csproj",
+              "ToolTip": "D:\\Codes\\PlayGrounds\\game\\Domain\\Domain.csproj",
+              "RelativeToolTip": "Domain\\Domain.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-08-07T02:27:39.438Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
               "Title": "MemberRegisterService.cs",
               "DocumentMoniker": "D:\\Codes\\PlayGrounds\\game\\Services\\Auth\\MemberRegisterService.cs",
               "RelativeDocumentMoniker": "Services\\Auth\\MemberRegisterService.cs",
@@ -236,7 +249,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 17,
               "Title": "UserRegisterService.cs",
               "DocumentMoniker": "D:\\Codes\\PlayGrounds\\game\\Services\\Auth\\UserRegisterService.cs",
               "RelativeDocumentMoniker": "Services\\Auth\\UserRegisterService.cs",
@@ -249,7 +262,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "Member.cs",
               "DocumentMoniker": "D:\\Codes\\PlayGrounds\\game\\Domain\\Models\\Member.cs",
               "RelativeDocumentMoniker": "Domain\\Models\\Member.cs",
@@ -262,7 +275,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "GlobalExceptionHandler.cs",
               "DocumentMoniker": "D:\\Codes\\PlayGrounds\\game\\MyAPI\\Handlers\\GlobalExceptionHandler.cs",
               "RelativeDocumentMoniker": "MyAPI\\Handlers\\GlobalExceptionHandler.cs",
@@ -275,7 +288,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\Codes\\PlayGrounds\\game\\Domain\\Models\\User.cs",
               "RelativeDocumentMoniker": "Domain\\Models\\User.cs",
@@ -288,7 +301,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Codes\\PlayGrounds\\game\\MyApp\\Program.cs",
               "RelativeDocumentMoniker": "MyApp\\Program.cs",
@@ -301,7 +314,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "ValidateException.cs",
               "DocumentMoniker": "D:\\Codes\\PlayGrounds\\game\\Domain\\Exceptions\\ValidateException.cs",
               "RelativeDocumentMoniker": "Domain\\Exceptions\\ValidateException.cs",
@@ -310,19 +323,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-07T02:45:42.981Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "Word.cs",
-              "DocumentMoniker": "D:\\Codes\\PlayGrounds\\game\\Domain\\Models\\Word.cs",
-              "RelativeDocumentMoniker": "Domain\\Models\\Word.cs",
-              "ToolTip": "D:\\Codes\\PlayGrounds\\game\\Domain\\Models\\Word.cs",
-              "RelativeToolTip": "Domain\\Models\\Word.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T02:26:12.894Z",
               "EditorCaption": ""
             },
             {
@@ -356,12 +356,12 @@
       },
       "DocumentGroups": [
         {
-          "DockedWidth": 335,
+          "DockedWidth": 297,
           "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 18,
               "Title": "LoginService.cs",
               "DocumentMoniker": "D:\\Codes\\PlayGrounds\\game\\Services\\Auth\\LoginService.cs",
               "RelativeDocumentMoniker": "Services\\Auth\\LoginService.cs",
@@ -374,20 +374,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "InsertFormViewModel.cs",
               "DocumentMoniker": "D:\\Codes\\PlayGrounds\\game\\Domain\\ViewModels\\InsertFormViewModel.cs",
               "RelativeDocumentMoniker": "Domain\\ViewModels\\InsertFormViewModel.cs",
               "ToolTip": "D:\\Codes\\PlayGrounds\\game\\Domain\\ViewModels\\InsertFormViewModel.cs",
               "RelativeToolTip": "Domain\\ViewModels\\InsertFormViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAoAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-07T07:59:52.42Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 15,
               "Title": "LoginModel.cs",
               "DocumentMoniker": "D:\\Codes\\PlayGrounds\\game\\Domain\\ViewModels\\LoginModel.cs",
               "RelativeDocumentMoniker": "Domain\\ViewModels\\LoginModel.cs",
@@ -400,7 +400,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 14,
               "Title": "RegisterModel.cs",
               "DocumentMoniker": "D:\\Codes\\PlayGrounds\\game\\Domain\\ViewModels\\RegisterModel.cs",
               "RelativeDocumentMoniker": "Domain\\ViewModels\\RegisterModel.cs",
@@ -414,25 +414,25 @@
           ]
         },
         {
-          "DockedWidth": 273,
+          "DockedWidth": 277,
           "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "IInsertFormService.cs",
               "DocumentMoniker": "D:\\Codes\\PlayGrounds\\game\\Domain\\Interfaces\\IInsertFormService.cs",
               "RelativeDocumentMoniker": "Domain\\Interfaces\\IInsertFormService.cs",
               "ToolTip": "D:\\Codes\\PlayGrounds\\game\\Domain\\Interfaces\\IInsertFormService.cs",
               "RelativeToolTip": "Domain\\Interfaces\\IInsertFormService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAwAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-07T07:58:32.916Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 10,
               "Title": "IUserRegisterService.cs",
               "DocumentMoniker": "D:\\Codes\\PlayGrounds\\game\\Domain\\Interfaces\\IUserRegisterService.cs",
               "RelativeDocumentMoniker": "Domain\\Interfaces\\IUserRegisterService.cs",
@@ -445,7 +445,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 19,
               "Title": "ILoginService.cs",
               "DocumentMoniker": "D:\\Codes\\PlayGrounds\\game\\Domain\\Interfaces\\ILoginService.cs",
               "RelativeDocumentMoniker": "Domain\\Interfaces\\ILoginService.cs",
@@ -458,7 +458,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 20,
               "Title": "IUserLoginService.cs",
               "DocumentMoniker": "D:\\Codes\\PlayGrounds\\game\\Domain\\Interfaces\\IUserLoginService.cs",
               "RelativeDocumentMoniker": "Domain\\Interfaces\\IUserLoginService.cs",
@@ -471,7 +471,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "IMemberRegisterService.cs",
               "DocumentMoniker": "D:\\Codes\\PlayGrounds\\game\\Domain\\Interfaces\\IMemberRegisterService.cs",
               "RelativeDocumentMoniker": "Domain\\Interfaces\\IMemberRegisterService.cs",
@@ -485,38 +485,38 @@
           ]
         },
         {
-          "DockedWidth": 193,
+          "DockedWidth": 226,
           "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "InsertFormController.cs",
               "DocumentMoniker": "D:\\Codes\\PlayGrounds\\game\\MyAPI\\Controllers\\InsertFormController.cs",
               "RelativeDocumentMoniker": "MyAPI\\Controllers\\InsertFormController.cs",
               "ToolTip": "D:\\Codes\\PlayGrounds\\game\\MyAPI\\Controllers\\InsertFormController.cs",
               "RelativeToolTip": "MyAPI\\Controllers\\InsertFormController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-07T08:00:31.763Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 5,
               "Title": "UserController.cs",
               "DocumentMoniker": "D:\\Codes\\PlayGrounds\\game\\MyAPI\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "MyAPI\\Controllers\\UserController.cs",
               "ToolTip": "D:\\Codes\\PlayGrounds\\game\\MyAPI\\Controllers\\UserController.cs",
               "RelativeToolTip": "MyAPI\\Controllers\\UserController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-07T05:01:23.36Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 4,
               "Title": "MemberController.cs",
               "DocumentMoniker": "D:\\Codes\\PlayGrounds\\game\\MyAPI\\Controllers\\MemberController.cs",
               "RelativeDocumentMoniker": "MyAPI\\Controllers\\MemberController.cs",
@@ -529,7 +529,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "GameController.cs",
               "DocumentMoniker": "D:\\Codes\\PlayGrounds\\game\\MyAPI\\Controllers\\GameController.cs",
               "RelativeDocumentMoniker": "MyAPI\\Controllers\\GameController.cs",

@@ -9,7 +9,7 @@ public partial class FormTask
 {
     public int TaskId { get; set; }
 
-    public string Type { get; set; }
+    public string Category { get; set; }
 
     public string Status { get; set; }
 
@@ -17,7 +17,7 @@ public partial class FormTask
 
     public int AssignmentId { get; set; }
 
-    public DateTime ApproveTime { get; set; }
+    public DateTime? ApproveTime { get; set; }
 
     public string TaskName { get; set; }
 

@@ -19,5 +19,7 @@ public partial class Form
 
     public DateTime? ClosedTime { get; set; }
 
+    public string Description { get; set; }
+
     public virtual ICollection<FormTask> FormTask { get; set; } = new List<FormTask>();
 }
