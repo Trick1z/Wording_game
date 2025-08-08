@@ -29,8 +29,14 @@ namespace Services.Implements.Auth
         {
             var validate = new ValidateException();
 
+            var test = "asd";
+            var chr = test[9];
+
+
+
             await IsNullOrEmptyString(request, validate);
             await IsUsernameInTable(request, validate);
+            await IsPasswordLengthMinimum(request, validate);
             await ArePasswordsMatching(request, validate);
 
 
@@ -61,6 +67,19 @@ namespace Services.Implements.Auth
 
             return member;
         }
+
+        public async Task<bool> IsPasswordLengthMinimum(UserRegisterViewModel request, ValidateException validate)
+        {
+            if (request.Password.Length < 6)
+
+                validate.Add("Password","Password Length minimum Required 6");
+
+
+            return true;
+        }
+
+
+
 
         public async Task<bool> IsNullOrEmptyString(UserRegisterViewModel request, ValidateException validate )
         {

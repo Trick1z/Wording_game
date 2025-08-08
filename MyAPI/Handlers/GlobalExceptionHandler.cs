@@ -150,41 +150,52 @@ namespace FMS.Server.Handlers
 
                         if (exception is ValidateException validateEx)
                         {
-                            result.IsValidation = true;
+                            var jsonSerializerSettings = new JsonSerializerSettings
+                            {
+                                ContractResolver = new CamelCasePropertyNamesContractResolver()
+                            };
+
+                            //result.IsValidation = true;
+                            result.Messages = validateEx.Messages;
+
                             context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
 
-                            foreach (var errorItem in validateEx.Messages) // Errors: Dictionary<string, List<string>>
-                            {
-                                foreach (var msg in errorItem.Value)
-                                {
-                                    result.Errors.Add(new ExceptionViewModel
-                                    {
-                                        ElementId = errorItem.Key,
-                                        Message = msg
-                                    });
-                                }
-                            }
+                            var json = JsonConvert.SerializeObject(result, jsonSerializerSettings);
+                            await context.Response.WriteAsync(json);
+
                         }
                         else
                         {
-                            result.IsValidation = false;
-                            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-
-                            var error = new ExceptionViewModel
+                            var jsonSerializerSettings = new JsonSerializerSettings
                             {
-                                Message = exception.Message
+                                ContractResolver = new CamelCasePropertyNamesContractResolver()
                             };
 
-                            result.Errors.Add(error);
+                            //result.IsValidation = true;
+                            //result.Messages = validateEx.Messages;
+
+                            result.Messages = new Dictionary<string, List<string>>();
+
+                            var error = new List<string>();
+
+                            error.Add(exception.Message);
+
+                            result.Messages.Add(exception.GetType().Name , error );
+
+                            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+
+                            //var error = new ExceptionViewModel
+                            //{
+                            //    //Message = exception.Message
+                            //};
+
+                            //result.Errors.Add(error);
+
+
+                            var json = JsonConvert.SerializeObject(result, jsonSerializerSettings);
+                            await context.Response.WriteAsync(json);
                         }
 
-                        var jsonSerializerSettings = new JsonSerializerSettings
-                        {
-                            ContractResolver = new CamelCasePropertyNamesContractResolver()
-                        };
-
-                        var json = JsonConvert.SerializeObject(result, jsonSerializerSettings);
-                        await context.Response.WriteAsync(json);
                     }
                 });
             });

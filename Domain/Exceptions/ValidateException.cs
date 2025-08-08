@@ -68,7 +68,7 @@ namespace Domain.Exceptions
     public class ExceptionViewModel
     {
         public string ElementId { get; set; }
-        public string Message { get; set; }
+        public List<string> Message { get; set; }
     }
 
 
