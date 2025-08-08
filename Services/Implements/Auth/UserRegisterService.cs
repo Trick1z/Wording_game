@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,10 +27,15 @@ namespace Services.Implements.Auth
 
         public async Task<string> UserRegisterAsync(UserRegisterViewModel request)
         {
+            var validate = new ValidateException();
 
-            await IsNullOrEmptyString(request);
-            await IsUsernameInTable(request);
-            await ArePasswordsMatching(request);
+            await IsNullOrEmptyString(request, validate);
+            await IsUsernameInTable(request, validate);
+            await ArePasswordsMatching(request, validate);
+
+
+            validate.Throw();
+
 
             var hashed = HashPassword(request);
 
@@ -39,7 +45,7 @@ namespace Services.Implements.Auth
             await _context.SaveChangesAsync();
 
             return "Register Successfully";
-            //return t,f
+
         }
 
         private static User CreateRegisterData(UserRegisterViewModel request, string hashed)
@@ -56,45 +62,52 @@ namespace Services.Implements.Auth
             return member;
         }
 
-        public async Task<bool> IsNullOrEmptyString(UserRegisterViewModel request)
+        public async Task<bool> IsNullOrEmptyString(UserRegisterViewModel request, ValidateException validate )
         {
-            var error =new List<string>();
-
-
+           
 
             if (string.IsNullOrWhiteSpace(request.Username))
-                error.Add("Field Username are required");
+                validate.Add("Username","Field Username are required");
 
             if (string.IsNullOrWhiteSpace(request.Password))
-                error.Add("Field Password are required");
+            {
+                validate.Add("Password", "Field Password are required");
+
+            }
+
 
             if (string.IsNullOrWhiteSpace(request.ConfirmPassword))
-                error.Add("Field ConfirmPassword are required");
+                validate.Add("ConfirmPassword", "Field ConfirmPassword are required");
 
             if (string.IsNullOrWhiteSpace(request.Role))
-                error.Add("Field Role are required");
+                validate.Add("Role", "Field Role are required");
 
-            if (error.Any())
-                throw new ValidateException("UserRegister", string.Join(" , " , error));
+
+            
+
+
+
 
             return false;
         }
 
-        public async Task<bool> IsUsernameInTable(UserRegisterViewModel request)
+        public async Task<bool> IsUsernameInTable(UserRegisterViewModel request, ValidateException validate)
         {
+            //var validat = new ValidateException();
+
             var isExists = await _context.User
      .AnyAsync(u => u.Username == request.Username);
 
             if (isExists)
-                throw new ValidateException("UserRegister","This Username are already taken!");
+                validate.Add("Username", "This Username are already taken!");
 
             return false;
         }   
 
-        public async Task<bool> ArePasswordsMatching(UserRegisterViewModel request)
+        public async Task<bool> ArePasswordsMatching(UserRegisterViewModel request, ValidateException validate)
         {
             if (request.Password != request.ConfirmPassword)
-                throw new ValidateException("UserRegister" , "Password and ConfirmPassword do not match");
+                validate.Add("Password", "Password and ConfirmPassword do not match");
 
 
             return true;

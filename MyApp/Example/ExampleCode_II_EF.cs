@@ -49,8 +49,8 @@ namespace MyApp
                                 .Include(x => x.FormTask)//เพิ่มตารางที่อยาก Join มาด้วยจะทำให้เข้าถึงลูกได้
                                 .FirstOrDefault();
 
-            if (dbForm is null)
-                throw new ValidateException("ใส่ Error Case นี้ไป");
+            //if (dbForm is null)
+                //throw new ValidateException("ใส่ Error Case นี้ไป");
 
             //ค้นหาของไม่ต้องบันทึกอะไร
             //context.SaveChanges();

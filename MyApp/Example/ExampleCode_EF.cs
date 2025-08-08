@@ -28,45 +28,45 @@ namespace MyApp
             context.SaveChanges();
         }
 
-        public Form ExampleUseCaseSimple_GetById(int formId)
-        {
-            var context = Program.CreateDbContext();
+        //public Form ExampleUseCaseSimple_GetById(int formId)
+        //{
+        //    var context = Program.CreateDbContext();
 
-            //ให้มอง DbSet<Form> เหมือนมันเป็นที่มีข้อมูลอยู่ List
-            //ทำการค้นหา
-            var dbForm = context.Form.Where(x => x.FormId == formId).FirstOrDefault();
+        //    //ให้มอง DbSet<Form> เหมือนมันเป็นที่มีข้อมูลอยู่ List
+        //    //ทำการค้นหา
+        //    var dbForm = context.Form.Where(x => x.FormId == formId).FirstOrDefault();
 
-            if (dbForm is null)
-                throw new ValidateException("ใส่ Error Case นี้ไป");
+        //    if (dbForm is null)
+        //        //throw new ValidateException("ใส่ Error Case นี้ไป");
 
-            //ค้นหาของไม่ต้องบันทึกอะไร
-            //context.SaveChanges();
-            return dbForm;
-        }
+        //    //ค้นหาของไม่ต้องบันทึกอะไร
+        //    //context.SaveChanges();
+        //    return dbForm;
+        //}
 
-        public void ExampleUseCaseSimple_Update(int formId, InsertFormViewModel viewModel)
-        {
-            var context = Program.CreateDbContext();
-            //จะอัพเดทต้องหาของที่จะอัพในระบบก่อน > แล้วค่อย Update > แล้วค่อยเรียก Save Change
-            var dbForm = this.ExampleUseCaseSimple_GetById(formId);//ถ้าหาไม่เจอ จะ Error ออกไป
-            //mapping field to update
-            dbForm.MemberId = viewModel.UserId;
-            dbForm.Description = viewModel.Description;
-            //ไม่ต้อง add DBSet เพราะจะ Update ไม่ใช่เพิ่ม Record ใหม่
-            context.SaveChanges();
-        }
+        //public void ExampleUseCaseSimple_Update(int formId, InsertFormViewModel viewModel)
+        //{
+        //    var context = Program.CreateDbContext();
+        //    //จะอัพเดทต้องหาของที่จะอัพในระบบก่อน > แล้วค่อย Update > แล้วค่อยเรียก Save Change
+        //    var dbForm = this.ExampleUseCaseSimple_GetById(formId);//ถ้าหาไม่เจอ จะ Error ออกไป
+        //    //mapping field to update
+        //    dbForm.MemberId = viewModel.UserId;
+        //    dbForm.Description = viewModel.Description;
+        //    //ไม่ต้อง add DBSet เพราะจะ Update ไม่ใช่เพิ่ม Record ใหม่
+        //    context.SaveChanges();
+        //}
 
 
-        public void ExampleUseCaseSimple_Delete(int formId)
-        {
-            var context = Program.CreateDbContext();
-            //จะลบต้องหาของที่จะลบในระบบก่อน > แล้วค่อย Delete > แล้วค่อยเรียก Save Change
-            var dbForm = this.ExampleUseCaseSimple_GetById(formId);
-            //ให้มอง DbSet<Form> เหมือนมันเป็นที่มีข้อมูลอยู่ List > แล้วลบมันออกจาก List ซะ
-            context.Form.Remove(dbForm);
-            //ไม่ต้อง add DBSet เพราะจะ Update ไม่ใช่เพิ่ม Record ใหม่
-            context.SaveChanges();
-        }
+        //public void ExampleUseCaseSimple_Delete(int formId)
+        //{
+        //    var context = Program.CreateDbContext();
+        //    //จะลบต้องหาของที่จะลบในระบบก่อน > แล้วค่อย Delete > แล้วค่อยเรียก Save Change
+        //    var dbForm = this.ExampleUseCaseSimple_GetById(formId);
+        //    //ให้มอง DbSet<Form> เหมือนมันเป็นที่มีข้อมูลอยู่ List > แล้วลบมันออกจาก List ซะ
+        //    context.Form.Remove(dbForm);
+        //    //ไม่ต้อง add DBSet เพราะจะ Update ไม่ใช่เพิ่ม Record ใหม่
+        //    context.SaveChanges();
+        //}
 
         #region Bulk - Case
 

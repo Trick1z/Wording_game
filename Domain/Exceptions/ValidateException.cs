@@ -1,56 +1,47 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Domain.Exceptions
 {
     public class ValidateException : Exception
     {
-        //public ValidateException()
-        //{
 
+        public Dictionary<string, List<string>> Messages { get; }
 
-        //}
+        public bool IsThrow { get; private set; }
 
-        //public ValidateException(string message) : base(message)
-        //{
-        //    //Todo Your Message
-        //    //What happen if has field Name & Message
-        //    //Multiple field and Multiple Error -> Group it
-        //    // { "fieldName" : ["Erorr 1","Error 2"]  }
-        //}
-
-        public override string Message => string.Join(", ", Messages.Select(s => s.Message));
-        public List<ExceptionViewModel> Messages { get; set; } = [];
-        public bool IsThrow { get; set; }
+        public ValidateException(Dictionary<string, List<string>> errors)
+            : base("Validation failed")
+        {
+            Messages = errors ?? new Dictionary<string, List<string>>();
+            IsThrow = true;
+        }
 
         public ValidateException()
+            : base("Validation failed")
         {
-
+            Messages = new Dictionary<string, List<string>>();
+            IsThrow = true;
         }
 
-        public ValidateException(string message)
-        {
-            Messages.Add(new ExceptionViewModel { Message = message });
-        }
 
-        public ValidateException(string elementId, string message)
-        {
-            Messages.Add(new ExceptionViewModel { ElementId = elementId, Message = message });
-        }
-
-        public void Add(string message)
-        {
-            Messages.Add(new ExceptionViewModel { Message = message });
-        }
 
         public void Add(string elementId, string message)
         {
-            Messages.Add(new ExceptionViewModel { ElementId = elementId, Message = message });
+            if (!Messages.ContainsKey(elementId))
+            {
+                Messages[elementId] = new List<string>();
+            }
+
+            Messages[elementId].Add(message);
         }
+
 
         public void Throw()
         {

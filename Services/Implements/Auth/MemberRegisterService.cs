@@ -31,9 +31,12 @@ namespace Services.Implements.Auth
 
             var validateException = new ValidateException();
 
-            await IsNullOrEmptyString(request);
-            await IsUsernameInTable(request);
-            await ArePasswordsMatching(request);
+            await IsNullOrEmptyString(request, validateException);
+            await IsUsernameInTable(request, validateException);
+            await ArePasswordsMatching(request, validateException);
+
+
+            validateException.Throw();
 
             var hashed = HashPassword(request);
 
@@ -66,75 +69,45 @@ namespace Services.Implements.Auth
             return member;
         }
 
-        public async Task<bool> IsNullOrEmptyString(MemberRegisterViewModel request)
+        public async Task<bool> IsNullOrEmptyString(MemberRegisterViewModel request , ValidateException validateException)
         {
 
-            //if (string.IsNullOrWhiteSpace(request.Username)
-            //            || string.IsNullOrWhiteSpace(request.Password)
-            //            || string.IsNullOrWhiteSpace(request.ConfirmPassword)
-            //            || !request.IsVip)
-            //{
-            //    return true;
-            //}
-
-            //var validate = new ValidateException()
-
-            //if (string.IsNullOrWhiteSpace(request.Username))
-
-            //    throw new ValidateException("Register","Field Username Much Not Empty");
-            //if (string.IsNullOrWhiteSpace(request.Password))
-
-            //    throw new ValidateException("Register", "Field Password Much Not Empty");
-            //if (string.IsNullOrWhiteSpace(request.ConfirmPassword))
-
-            //    throw new ValidateException("Register", "Field ConfirmPassword Much Not Empty");
-            //if (!request.IsVip)
-
-            //    throw new ValidateException("Register", "Field IsVip Much Not Empty");
 
             var errors = new List<string>();
 
             if (string.IsNullOrWhiteSpace(request.Username))
-                errors.Add("Field Username must not be empty");
+                validateException.Add("Username","Field Username must not be empty");
 
             if (string.IsNullOrWhiteSpace(request.Password))
-                errors.Add("Field Password must not be empty");
+                validateException.Add("Password","Field Password must not be empty");
 
             if (string.IsNullOrWhiteSpace(request.ConfirmPassword))
-                errors.Add("Field ConfirmPassword must not be empty");
+                validateException.Add("ConfirmPassword", "Field ConfirmPassword must not be empty");
 
             if (!request.IsVip)
-                errors.Add("Field IsVip must not be empty");
+                validateException.Add("IsVip", "Field IsVip must not be empty");
 
-            if (errors.Any())
-            {
-                throw new ValidateException("MemberRegister", string.Join(" , ", errors));
-            }
+            
 
 
 
             return false;
         }
 
-        public async Task<bool> IsUsernameInTable(MemberRegisterViewModel request)
+        public async Task<bool> IsUsernameInTable(MemberRegisterViewModel request , ValidateException validateException)
         {
-            var isExists = await _context.Member
-     .FirstOrDefaultAsync(u => u.Username == request.Username);
+            var isExists = await _context.Member.FirstOrDefaultAsync(u => u.Username == request.Username);
 
             if (isExists != null)
-            {
-                throw new ValidateException("MemberRegister", "This username are already taken!");
-            }
+                validateException.Add("Username","Username are already taken");
 
             return false;
         }
 
-        public async Task<bool> ArePasswordsMatching(MemberRegisterViewModel request)
+        public async Task<bool> ArePasswordsMatching(MemberRegisterViewModel request, ValidateException validateException)
         {
             if (request.Password != request.ConfirmPassword)
-            {
-                throw new ValidateException("MemberRegister", "Password and ConfirmPassword not match!");
-            }
+                validateException.Add("Password", "Password and ConfirmPassword do not match !");
             return false;
         }
 

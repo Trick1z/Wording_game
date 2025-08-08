@@ -25,9 +25,11 @@ namespace Services.Implements.Auth
 
             var validateException = new ValidateException();
 
-            await IsNullOrEmptySpace(request);
+            await IsNullOrEmptySpace(request, validateException);
 
-            User user = await IsUserInTable(request);
+            User user = await IsUserInTable(request , validateException);
+
+            validateException.Throw();
 
             var hasher = new PasswordHasher<object>();
             var result = hasher.VerifyHashedPassword(null, user.Password, request.Password);
@@ -35,39 +37,35 @@ namespace Services.Implements.Auth
 
 
             if (!(result == PasswordVerificationResult.Success))
-
-                throw new ValidateException("Username and password are incorrect.");
+                validateException.Add("Username,Password", "Username and password are incorrect.");
+            //validateException.Throw();
 
 
             return "Login Successfuly";
 
         }
 
-        public async Task<bool> IsNullOrEmptySpace(LoginViewModel request) {
-            var errors = new List<string>();
+        public async Task<bool> IsNullOrEmptySpace(LoginViewModel request , ValidateException validateException) {
 
-
-            if (string.IsNullOrWhiteSpace(request.Username))
-                errors.Add("Field Username Much Not Empty");
-            if (string.IsNullOrWhiteSpace(request.Password))
-                errors.Add("Field Password Much Not Empty");
-            if (errors.Any())
-                throw new ValidateException("Login", string.Join(" , ", errors));
+            if (string.IsNullOrWhiteSpace(request.Username) || string.IsNullOrWhiteSpace(request.Password))
+                validateException.Add("Username","Field Username Much Not Empty");
+            //if (string.IsNullOrWhiteSpace(request.Password))
+            //    validateException.Add("Password", "Field Password Much Not Empty");
 
             return false;
 
         }
 
-        public async Task<User> IsUserInTable(LoginViewModel request) {
+        public async Task<User> IsUserInTable(LoginViewModel request, ValidateException validateException   ) {
 
 
             var user = await _context.User
                .FirstOrDefaultAsync(u => u.Username == request.Username);
 
             if (user == null)
-                throw new ValidateException("Username and password are incorrect.");          
+                validateException.Add("Username,Password", "Username and password are incorrect.");
 
-            return null;
+            return user;
 
         }
 

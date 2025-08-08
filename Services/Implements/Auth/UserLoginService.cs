@@ -29,51 +29,45 @@ namespace Services.Implements.Auth
 
 
             //checked null 
-            await IsNullOrEmptyString(request);
-            var user = await IsUsernameInTable(request);
+            await IsNullOrEmptyString(request , validateException);
+            var user = await IsUsernameInTable(request , validateException);
+
+            validateException.Throw();
 
             var hasher = new PasswordHasher<object>();
             var result = hasher.VerifyHashedPassword(null, user.Password, request.Password);
 
             if (!(result == PasswordVerificationResult.Success))
             {
-                throw new ValidateException("UserLogin", "Username or Password are in correct !");
+                validateException.Add("Username,Password", "Username or Password are in correct !");
             }
+
+            validateException.Throw();
 
             return "Login Successfully";
 
         }
 
        
-        public async Task<bool> IsNullOrEmptyString(LoginViewModel request)
+        public async Task<bool> IsNullOrEmptyString(LoginViewModel request, ValidateException validateException)
         {
 
-            var errors = new List<string>();
 
             if (string.IsNullOrWhiteSpace(request.Username))
-                errors.Add("Field Username must not be empty");
+                validateException.Add("Username","Field Username must not be empty");
 
             if (string.IsNullOrWhiteSpace(request.Password))
-                errors.Add("Field Password must not be empty");
-
-            if (errors.Any())
-            {
-                throw new ValidateException("UserLogin", string.Join(" , ", errors));
-            }
-
-
+                validateException.Add("Password","Field Password must not be empty");
 
             return false;
         }
 
-        public async Task<User> IsUsernameInTable(LoginViewModel request)
+        public async Task<User> IsUsernameInTable(LoginViewModel request , ValidateException validateException)
         {
             var isExists = await _context.User.FirstOrDefaultAsync(u => u.Username == request.Username);
 
             if (isExists == null)
-            {
-                throw new ValidateException("UserLogin", "Username or Password are in correct !");
-            }
+                validateException.Add("Username,Password", "Username or Password are in correct !");
 
             return isExists;
         }
