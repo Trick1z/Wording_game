@@ -14,6 +14,7 @@ import { NavbarTopComponent } from './Components/navbar/navbar-top/navbar-top.co
 import { LandingComponent } from './Components/Pages/landing/landing.component';
 import dxForm from 'devextreme/ui/form';
 import { EditPopupComponent } from './Components/games/word-scoring/edit-popup/edit-popup.component';
+import { GridCustomerComponent } from './Components/shared/grid-customer/grid-customer.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { EditPopupComponent } from './Components/games/word-scoring/edit-popup/e
     WordScoringComponent,
     NavbarTopComponent,
     LandingComponent,
-    EditPopupComponent
+    EditPopupComponent,
+    GridCustomerComponent
   ],
   imports: [
     BrowserModule, FormsModule, 

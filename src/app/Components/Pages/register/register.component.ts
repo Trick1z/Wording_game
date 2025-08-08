@@ -9,8 +9,11 @@ import { RegisterData } from '../../models/auth.model';
 })
 export class RegisterComponent {
   customerRole = [
-    { value: false, name: 'Regular' },
-    { value: true, name: 'VIP' },
+    { value: 1, name: 'Customer' },
+    { value: 2, name: 'Borrow' },
+    { value: 3, name: 'Repair' },
+    { value: 4, name: 'Software' },
+    { value: 99, name: 'Admin' },
 
 
   ];
@@ -24,6 +27,8 @@ export class RegisterComponent {
 
   onSubmit() {
 
+
+    // 1 จำเป็นต้อง validate ตรงหน้าบ้านมั้ย 
     if (!this.registerData.username?.trim() ||
       !this.registerData.password?.trim() ||
       !this.registerData.confirmPassword?.trim() ||
