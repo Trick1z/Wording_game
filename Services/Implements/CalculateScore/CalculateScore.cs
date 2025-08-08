@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Services.CalculateScore
+namespace Services.Implements.CalculateScore
 {
     public class CalculateScore
     {
@@ -22,8 +22,8 @@ namespace Services.CalculateScore
         public async Task<int> WordCalculate(string word)
         {
             int total = 0;
-            int ScoreVowelGroup = 0;
-            bool inVowelGroupState = false;
+            int scoreVowelGroup = 0;
+            bool isInVowelGroupState = false;
             int vowelGroupCount = 0;
 
             Dictionary<char, int> vowel = new Dictionary<char, int>()
@@ -46,57 +46,57 @@ namespace Services.CalculateScore
 
                 if (isVowel)
                 {
-                    ScoreVowelGroup += vowel[ch];
+                    scoreVowelGroup += vowel[ch];
                     vowelGroupCount++;
-                    inVowelGroupState = true;
+                    isInVowelGroupState = true;
                 }
                 else
                 {
-                    if (inVowelGroupState)
+                    if (isInVowelGroupState)
                     {
                         if (vowelGroupCount > 1)
                         {
                             if (random.NextDouble() < 0.1)
                             {
                                 Console.WriteLine("(VIP) Lucky! Bonus x2 applied 🎉");
-                                total += ScoreVowelGroup * 2;
+                                total += scoreVowelGroup * 2;
                             }
                             else
                             {
-                                total += ScoreVowelGroup;
+                                total += scoreVowelGroup;
                             }
                         }
                         else
                         {
-                            total += ScoreVowelGroup;
+                            total += scoreVowelGroup;
                         }
 
-                        ScoreVowelGroup = 0;
+                        scoreVowelGroup = 0;
                         vowelGroupCount = 0;
-                        inVowelGroupState = false;
+                        isInVowelGroupState = false;
                     }
 
                     total += 1;
                 }
             }
 
-            if (inVowelGroupState)
+            if (isInVowelGroupState)
             {
                 if (vowelGroupCount > 1)
                 {
                     if (random.NextDouble() < 0.1)
                     {
                         Console.WriteLine("(VIP) Lucky! Bonus x2 applied at end 🎉");
-                        total += ScoreVowelGroup * 2;
+                        total += scoreVowelGroup * 2;
                     }
                     else
                     {
-                        total += ScoreVowelGroup;
+                        total += scoreVowelGroup;
                     }
                 }
                 else
                 {
-                    total += ScoreVowelGroup;
+                    total += scoreVowelGroup;
                 }
             }
 
@@ -119,13 +119,13 @@ namespace Services.CalculateScore
 
             foreach (char chr in word)
             {
-                if (vowel.ContainsKey(Char.ToUpper(chr)))
+                if (vowel.ContainsKey(char.ToUpper(chr)))
                 {
-                    newStr += Char.ToUpper(chr);
+                    newStr += char.ToUpper(chr);
                 }
                 else
                 {
-                    newStr += Char.ToLower(chr);
+                    newStr += char.ToLower(chr);
                 }
             }
 

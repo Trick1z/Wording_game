@@ -20,6 +20,6 @@ namespace Domain.ViewModels
     public class FormTaskViewModel { 
         public string TaskName { get; set; }
         public string Category { get; set; }
-     
+        public int FormTaskId{ get; set; }
     }
 }

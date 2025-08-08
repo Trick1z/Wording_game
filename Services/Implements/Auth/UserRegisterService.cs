@@ -1,4 +1,5 @@
-﻿using Domain.Interfaces;
+﻿using Domain.Exceptions;
+using Domain.Interfaces;
 using Domain.Models;
 using Domain.ViewModels;
 using Microsoft.AspNetCore.Identity;
@@ -9,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Services.Auth
+namespace Services.Implements.Auth
 {
     public class UserRegisterService :IUserRegisterService
     {
@@ -26,37 +27,19 @@ namespace Services.Auth
         public async Task<string> UserRegisterAsync(UserRegisterViewModel request)
         {
 
-            if (await IsNullOrEmptyString(request))
-                return "All Field Are Required!";
-
-            if (await IsUsernameInTable(request))
-                return "Username Are Already Used !!";
-
-            if (!await ArePasswordsMatching(request))
-                return "Password do not match";
+            await IsNullOrEmptyString(request);
+            await IsUsernameInTable(request);
+            await ArePasswordsMatching(request);
 
             var hashed = HashPassword(request);
 
             //add new member 
             User data = CreateRegisterData(request, hashed);
-            AddMember(data);
-            await OnSaveChange();
+            _context.User.Add(data);
+            await _context.SaveChangesAsync();
 
             return "Register Successfully";
-
-
-
             //return t,f
-        }
-
-        private async Task OnSaveChange()
-        {
-            await _context.SaveChangesAsync();
-        }
-
-        private void AddMember(User data)
-        {
-            _context.User.Add(data);
         }
 
         private static User CreateRegisterData(UserRegisterViewModel request, string hashed)
@@ -75,17 +58,24 @@ namespace Services.Auth
 
         public async Task<bool> IsNullOrEmptyString(UserRegisterViewModel request)
         {
-
-            if (string.IsNullOrWhiteSpace(request.Username)
-                        || string.IsNullOrWhiteSpace(request.Password)
-                        || string.IsNullOrWhiteSpace(request.ConfirmPassword)
-                        || string.IsNullOrWhiteSpace(request.Role))
-            {
-                return true;
-            }
+            var error =new List<string>();
 
 
 
+            if (string.IsNullOrWhiteSpace(request.Username))
+                error.Add("Field Username are required");
+
+            if (string.IsNullOrWhiteSpace(request.Password))
+                error.Add("Field Password are required");
+
+            if (string.IsNullOrWhiteSpace(request.ConfirmPassword))
+                error.Add("Field ConfirmPassword are required");
+
+            if (string.IsNullOrWhiteSpace(request.Role))
+                error.Add("Field Role are required");
+
+            if (error.Any())
+                throw new ValidateException("UserRegister", string.Join(" , " , error));
 
             return false;
         }
@@ -95,16 +85,19 @@ namespace Services.Auth
             var isExists = await _context.User
      .AnyAsync(u => u.Username == request.Username);
 
-            return isExists;
-        }
+            if (isExists)
+                throw new ValidateException("UserRegister","This Username are already taken!");
+
+            return false;
+        }   
 
         public async Task<bool> ArePasswordsMatching(UserRegisterViewModel request)
         {
-            if (request.Password == request.ConfirmPassword)
-            {
-                return true;
-            }
-            return false;
+            if (request.Password != request.ConfirmPassword)
+                throw new ValidateException("UserRegister" , "Password and ConfirmPassword do not match");
+
+
+            return true;
         }
 
         public string HashPassword(UserRegisterViewModel request)

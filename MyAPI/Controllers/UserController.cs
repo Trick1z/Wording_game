@@ -2,8 +2,8 @@
 using Domain.Models;
 using Domain.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Services.Auth;
-using Services.CalculateScore;
+//using Services.Auth;
+//using Services.CalculateScore;
 using Services.Word;
 
 namespace MyAPI.Controllers

@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
-using Services.Auth;
-using Services.CalculateScore;
+//using Services.ImplemenAuth;
+using Services.Implements.CalculateScore;
 using Services.Word;
 using System.Runtime.Intrinsics.Wasm;
 
@@ -28,7 +28,7 @@ namespace MyAPI.Controllers
         }
 
 
-        //[HttpPost("InsertWordScoring/by/userid/{userid}")]
+        //[HttpPost("InsertWordScoring")]
         //public async Task<object> InsertWordScoring([FromBody] string word ,int  userid)
         //{
         //    var new_word = await _calculateScore.FormatWord(word);

@@ -1,8 +1,8 @@
 ﻿using Domain.Interfaces;
 using Domain.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Services.Auth;
-using Services.Form;
+//using Services.Auth;
+//using Services.Form;
 
 namespace MyAPI.Controllers
 {
@@ -18,8 +18,8 @@ namespace MyAPI.Controllers
             _insertFormService = insertFormService;
         }
 
-        [HttpPost("transection/insertForm-task")]
-        public async Task<IActionResult> test([FromBody] InsertFormViewModel request)
+        [HttpPost("createForm-task")]
+        public async Task<IActionResult> CreateFormAsync([FromBody] InsertFormViewModel request)
         {
             return Ok(await _insertFormService.CreateFormAsync(request));
         }
