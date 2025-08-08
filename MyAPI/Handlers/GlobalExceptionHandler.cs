@@ -180,7 +180,7 @@ namespace FMS.Server.Handlers
 
                             error.Add(exception.Message);
 
-                            result.Messages.Add(exception.GetType().Name , error );
+                            result.Messages.Add("System", error );
 
                             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 

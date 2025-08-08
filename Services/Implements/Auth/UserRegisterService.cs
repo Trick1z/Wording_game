@@ -28,12 +28,6 @@ namespace Services.Implements.Auth
         public async Task<string> UserRegisterAsync(UserRegisterViewModel request)
         {
             var validate = new ValidateException();
-
-            var test = "asd";
-            var chr = test[9];
-
-
-
             await IsNullOrEmptyString(request, validate);
             await IsUsernameInTable(request, validate);
             await IsPasswordLengthMinimum(request, validate);
