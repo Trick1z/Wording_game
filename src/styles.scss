@@ -24,3 +24,7 @@
 .dx-datagrid .dx-row>td {
   padding: 6px;
 }
+
+.dx-field-item:not(.dx-field-item-has-group):not(.dx-field-item-has-tabs):not(.dx-first-row):not(.dx-label-v-align) {
+  padding-top: 0 !important;
+}
