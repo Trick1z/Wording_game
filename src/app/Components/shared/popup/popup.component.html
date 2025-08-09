@@ -1,0 +1,40 @@
+<!--
+<dx-popup [width]="360" [height]="220" [hideOnOutsideClick]="false" [showCloseButton]="false"
+    title="Edit">
+    <div *dxTemplate="let data of 'content'">
+        <dx-scroll-view width="100%" height="100%">
+            <dx-form class="flex justify-center max-w-md mx-auto text-end" id="form"
+                [colCount]="1">
+                <dxi-item itemType="group">
+                    <dxi-item dataField="word" [label]="{ text: 'word' }"></dxi-item>
+                </dxi-item>
+            </dx-form>
+
+        </dx-scroll-view>
+
+        <div class="flex justify-center btn ">
+            <div class="flex justify-center m-2 mt-9">
+                <button type="submit"
+                    class="max-w-xs block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">บันทึก</button>
+            </div>
+            <div class="flex justify-center m-2 mt-9">
+                <button type="submit"
+                    class="max-w-xs block w-full rounded-md bg-red-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-red-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    >ยกเลิก</button>
+            </div>
+        </div>
+
+
+    </div>
+
+</dx-popup> -->
+
+
+<!-- popup.component.html -->
+<div class="popup-backdrop" *ngIf="visible" (click)="hide()">
+  <div class="popup-container"
+       [style.width]="width"
+       (click)="$event.stopPropagation()">
+    <ng-content></ng-content>
+  </div>
+</div>
