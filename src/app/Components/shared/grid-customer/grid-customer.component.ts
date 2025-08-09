@@ -7,5 +7,8 @@ import { WordList } from '../../models/game.model';
   styleUrls: ['./grid-customer.component.scss']
 })
 export class GridCustomerComponent {
-@Input ('wordList') public Csuformdata :CustomerFormData
+@Input ('dataList') public dataList : any;
+@Input ('columnList') public columnList : any;
+
+
 }
