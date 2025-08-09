@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './Components/Pages/login/login.component';
-import { AuthRoute, GamesRoute, ViewsRoute } from './Constants/routes.const';
+import { AuthRoute, CustomerRoute, GamesRoute, ViewsRoute } from './Constants/routes.const';
 import { ViewsRoutingModule } from './Components/views/views-routing.module';
 import { AuthGuard } from './guards/auth.guard';
 import { NoAuthGuard } from './guards/no-auth.guard';
@@ -21,9 +21,13 @@ const routes: Routes = [
       },
       {
         canActivate: [AuthGuard],
-
         path: ViewsRoute.prefix,
         loadChildren: () => import('./Components/views/views-routing.module').then(m => m.ViewsRoutingModule)
+      },
+      {
+        canActivate: [AuthGuard],
+        path: CustomerRoute.prefix,
+        loadChildren: () => import('./Components/customer/customer-route.module').then(m => m.CustomerRoutingModule)
       },
       {
         canActivate: [AuthGuard],
