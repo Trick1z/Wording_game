@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './Components/Pages/login/login.component';
-import { AuthRoute, CustomerRoute, GamesRoute, ViewsRoute } from './Constants/routes.const';
+import { AuthRoute, CustomerRoute, GamesRoute, UserRoute, ViewsRoute } from './Constants/routes.const';
 import { ViewsRoutingModule } from './Components/views/views-routing.module';
 import { AuthGuard } from './guards/auth.guard';
 import { NoAuthGuard } from './guards/no-auth.guard';
@@ -33,6 +33,11 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         path: GamesRoute.prefix,
         loadChildren: () => import('./Components/games/games-routing.module').then(m => m.GamesRoutingModule)
+      },
+      {
+        canActivate: [AuthGuard],
+        path: UserRoute.prefix,
+        loadChildren: () => import('./Components/user/user-route.module').then(m => m.UserRoutingModule)
       }
     ]
 

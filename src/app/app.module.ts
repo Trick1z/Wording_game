@@ -21,6 +21,7 @@ import { PopupComponent } from './Components/shared/popup/popup.component';
 import { HeadUnderlineComponent } from './Components/shared/head-underline/head-underline.component';
 import { TextBoxComponent } from './Components/shared/text-box/text-box.component';
 import { CustomerAddPageComponent } from './Components/customer/customer-add-page/customer-add-page.component';
+import { UserMainComponent } from './Components/user/user-main/user-main.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { CustomerAddPageComponent } from './Components/customer/customer-add-pag
     PopupComponent,
     HeadUnderlineComponent,
 CustomerAddPageComponent,
-    TextBoxComponent
+    TextBoxComponent,
+    UserMainComponent
   ],
   imports: [
     BrowserModule, FormsModule,

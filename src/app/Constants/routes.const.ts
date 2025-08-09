@@ -34,3 +34,11 @@ export class CustomerRoute {
   static CustomerAddForm: string = `add-form`;
   static CustomerAddFormFullPath: string = `${GamesRoute.prefix}/${GamesRoute.Word}`;
 }
+
+export class UserRoute {
+  static prefix: string = `user`;
+
+  static UserForm: string = `form`;
+  static UserFormFullPath: string = `${GamesRoute.prefix}/${GamesRoute.Word}`;
+
+}
