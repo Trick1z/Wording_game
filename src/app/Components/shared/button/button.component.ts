@@ -8,5 +8,6 @@ import { Component, Input } from '@angular/core';
 export class ButtonComponent {
 
   @Input ('message') public message : string = '';
+  @Input() color: string = 'green'; // ค่าเริ่มต้นเป็นสีเขียว
 
 }

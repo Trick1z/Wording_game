@@ -1,0 +1,44 @@
+<app-head-underline [title]="'Relation mapping'"></app-head-underline>
+
+
+
+
+<div class="mt-20 ml-20 mr-20 products-box">
+    <app-head-underline [title]="'Products'"></app-head-underline>
+    <app-button (click)="productPopupShow()" class="flex ml-10 mr-10 text-end" [message]="'Add'"></app-button>
+    <app-grid-customer class="flex justify-center mt-3 ml-10 mr-10" [dataList]="dataList"
+        [columnList]="columns"></app-grid-customer>
+</div>
+
+
+
+
+
+<!-- popup products -->
+
+<div class="products-popup">
+
+    <dx-popup [width]="400" [height]="300" [(visible)]="productVisible" [width]="400" [showTitle]="true"
+        [dragEnabled]="true" [closeOnOutsideClick]="true" title="Add Product" (onHiding)="productPopupHide()">
+        <div class="popup-content">
+            <dx-text-box [value]="productTextValue" (onValueChanged)="onTextValueChanged($event)" placeholder="กรอกข้อความ"
+                stylingMode="outlined" class="mb-4">
+            </dx-text-box>
+
+            <dx-tag-box [items]="ProductTagOptions" [value]="productSelectedTags" (onValueChanged)="onSelectedTagsChanged($event)"
+                placeholder="เลือกแท็ก" displayExpr="productName" valueExpr="productId" [showSelectionControls]="true"
+                [searchEnabled]="true" stylingMode="outlined" class="mb-4">
+            </dx-tag-box>
+
+            <div class="flex justify-end gap-2 mt-4">
+                <!-- <button (click)="categoryPopupHide()">ปิด</button> -->
+
+
+                <app-button (click)="onProductSaveData()" [message]="'Save'"></app-button>
+
+                <app-button color="red" (click)="categoryPopupHide()" [message]="'Close'"></app-button>
+
+            </div>
+        </div>
+    </dx-popup>
+</div>

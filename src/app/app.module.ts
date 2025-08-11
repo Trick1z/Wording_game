@@ -9,7 +9,7 @@ import { HomeComponent } from './Components/views/home/home.component';
 import { WordScoringComponent } from './Components/games/word-scoring/word-scoring.component';
 import { FormsModule } from '@angular/forms';
 import dxDataGrid from 'devextreme/ui/data_grid';
-import { DxButtonModule, DxDataGridModule, DxDropDownBoxModule, DxFormModule, DxPopupModule, DxSelectBoxModule } from 'devextreme-angular';
+import { DxButtonModule, DxCheckBoxModule, DxDataGridModule, DxDropDownBoxModule, DxFormModule, DxPopupModule, DxSelectBoxModule, DxTagBoxModule, DxTemplateModule, DxTextBoxModule } from 'devextreme-angular';
 import { NavbarTopComponent } from './Components/navbar/navbar-top/navbar-top.component';
 import { LandingComponent } from './Components/Pages/landing/landing.component';
 import dxForm from 'devextreme/ui/form';
@@ -22,6 +22,12 @@ import { HeadUnderlineComponent } from './Components/shared/head-underline/head-
 import { TextBoxComponent } from './Components/shared/text-box/text-box.component';
 import { CustomerAddPageComponent } from './Components/customer/customer-add-page/customer-add-page.component';
 import { UserMainComponent } from './Components/user/user-main/user-main.component';
+import { MasterComponent } from './Components/admin/master/master.component';
+import dxTextBox from 'devextreme/ui/text_box';
+import { HttpClientModule } from '@angular/common/http';
+import { AddCategoriesProductMainComponent } from './Components/admin/add-category-product/add-categories-product-main/add-categories-product-main.component';
+import dxCheckBox from 'devextreme/ui/check_box';
+import { NgTemplateOutlet } from '@angular/common';
 
 
 @NgModule({
@@ -41,13 +47,18 @@ import { UserMainComponent } from './Components/user/user-main/user-main.compone
     HeadUnderlineComponent,
 CustomerAddPageComponent,
     TextBoxComponent,
-    UserMainComponent
+    UserMainComponent,
+    MasterComponent,
+    AddCategoriesProductMainComponent
   ],
   imports: [
     BrowserModule, FormsModule,
     DxSelectBoxModule,AppRoutingModule,
     DxDataGridModule, DxButtonModule,
-    DxFormModule,DxPopupModule,DxDropDownBoxModule
+    DxFormModule,DxPopupModule,
+    DxDropDownBoxModule,DxTextBoxModule,
+    DxTagBoxModule,HttpClientModule,
+    DxCheckBoxModule,DxTemplateModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

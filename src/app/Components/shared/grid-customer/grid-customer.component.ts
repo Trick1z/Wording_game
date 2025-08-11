@@ -7,8 +7,17 @@ import { WordList } from '../../models/game.model';
   styleUrls: ['./grid-customer.component.scss']
 })
 export class GridCustomerComponent {
-@Input ('dataList') public dataList : any;
-@Input ('columnList') public columnList : any;
+  @Input('dataList') public dataList: any;
+  @Input('columnList') public columnList: any;
+  @Input('ColumnAlignment') ColumnAlignment: 'left' | 'center' | 'right' = 'center';
+
+calculateCellValue(data: any, column: any) {
+  if (column.formatFunc) {
+    return column.formatFunc(data[column.dataField]);
+  }
+  return data[column.dataField];
+}
+
 
 
 }

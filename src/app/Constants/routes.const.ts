@@ -42,3 +42,14 @@ export class UserRoute {
   static UserFormFullPath: string = `${GamesRoute.prefix}/${GamesRoute.Word}`;
 
 }
+
+export class AdminRoute {
+  static prefix: string = `admin`;
+
+  static AdminForm: string = `master`;
+  static AdminFormFullPath: string = `${GamesRoute.prefix}/${GamesRoute.Word}`;
+
+  static AdminAddCategories: string = `categories-product`;
+  static AdminAddCategoriesFullPath: string = `${GamesRoute.prefix}/${GamesRoute.Word}`;
+
+}

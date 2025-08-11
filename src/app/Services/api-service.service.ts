@@ -6,9 +6,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiService {
-  private baseUrl = 'http://localhost:5000';
+  private baseUrl = 'https://localhost:7070';
+  // private baseUrl = 'http://localhost:5000';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   get(endpoint: string): Observable<any> {
     const url = `${this.baseUrl}/${endpoint}`;
@@ -25,8 +26,8 @@ export class ApiService {
     return this.http.put(url, data);
   }
 
- delete(endpoint: string, data: any): Observable<any> {
-  const url = `${this.baseUrl}/${endpoint}`;
-  return this.http.delete(url, { body: data });
-}
+  //  delete(endpoint: string, data: any): Observable<any> {
+  //   const url = `${this.baseUrl}/${endpoint}`;
+  //   return this.http.delete(url, { body: data });
+  // }
 }
