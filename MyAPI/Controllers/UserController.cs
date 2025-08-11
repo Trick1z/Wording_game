@@ -1,6 +1,7 @@
 ﻿using Domain.Interfaces;
 using Domain.Models;
 using Domain.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 //using Services.Auth;
 //using Services.CalculateScore;
@@ -10,6 +11,7 @@ namespace MyAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class UserController : Controller
     {
         private readonly IUserRegisterService _userRegisterService;

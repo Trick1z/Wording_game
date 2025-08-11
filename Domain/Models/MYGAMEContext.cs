@@ -17,7 +17,13 @@ public partial class MYGAMEContext : DbContext
 
     public virtual DbSet<FormTask> FormTask { get; set; }
 
+    public virtual DbSet<IssueCategoiries> IssueCategoiries { get; set; }
+
     public virtual DbSet<Member> Member { get; set; }
+
+    public virtual DbSet<Product> Product { get; set; }
+
+    public virtual DbSet<RelCategoriesProduct> RelCategoriesProduct { get; set; }
 
     public virtual DbSet<SystemConfig> SystemConfig { get; set; }
 
@@ -67,6 +73,18 @@ public partial class MYGAMEContext : DbContext
                 .HasConstraintName("FK_FormTask_Form");
         });
 
+        modelBuilder.Entity<IssueCategoiries>(entity =>
+        {
+            entity.HasKey(e => e.IssueCategoriesId);
+
+            entity.Property(e => e.CategoryName)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.CreateTime).HasColumnType("datetime");
+            entity.Property(e => e.IsActive).HasDefaultValue(true);
+            entity.Property(e => e.ModifiedTime).HasColumnType("datetime");
+        });
+
         modelBuilder.Entity<Member>(entity =>
         {
             entity.HasKey(e => e.UserId);
@@ -82,6 +100,38 @@ public partial class MYGAMEContext : DbContext
                 .IsRequired()
                 .HasMaxLength(50)
                 .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<Product>(entity =>
+        {
+            entity.Property(e => e.CreateTime).HasColumnType("datetime");
+            entity.Property(e => e.ModifiedTime).HasColumnType("datetime");
+            entity.Property(e => e.ProductName)
+                .IsRequired()
+                .HasMaxLength(512);
+        });
+
+        modelBuilder.Entity<RelCategoriesProduct>(entity =>
+        {
+            entity.HasKey(e => e.IssueCategoriesId).HasName("PK_rel_Categories_Product");
+
+            entity.Property(e => e.IssueCategoriesId).ValueGeneratedNever();
+            entity.Property(e => e.CreateTime).HasColumnType("datetime");
+            entity.Property(e => e.DeleteFlag)
+                .IsRequired()
+                .HasMaxLength(1)
+                .IsFixedLength();
+            entity.Property(e => e.ModifiedTime).HasColumnType("datetime");
+
+            entity.HasOne(d => d.IssueCategories).WithOne(p => p.RelCategoriesProduct)
+                .HasForeignKey<RelCategoriesProduct>(d => d.IssueCategoriesId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_RelCategoriesProduct_IssueCategoriies");
+
+            entity.HasOne(d => d.Product).WithMany(p => p.RelCategoriesProduct)
+                .HasForeignKey(d => d.ProductId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_RelCategoriesProduct_Products");
         });
 
         modelBuilder.Entity<SystemConfig>(entity =>

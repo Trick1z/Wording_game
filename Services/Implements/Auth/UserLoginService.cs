@@ -44,7 +44,7 @@ namespace Services.Implements.Auth
 
             validateException.Throw();
 
-            return "Login Successfully";
+            return user.Role;
 
         }
 

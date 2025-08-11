@@ -24,7 +24,19 @@
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[IssueCategoiries]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[Member]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Product]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[RelCategoriesProduct]",
          "ObjectType": 0
       },
       {
