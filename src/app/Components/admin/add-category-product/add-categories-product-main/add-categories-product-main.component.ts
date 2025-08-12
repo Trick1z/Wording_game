@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/Services/api-service.service';
 import { InsertCategoriesDataModel, InsertProductDataModel } from '../../master/model/insert-categories.model';
+import { categoriesDeleteFormData, ProductDeleteFormData } from 'src/app/Components/models/categories.model';
 
 @Component({
   selector: 'app-add-categories-product-main',
@@ -133,7 +134,7 @@ export class AddCategoriesProductMainComponent implements OnInit {
     this.api.post('api/InsertCategories/add-categories', data).subscribe((res: any) => {
 
       console.log(res);
-      
+
       this.getCategoriesProductDataList();
 
       return this.categoryPopupHide()
@@ -148,7 +149,7 @@ export class AddCategoriesProductMainComponent implements OnInit {
     }
 
     this.api.post('api/InsertCategories/add-product', data).subscribe((res: any) => {
-            console.log(res);
+      console.log(res);
 
       this.getCategoriesProductDataList();
 
@@ -158,5 +159,39 @@ export class AddCategoriesProductMainComponent implements OnInit {
     })
   }
 
+
+  onDeleteCategory(data: categoriesDeleteFormData) {
+
+    var newData : categoriesDeleteFormData= {
+      issueCategoriesId: data.issueCategoriesId,
+      issueCategoriesName: data.issueCategoriesName,
+    }
+
+
+    this.api.post(`api/DELETE/Categories`, newData).subscribe((res: any) => {
+
+      console.log(res);
+      this.getCategoriesProductDataList();
+    });
+
+
+  }
+  onDeleteProduct(data: ProductDeleteFormData) {
+
+    var newData: ProductDeleteFormData = {
+      productId: data.productId,
+      productName: data.productName,
+
+    }
+
+
+    this.api.post(`api/DELETE/Product`, newData).subscribe((res: any) => {
+
+      console.log(res);
+      this.getCategoriesProductDataList();
+    });
+
+
+  }
 
 }
