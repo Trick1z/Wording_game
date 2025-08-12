@@ -30,7 +30,7 @@ namespace Services.Implements.CategoriesProduct
 
             var validate = new ValidateException();
 
-            IssueCategories res = await isExists(req, validate);
+            IssueCategories res = await IsExists(req, validate);
 
             validate.Throw();
 
@@ -49,7 +49,7 @@ namespace Services.Implements.CategoriesProduct
         {
             var validate = new ValidateException();
 
-            Product res = await isProductExists(req, validate);
+            Product res = await IsProductExists(req, validate);
 
             validate.Throw();
 
@@ -64,12 +64,8 @@ namespace Services.Implements.CategoriesProduct
 
         }
 
-
-
-
-
         //futures
-        private async Task<IssueCategories> isExists(DeleteCategories req, ValidateException validate)
+        private async Task<IssueCategories> IsExists(DeleteCategories req, ValidateException validate)
         {
             var isExists = await _context.IssueCategories
                             .FirstOrDefaultAsync(u => u.IssueCategoriesName == req.IssueCategoriesName &&
@@ -82,7 +78,7 @@ namespace Services.Implements.CategoriesProduct
             return isExists;
         }
 
-        private async Task<Product> isProductExists(DeleteProduct req, ValidateException validate)
+        private async Task<Product> IsProductExists(DeleteProduct req, ValidateException validate)
         {
             var isExists = await _context.Product
                             .FirstOrDefaultAsync(u => u.ProductName == req.ProductName &&
