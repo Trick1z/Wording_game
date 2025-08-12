@@ -1,11 +1,9 @@
 <app-head-underline [title]="'Categories Products'"></app-head-underline>
 
+<!-- grid category -->
 <div class="mt-20 ml-20 mr-20 categroy-box ">
     <app-head-underline [title]="'Issue Categories'"></app-head-underline>
     <app-button (click)="categoryPopupShow()" class="flex ml-10 mr-10 text-end" [message]="'Add'"></app-button>
-    <!-- <app-grid-customer class="flex justify-center mt-3 ml-10 mr-10" [dataList]="dataList"
-        [columnList]="columns"></app-grid-customer> -->
-
 
     <dx-data-grid  class="flex m-10 max-w-max " [dataSource]="categoryDataList" [showBorders]="true" [paging]="{ pageSize: 5 }" [columnAutoWidth]="true">
         <dxi-column dataField="issueCategoriesId" caption="ID" width="80" alignment="center"></dxi-column>
@@ -24,7 +22,7 @@
         </dxi-column>
         <!-- Template ปุ่มใน cell -->
         <div  *dxTemplate="let cell of 'actionTemplate'"  >
-            <dx-button class="m-2" text="Edit" type="success" stylingMode="contained"
+            <dx-button class="m-2"  text="Edit" type="success" stylingMode="contained"
                ></dx-button>
             <dx-button class="m-2" (onClick)="onDeleteCategory(cell.data)"  text="Delete" type="danger" stylingMode="contained"
                ></dx-button>
@@ -33,12 +31,11 @@
 </div>
 
 
-
+<!-- grid product -->
 <div class="mt-20 ml-20 mr-20 Product-box ">
     <app-head-underline [title]="'Product'"></app-head-underline>
     <app-button (click)="productPopupShow()" class="flex ml-10 mr-10 text-end" [message]="'Add'"></app-button>
-    <!-- <app-grid-customer class="flex justify-center mt-3 ml-10 mr-10" [dataList]="dataList"
-        [columnList]="columns"></app-grid-customer> -->
+
 
 
     <dx-data-grid  class="flex m-10 max-w-max " [dataSource]="productDataList" [showBorders]="true" [paging]="{ pageSize: 5 }" [columnAutoWidth]="true">
@@ -64,7 +61,7 @@
         
         <!-- Template ปุ่มใน cell -->
         <div  *dxTemplate="let cell of 'actionTemplate'"  >
-            <dx-button class="m-2" text="Edit" type="success" stylingMode="contained"
+            <dx-button class="m-2" (onClick)="onEditProductPopupShow(cell.data)" text="Edit" type="success" stylingMode="contained"
                ></dx-button>
             <dx-button class="m-2" (onClick)="onDeleteProduct(cell.data)" text="Delete" type="danger" stylingMode="contained"
                ></dx-button>
@@ -74,7 +71,7 @@
 
 
 
-<!-- category-popup -->
+<!--add category-popup -->
 
 <div class="category-popup">
 
@@ -115,7 +112,7 @@
     </dx-popup>
 </div>
 
-<!-- product-popup -->
+<!--add product-popup -->
 
 
 
@@ -130,6 +127,43 @@
                 <label for="textBox" class="mr-2">Name : </label>
 
                 <dx-text-box id="textBox" [value]="productTextValue" (onValueChanged)="onProductTextValueChanged($event)"
+                    placeholder="กรอกข้อความ" stylingMode="outlined">
+                </dx-text-box>
+
+
+            </div>
+
+            <div class="flex justify-center gap-2 mt-10">
+                <!-- <button (click)="categoryPopupHide()">ปิด</button> -->
+
+
+                <app-button (click)="onProductSubmit()" [message]="'Save'"></app-button>
+
+                <app-button (click)="productPopupHide()" color="red" [message]="'Close'"></app-button>
+
+            </div>
+        </div>
+    </dx-popup>
+</div>
+
+
+
+
+
+
+<!-- edit popup -->
+ <!-- product -->
+  <div class="edit-product-popup">
+
+    <dx-popup [width]="400" [height]="250" [(visible)]="editProductVisible" [width]="400" [showTitle]="true"
+        [dragEnabled]="true" [closeOnOutsideClick]="true" title="Add Products" (onHiding)="productPopupHide()">
+        <div class="popup-content">
+
+            <div class="flex items-center checkbox text-end">
+
+                <label for="textBox" class="mr-2">Name : </label>
+
+                <dx-text-box id="textBox" [(ngModel)]="editProductText"
                     placeholder="กรอกข้อความ" stylingMode="outlined">
                 </dx-text-box>
 
