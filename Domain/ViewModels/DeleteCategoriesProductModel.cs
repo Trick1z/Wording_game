@@ -9,7 +9,10 @@ namespace Domain.ViewModels
     public class DeleteCategories
     {
 
-        public int CategoryId { get; set; }
+        //public int IssueCategoryId { get; set; }
+        //public string IssueCategoryName { get; set; }
+        public int IssueCategoriesId { get; set; }
+        public string IssueCategoriesName { get; set; }
     }
 
     public class DeleteProduct
