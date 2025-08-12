@@ -17,6 +17,7 @@ export class ViewsRoute {
   static Home: string = `home`;
   static HomeFullPath: string = `${ViewsRoute.prefix}/${ViewsRoute.Home}`;
 }
+
 export class GamesRoute {
   static prefix: string = `game`;
 
@@ -24,32 +25,36 @@ export class GamesRoute {
   static WordFullPath: string = `${GamesRoute.prefix}/${GamesRoute.Word}`;
 }
 
-
 export class CustomerRoute {
   static prefix: string = `customer`;
 
   static CustomerForm: string = `form`;
-  static CustomerFormFullPath: string = `${GamesRoute.prefix}/${GamesRoute.Word}`;
+  static CustomerFormFullPath: string = `${CustomerRoute.prefix}/${CustomerRoute.CustomerForm}`;
+  static CustomerFormName: string = `customer-form`;
 
   static CustomerAddForm: string = `add-form`;
-  static CustomerAddFormFullPath: string = `${GamesRoute.prefix}/${GamesRoute.Word}`;
+  static CustomerAddFormFullPath: string = `${CustomerRoute.prefix}/${CustomerRoute.CustomerAddForm}`;
+  static CustomerAddFormName: string = `customer-add-form`;
 }
 
 export class UserRoute {
   static prefix: string = `user`;
 
   static UserForm: string = `form`;
-  static UserFormFullPath: string = `${GamesRoute.prefix}/${GamesRoute.Word}`;
+  static UserFormFullPath: string = `${UserRoute.prefix}/${UserRoute.UserForm}`;
+  static UserFormName: string = `user-form`;
 
 }
 
 export class AdminRoute {
   static prefix: string = `admin`;
 
-  static AdminForm: string = `master`;
-  static AdminFormFullPath: string = `${GamesRoute.prefix}/${GamesRoute.Word}`;
+  static AdminForm: string = `relation-mapping`;
+  static AdminFormFullPath: string = `${AdminRoute.prefix}/${AdminRoute.AdminForm}`;
+  static AdminFormName: string = `relation-mapping`;
 
   static AdminAddCategories: string = `categories-product`;
-  static AdminAddCategoriesFullPath: string = `${GamesRoute.prefix}/${GamesRoute.Word}`;
+  static AdminAddCategoriesFullPath: string = `${AdminRoute.prefix}/${AdminRoute.AdminAddCategories}`;
+  static AdminAddCategoriesName: string = `categories-product`;
 
 }
