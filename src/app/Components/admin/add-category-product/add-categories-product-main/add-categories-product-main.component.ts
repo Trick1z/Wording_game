@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/Services/api-service.service';
 import { InsertCategoriesDataModel, InsertProductDataModel } from '../../master/model/insert-categories.model';
-import { categoriesDeleteFormData, ProductDeleteFormData } from 'src/app/Components/models/categories.model';
+import { categoriesDeleteFormData, ProductDeleteFormData, ProductUpdateFormData } from 'src/app/Components/models/categories.model';
 
 @Component({
   selector: 'app-add-categories-product-main',
@@ -27,45 +27,8 @@ export class AddCategoriesProductMainComponent implements OnInit {
   categoryDataList: Array<any> = [];
   productDataList: Array<any> = [];
 
-  // columns = [
-  //   { dataField: 'issueCategoriesId', caption: 'id' , width: 200 },
-  //   { dataField: 'categoryName', caption: 'ชื่อ', width: 80 },
-  //   { dataField: 'date', caption: 'วันที่', width: 150 },
-  // ];
 
-  // columns = [
-  //   { dataField: 'issueCategoriesId', caption: 'id', width: 80, alignment: 'center' },
-  //   { dataField: 'categoryName', caption: 'ชื่อ', width: 150, alignment: 'left' },
-  //   {
-  //     dataField: 'isActive',
-  //     caption: 'สถานะ',
-  //     width: 100,
-  //     alignment: 'center',
-
-  //   }, {
-  //     dataField: 'isProgramIssue',
-  //     caption: 'ปัญหาโปรแกม',
-  //     width: 100,
-  //     alignment: 'center',
-
-  //   },
-  //   {
-  //     dataField: 'createTime',
-  //     caption: 'Create Time',
-  //     width: 150,
-  //     alignment: 'center',
-  //     cellTemplate: 'dateCellTemplate'
-  //   },
-  //   {
-  //     dataField: 'modifiedTime',
-  //     caption: 'Modified Time',
-  //     width: 100,
-  //     alignment: 'center',
-  //     cellTemplate: 'dateCellTemplate'
-  //   },
-  // ];
-
-
+// popup state
   categoryPopupShow() {
     this.categoryVisible = true;
   }
@@ -73,10 +36,6 @@ export class AddCategoriesProductMainComponent implements OnInit {
     this.productVisible = true;
   }
 
-
-  // onCheckboxChanged(e: any) {
-  //   console.log("Checkbox value:", e.value); // true หรือ false
-  // }
 
   categoryPopupHide() {
     this.categoryVisible = false;
@@ -176,6 +135,7 @@ export class AddCategoriesProductMainComponent implements OnInit {
 
 
   }
+
   onDeleteProduct(data: ProductDeleteFormData) {
 
     var newData: ProductDeleteFormData = {
@@ -191,6 +151,23 @@ export class AddCategoriesProductMainComponent implements OnInit {
       this.getCategoriesProductDataList();
     });
 
+
+  }
+
+  editProductVisible:boolean = false;
+  editProductText: string = "";
+
+
+  onEditProductPopupShow(data:ProductUpdateFormData) {
+    var newData: ProductUpdateFormData = {
+      productId: data.productId,
+      productName: data.productName,
+    }
+
+    console.log(newData);
+    
+
+    // this.
 
   }
 
