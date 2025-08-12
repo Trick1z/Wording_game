@@ -11,6 +11,7 @@ namespace Domain.Interfaces
     public interface IDeleteCategoriesProductService
     {
         public Task<IEnumerable<IssueCategories>> DeleteCategoriesItems(DeleteCategories req);
+        public Task<IEnumerable<Product>> DeleteProductItems(DeleteProduct req);
 
 
     }

@@ -45,6 +45,30 @@ namespace Services.Implements.CategoriesProduct
 
         }
 
+        public async Task<IEnumerable<Product>> DeleteProductItems(DeleteProduct req)
+        {
+            var validate = new ValidateException();
+
+            Product res = await isProductExists(req, validate);
+
+            validate.Throw();
+
+            var dateNow = DateTime.Now;
+
+            //update isactive and save 
+            res.IsActive = false;
+            res.ModifiedTime = dateNow;
+            await _context.SaveChangesAsync();
+
+            return new List<Product> { res };
+
+        }
+
+
+
+
+
+        //futures
         private async Task<IssueCategories> isExists(DeleteCategories req, ValidateException validate)
         {
             var isExists = await _context.IssueCategories
@@ -54,6 +78,19 @@ namespace Services.Implements.CategoriesProduct
             if (isExists == null)
                 validate.Add("Categories", "Not Found This Categories");
            
+
+            return isExists;
+        }
+
+        private async Task<Product> isProductExists(DeleteProduct req, ValidateException validate)
+        {
+            var isExists = await _context.Product
+                            .FirstOrDefaultAsync(u => u.ProductName == req.ProductName &&
+                                        u.ProductId == req.ProductId);
+
+            if (isExists == null)
+                validate.Add("Product", "Not Found This Product");
+
 
             return isExists;
         }
