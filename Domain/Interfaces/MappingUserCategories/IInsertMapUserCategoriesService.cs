@@ -11,7 +11,8 @@ namespace Domain.Interfaces.MappingCategories
 {
   
 
-    public interface IInsertMappingCategoriesService
+    //public interface IInsertMapUserCategoriesService
+    public interface IInsertMapUserCategoriesService
     {
 
         public Task<ServiceResult> InsertMapUserCategoryAsync(MappingItem req);

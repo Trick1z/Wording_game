@@ -27,6 +27,7 @@ namespace MyAPI.Controllers.MapCategoriesProduct
         {
             return Ok(await _getMapCategoriesProductService.GetUnmappedProduct(id));
         }
+
         [HttpGet("mappedCategories/{id}")]
         public async Task<IActionResult> GetMappedCategoryItems(int id)
         {

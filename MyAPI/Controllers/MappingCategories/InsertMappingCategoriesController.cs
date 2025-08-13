@@ -10,11 +10,11 @@ namespace MyAPI.Controllers.MappingCategories
     public class InsertMappingCategoriesController : Controller
     {
 
-        private readonly IInsertMappingCategoriesService _insertMappingCategoriesService;
+        private readonly IInsertMapUserCategoriesService _insertMappingCategoriesService;
 
 
 
-        public InsertMappingCategoriesController(IInsertMappingCategoriesService insertMappingCategoriesService)
+        public InsertMappingCategoriesController(IInsertMapUserCategoriesService insertMappingCategoriesService)
         {
 
             _insertMappingCategoriesService = insertMappingCategoriesService;

@@ -12,12 +12,12 @@ using System.Threading.Tasks;
 
 namespace Services.Implements.MappingUser
 {
-    public class InsertMappingCategoriesService : IInsertMappingCategoriesService
+    public class InsertMapUserCategoriesService : IInsertMapUserCategoriesService
     {
 
         private readonly MYGAMEContext _context;
 
-        public InsertMappingCategoriesService(MYGAMEContext context)
+        public InsertMapUserCategoriesService(MYGAMEContext context)
         {
             _context = context;
         }
@@ -30,9 +30,7 @@ namespace Services.Implements.MappingUser
                 var validat = new ValidateException();
                 var dateNow = DateTime.Now;
 
-                try
-                {
-                    // ตรวจว่ามีการ map แล้วหรือยัง
+               
                     await IsExists(req, validat);
                     validat.Throw();
 
@@ -46,12 +44,7 @@ namespace Services.Implements.MappingUser
 
                     await _context.SaveChangesAsync();
                     await transaction.CommitAsync();
-                }
-                catch
-                {
-                    await transaction.RollbackAsync();
-                    throw;
-                }
+               
 
                 return new ServiceResult { Success = true, Message = "Mapping completed" };
            }
