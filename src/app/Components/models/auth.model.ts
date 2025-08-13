@@ -8,7 +8,7 @@ export interface RegisterData {
   username: string | null
   password: string | null
   confirmPassword: string | null
-  isVip: boolean | null
+  role: number | 0
 
 } 
  
