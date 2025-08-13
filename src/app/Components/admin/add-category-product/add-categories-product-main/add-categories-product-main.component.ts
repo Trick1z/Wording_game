@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/Services/api-service.service';
 import { InsertCategoriesDataModel, InsertProductDataModel } from '../../master/model/insert-categories.model';
-import { categoriesDeleteFormData, ProductDeleteFormData, ProductUpdateFormData } from 'src/app/Components/models/categories.model';
+import { categoriesDeleteFormData, CategoriesUpdateFormData, ProductDeleteFormData, ProductUpdateFormData } from 'src/app/Components/models/categories.model';
 
 @Component({
   selector: 'app-add-categories-product-main',
@@ -27,8 +27,13 @@ export class AddCategoriesProductMainComponent implements OnInit {
   categoryDataList: Array<any> = [];
   productDataList: Array<any> = [];
 
+  // editdata
 
-// popup state
+  editProductVisible: boolean = false;
+  editProductText: string = "";
+
+
+  // popup state
   categoryPopupShow() {
     this.categoryVisible = true;
   }
@@ -65,6 +70,8 @@ export class AddCategoriesProductMainComponent implements OnInit {
     console.log(this.productTextValue);
 
   }
+
+
   getCategoriesProductDataList() {
 
     this.api.get("api/GET/Categories/item").subscribe((res: any) => {
@@ -121,7 +128,7 @@ export class AddCategoriesProductMainComponent implements OnInit {
 
   onDeleteCategory(data: categoriesDeleteFormData) {
 
-    var newData : categoriesDeleteFormData= {
+    var newData: categoriesDeleteFormData = {
       issueCategoriesId: data.issueCategoriesId,
       issueCategoriesName: data.issueCategoriesName,
     }
@@ -154,21 +161,108 @@ export class AddCategoriesProductMainComponent implements OnInit {
 
   }
 
-  editProductVisible:boolean = false;
-  editProductText: string = "";
+
+  editProductFormData: ProductUpdateFormData = {
+    productId: 0,
+    productName: "",
+  }
 
 
-  onEditProductPopupShow(data:ProductUpdateFormData) {
-    var newData: ProductUpdateFormData = {
-      productId: data.productId,
-      productName: data.productName,
-    }
+  onEditProductPopupShow(data: ProductUpdateFormData) {
+    this.editProductVisible = true;
+    this.editProductText = data.productName;
 
-    console.log(newData);
-    
+    this.editProductFormData.productId = data.productId
+    this.editProductFormData.productName = this.editProductText,
 
-    // this.
+      console.log(this.editProductFormData);
+
 
   }
 
-}
+
+  onEditProductPopupHide() {
+    this.editProductVisible = false;
+    this.editProductFormData = {
+      productId: 0,
+      productName: "",
+    }
+  }
+
+  onEditPopupSubmit() {
+
+    var newData = {
+      productId: this.editProductFormData.productId,
+      productName: this.editProductText
+    }
+
+
+    this.api.post("api/UPDATE/Product", newData).subscribe((res: any) => {
+      console.log(res);
+      this.onEditProductPopupHide();
+      this.getCategoriesProductDataList();
+    })
+
+    // console.log(this.editFormData);
+
+  }
+
+
+  editCategoriesVisible: boolean = false;
+  editCategoriesText: string = "";
+
+  editCategoriesFormData: CategoriesUpdateFormData = {
+    issueCategoriesId: 0,
+    issueCategoriesName: "",
+    isProgramIssue: false
+  }
+
+
+  onEditCategoriesPopupShow(data: CategoriesUpdateFormData) {
+    this.editCategoriesVisible = true;
+    this.editCategoriesText = data.issueCategoriesName;
+
+    this.editCategoriesFormData.issueCategoriesId = data.issueCategoriesId
+    this.editCategoriesFormData.issueCategoriesName = this.editCategoriesText,
+      this.editCategoriesFormData.isProgramIssue = data.isProgramIssue
+
+    // console.log(this.editCategoriesFormData);
+
+
+  }
+
+
+  onEditCategoriesPopupHide() {
+    this.editCategoriesVisible = false;
+
+    this.editCategoriesFormData = {
+      issueCategoriesId: 0,
+      issueCategoriesName: "",
+      isProgramIssue: false
+    }
+
+  }
+
+  onEditCategoriesPopupSubmit() {
+
+    var newData = {
+      issueCategoriesId: this.editCategoriesFormData.issueCategoriesId,
+      issueCategoriesName: this.editCategoriesText,
+      isProgramIssue: this.editCategoriesFormData.isProgramIssue
+    }
+
+    
+
+      this.api.post("api/UPDATE/Categories", newData ).subscribe((res: any) => {
+        console.log(res);
+         this.onEditCategoriesPopupHide();
+         this.getCategoriesProductDataList();
+      })
+
+      // console.log(this.editFormData);
+
+    }
+
+
+
+  }

@@ -22,7 +22,7 @@
         </dxi-column>
         <!-- Template ปุ่มใน cell -->
         <div  *dxTemplate="let cell of 'actionTemplate'"  >
-            <dx-button class="m-2"  text="Edit" type="success" stylingMode="contained"
+            <dx-button class="m-2"  (onClick)="onEditCategoriesPopupShow(cell.data)" text="Edit" type="success" stylingMode="contained"
                ></dx-button>
             <dx-button class="m-2" (onClick)="onDeleteCategory(cell.data)"  text="Delete" type="danger" stylingMode="contained"
                ></dx-button>
@@ -156,7 +156,7 @@
   <div class="edit-product-popup">
 
     <dx-popup [width]="400" [height]="250" [(visible)]="editProductVisible" [width]="400" [showTitle]="true"
-        [dragEnabled]="true" [closeOnOutsideClick]="true" title="Add Products" (onHiding)="productPopupHide()">
+        [dragEnabled]="true" [closeOnOutsideClick]="true" title="Edit Product" (onHiding)="onEditProductPopupHide()">
         <div class="popup-content">
 
             <div class="flex items-center checkbox text-end">
@@ -174,11 +174,52 @@
                 <!-- <button (click)="categoryPopupHide()">ปิด</button> -->
 
 
-                <app-button (click)="onProductSubmit()" [message]="'Save'"></app-button>
+                <app-button (click)="onEditPopupSubmit()" [message]="'Save'"></app-button>
 
-                <app-button (click)="productPopupHide()" color="red" [message]="'Close'"></app-button>
+                <app-button (click)="onEditProductPopupHide()" color="red" [message]="'Close'"></app-button>
 
             </div>
         </div>
     </dx-popup>
 </div>
+<!-- categories -->
+
+<div class="category-popup">
+
+    <dx-popup [width]="400" [height]="300" [(visible)]="editCategoriesVisible" [width]="400" [showTitle]="true"
+        [dragEnabled]="true" [closeOnOutsideClick]="true" title="Add Category Issue" (onHiding)="onEditCategoriesPopupHide()">
+        <div class="popup-content">
+
+            <div class="flex items-center checkbox text-end">
+
+                <label for="textBox" class="mr-2">Name : </label>
+
+                <dx-text-box id="textBox" [(ngModel)]="editCategoriesText"
+                    placeholder="กรอกข้อความ" stylingMode="outlined">
+                </dx-text-box>
+
+
+            </div>
+
+            <div class="mt-5 checkbox">
+                <label for="programCheck">Program Issue</label>
+
+                <dx-check-box class="ml-5" id="programCheck" [(ngModel)]="this.editCategoriesFormData.isProgramIssue"></dx-check-box>
+            </div>
+
+
+
+
+            <div class="flex justify-center gap-2 mt-10">
+
+
+                <app-button (click)="onEditCategoriesPopupSubmit()"  [message]="'Save'"></app-button>
+
+                <app-button (click)="onEditCategoriesPopupHide()" color="red" [message]="'Close'"></app-button>
+
+            </div>
+        </div>
+    </dx-popup>
+</div>
+
+
