@@ -10,6 +10,7 @@ import {
 } from 'src/app/Constants/routes.const';
 import { MasterComponent } from './master/master.component';
 import { AddCategoriesProductMainComponent } from './add-category-product/add-categories-product-main/add-categories-product-main.component';
+import { MapUserCategoriesComponent } from './map-user-categories/map-user-categories.component';
 
 const routes: Routes = [
 
@@ -20,6 +21,10 @@ const routes: Routes = [
     {
         path: AdminRoute.AdminAddCategories,
         component: AddCategoriesProductMainComponent,
+      },
+    {
+        path: AdminRoute.AdminUserCategories,
+        component: MapUserCategoriesComponent,
       },
  
 ];

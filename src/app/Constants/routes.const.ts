@@ -57,4 +57,9 @@ export class AdminRoute {
   static AdminAddCategoriesFullPath: string = `${AdminRoute.prefix}/${AdminRoute.AdminAddCategories}`;
   static AdminAddCategoriesName: string = `categories-product`;
 
+  static AdminUserCategories: string = `user-categories`;
+  static AdminUserCategoriesFullPath: string = `${AdminRoute.prefix}/${AdminRoute.AdminUserCategories}`;
+  static AdminUserCategoriesName: string = `map-user-categories`;
+
+
 }
