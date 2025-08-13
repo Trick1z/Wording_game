@@ -1,5 +1,5 @@
 export interface InsertCategoriesDataModel {
-    categoryName: string
+    IssueCategoriesName: string
     isProgramIssue: Boolean
 }
 

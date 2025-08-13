@@ -85,7 +85,7 @@ export class AddCategoriesProductMainComponent implements OnInit {
   onCategoriesSubmit() {
 
     var data: InsertCategoriesDataModel = {
-      categoryName: this.categoryTextValue,
+      IssueCategoriesName: this.categoryTextValue,
       isProgramIssue: this.isProgram
 
     }
