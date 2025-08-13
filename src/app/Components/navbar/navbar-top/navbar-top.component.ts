@@ -25,6 +25,10 @@ export class NavbarTopComponent {
       name: AdminRoute.AdminAddCategoriesName,
       path: AdminRoute.AdminAddCategoriesFullPath
     },
+    {
+      name: AdminRoute.AdminUserCategoriesName,
+      path: AdminRoute.AdminUserCategoriesFullPath
+    },
   ]
   userRoutes: any = [
     {
