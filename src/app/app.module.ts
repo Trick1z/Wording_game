@@ -28,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AddCategoriesProductMainComponent } from './Components/admin/add-category-product/add-categories-product-main/add-categories-product-main.component';
 import dxCheckBox from 'devextreme/ui/check_box';
 import { NgTemplateOutlet } from '@angular/common';
+import { MapUserCategoriesComponent } from './Components/admin/map-user-categories/map-user-categories.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ CustomerAddPageComponent,
     TextBoxComponent,
     UserMainComponent,
     MasterComponent,
-    AddCategoriesProductMainComponent
+    AddCategoriesProductMainComponent,
+    MapUserCategoriesComponent
   ],
   imports: [
     BrowserModule, FormsModule,
