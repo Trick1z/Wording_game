@@ -1,13 +1,25 @@
 <app-head-underline [title]="'Relation mapping'"></app-head-underline>
 
-
-
-
 <div class="mt-20 ml-20 mr-20 products-box">
-    <app-head-underline [title]="'Products'"></app-head-underline>
-    <app-button (click)="productPopupShow()" class="flex ml-10 mr-10 text-end" [message]="'Add'"></app-button>
-    <app-grid-customer class="flex justify-center mt-3 ml-10 mr-10" [dataList]="dataList"
-        [columnList]="columns"></app-grid-customer>
+    <app-head-underline [title]="'Map Categories Product'"></app-head-underline>
+    <!-- <app-button (click)="productPopupShow()" class="flex ml-10 mr-10 text-end" [message]="'Add'"></app-button> -->
+
+    <dx-data-grid class="flex m-10 max-w-max " [dataSource]="categoriesDataList" [showBorders]="true"
+        [paging]="{ pageSize: 5 }" [columnAutoWidth]="true">
+        <dxi-column dataField="issueCategoriesId" caption="ID" width="80" alignment="center"></dxi-column>
+        <dxi-column dataField="issueCategoriesName" caption="ชื่อ" minWidth="150" alignment="left"></dxi-column>
+        <dxi-column dataField="isProgramIssue" caption="ProgramIssue" minWidth="150"
+            alignment="center"></dxi-column>
+
+        <dxi-column caption="Action" width="200" [fixed]="true" [fixedPosition]="'right'"
+            cellTemplate="actionTemplate" alignment="center">
+        </dxi-column>
+        <div *dxTemplate="let cell of 'actionTemplate'">
+            <dx-button class="m-2" text="Info" type="default" stylingMode="contained"></dx-button>
+            <dx-button class="m-2" (onClick)="productPopupShow(cell.data) " text="Map" type="success" stylingMode="contained"></dx-button>
+        </div>
+    </dx-data-grid>
+
 </div>
 
 
@@ -18,27 +30,32 @@
 
 <div class="products-popup">
 
-    <dx-popup [width]="400" [height]="300" [(visible)]="productVisible" [width]="400" [showTitle]="true"
-        [dragEnabled]="true" [closeOnOutsideClick]="true" title="Add Product" (onHiding)="productPopupHide()">
+    <dx-popup [width]="500" [height]="400" [(visible)]="productVisible" [width]="400" [showTitle]="true"
+        [dragEnabled]="true" [closeOnOutsideClick]="true" title="Map Categories Product" (onHiding)="productPopupHide()">
         <div class="popup-content">
-            <dx-text-box [value]="productTextValue" (onValueChanged)="onTextValueChanged($event)" placeholder="กรอกข้อความ"
+            <!-- <dx-text-box [value]="productTextValue" (onValueChanged)="onTextValueChanged($event)" placeholder="กรอกข้อความ"
                 stylingMode="outlined" class="mb-4">
-            </dx-text-box>
+            </dx-text-box> -->
 
-            <dx-tag-box [items]="ProductTagOptions" [value]="productSelectedTags" (onValueChanged)="onSelectedTagsChanged($event)"
+             <div class="flex justify-start text-2xl user-box">
+                    <span class="label">Categories :  </span>
+                    <span class="mb-5 ml-5 username"> {{ CategoriesName }}</span>
+                </div>
+
+            <dx-tag-box [items]="ProductTagOptions" [value]="productSelectedTags" (onValueChanged)="onProductSelectedTagsChanged($event)"
                 placeholder="เลือกแท็ก" displayExpr="productName" valueExpr="productId" [showSelectionControls]="true"
                 [searchEnabled]="true" stylingMode="outlined" class="mb-4">
             </dx-tag-box>
 
-            <div class="flex justify-end gap-2 mt-4">
-                <!-- <button (click)="categoryPopupHide()">ปิด</button> -->
+            <div class="flex justify-center gap-2 mt-4">
 
 
                 <app-button (click)="onProductSaveData()" [message]="'Save'"></app-button>
 
-                <app-button color="red" (click)="categoryPopupHide()" [message]="'Close'"></app-button>
+                <app-button color="red" (click)="productPopupHide()"  [message]="'Close'"></app-button>
 
             </div>
         </div>
     </dx-popup>
 </div>
+

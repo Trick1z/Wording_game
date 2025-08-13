@@ -104,6 +104,9 @@ export class MapUserCategoriesComponent implements OnInit {
       createTime : data.createTime
 
     }
+
+    // console.log(newData);
+    
     
     this.api.post(`api/MAP/UnmappingUserCategories`, newData).subscribe((res: any) => {
       // console.log(res);

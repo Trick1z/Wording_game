@@ -25,7 +25,9 @@ export class MasterComponent implements OnInit {
   categorySelectedTags: number[] = [];
   productTextValue: string = '';
   productSelectedTags: number[] = [];
+  CategoriesName: string = '';
 
+  globalId: number = 0;
 
   // categoriesTagOptions = [
   //   { id: 1, name: 'Angular' },
@@ -34,11 +36,11 @@ export class MasterComponent implements OnInit {
   //   { id: 4, name: 'C#' }
   // ];
 
-  categoriesTagOptions: CategoriesDataModel[] = [];
+  categoriesDataList: CategoriesDataModel[] = [];
   ProductTagOptions: ProductsDataModel[] = [];
 
   ngOnInit(): void {
-    this.getCategoriesProductData();
+    // this.getCategoriesProductData();
     this.getCategoryProductItemDetail();
   }
 
@@ -46,23 +48,8 @@ export class MasterComponent implements OnInit {
     private api: ApiService
   ) { }
 
-  onProductSaveData() {
-    console.log('Text:', this.productTextValue);
-    console.log('Tags:', this.productSelectedTags);
-    // สามารถส่งไป backend หรือทำอย่างอื่นต่อ
-  }
-  onCategorySaveData() {
-    console.log('Text:', this.categoryTextValue);
-    console.log('Tags:', this.categorySelectedTags);
-    // สามารถส่งไป backend หรือทำอย่างอื่นต่อ
-  }
 
 
-
-  onTextValueChanged(e: any) {
-    const event = e as ValueChangedEvent;
-    this.categoryTextValue = event.value;
-  }
 
   onSelectedTagsChanged(e: any) {
     const event = e as TagValueChangedEvent;
@@ -70,10 +57,6 @@ export class MasterComponent implements OnInit {
     this.categorySelectedTags = e.value;
   }
 
-  onProductTextValueChanged(e: any) {
-    const event = e as ValueChangedEvent;
-    this.productTextValue = event.value;
-  }
 
   onProductSelectedTagsChanged(e: any) {
     const event = e as TagValueChangedEvent;
@@ -82,41 +65,66 @@ export class MasterComponent implements OnInit {
   }
 
 
-  // category popup
-  categoryPopupShow() {
-    this.categoryVisible = true;
-  }
-
-  categoryPopupHide() {
-    this.categoryVisible = false;
-  }
-
   // products
-  productPopupShow() {
+  productPopupShow(data: any) {
     this.productVisible = true;
+    this.CategoriesName = data.issueCategoriesName;
+    this.globalId = data.issueCategoriesId;
+    this.getProductItem(data.issueCategoriesId);
   }
 
   productPopupHide() {
     this.productVisible = false;
+    this.productSelectedTags = []
   }
 
   // get [products , category ] data
   getCategoryProductItemDetail() {
 
     this.api.get("api/GET/Categories/item").subscribe((res: any) => {
-      this.categoriesTagOptions = res
+      this.categoriesDataList = res
+      // console.log(res);
 
     })
 
-    this.api.get("api/GET/Products/item").subscribe((res: any) => {
+
+  }
+
+
+  getProductItem(id: number) {
+    this.api.get(`api/GET/unmappedCategories/${id}`).subscribe((res: any) => {
       this.ProductTagOptions = res
+      console.log(res);
+
+    })
+
+
+  }
+
+    onProductSaveData() {
+    // console.log('id:', this.globalId);
+    // console.log('Tags:', this.productSelectedTags);
+    // สามารถส่งไป backend หรือทำอย่างอื่นต่อ
+
+
+    var newData = {
+      categoriesId : this.globalId,
+      productsId : this.productSelectedTags
+
+    }
+    this.api.post(`api/MAPS/MappingCategoriesProduct` , newData).subscribe((res :any )=> {
+
+      console.log(res);
+      
     })
   }
 
-  getCategoriesProductData(){
-    this.api.get("api/GET/Products").subscribe((res: any) => {
-      this.ProductTagOptions = res
-    })
 
-  }
+
+  // getCategoriesProductData(){
+  //   this.api.get("api/GET/Products").subscribe((res: any) => {
+  //     this.ProductTagOptions = res
+  //   })
+
+  // }
 }
