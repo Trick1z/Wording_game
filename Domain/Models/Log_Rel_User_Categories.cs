@@ -13,9 +13,9 @@ public partial class Log_Rel_User_Categories
 
     public int IssueCategoriesId { get; set; }
 
-    public DateTime CreateTime { get; set; }
+    public DateTime? ActionTime { get; set; }
 
-    public DateTime ModifiedTime { get; set; }
+    public int? ActionBy { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public string ActionType { get; set; }
 }

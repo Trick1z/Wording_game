@@ -9,6 +9,7 @@ using Microsoft.IdentityModel.Tokens;
 //using Services.Form;
 using Services.Implements.Auth;
 using Services.Word;
+using System.Globalization;
 using System.Reflection;
 using System.Text;
 
@@ -16,6 +17,12 @@ internal class Program
 {
     private static void Main(string[] args)
     {
+
+        var cultureInfo = new CultureInfo("th-TH");
+        CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+        CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+
+
         var builder = WebApplication.CreateBuilder(args);
 
         var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";

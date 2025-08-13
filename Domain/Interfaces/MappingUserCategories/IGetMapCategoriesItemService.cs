@@ -12,8 +12,8 @@ namespace Domain.Interfaces.MappingCategories
 
     public interface IGetMapCategoriesItemService
     {
+        public Task<IEnumerable<IssueCategories>> GetMappedCategories(int categoryId);
 
-        public Task<IEnumerable<IssueCategories>> GetUnmappedCategories(int userId);
-        public Task<IEnumerable<IssueCategories>> GetMappedCategories(int userId);
+        public Task<IEnumerable<IssueCategories>> GetUnmappedCategories(int categoryId);
     }
 }

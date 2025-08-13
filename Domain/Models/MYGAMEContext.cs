@@ -23,9 +23,13 @@ public partial class MYGAMEContext : DbContext
 
     public virtual DbSet<Member> Member { get; set; }
 
+    public virtual DbSet<Pages> Pages { get; set; }
+
     public virtual DbSet<Product> Product { get; set; }
 
     public virtual DbSet<RelCategoriesProduct> RelCategoriesProduct { get; set; }
+
+    public virtual DbSet<Rel_Page_Role> Rel_Page_Role { get; set; }
 
     public virtual DbSet<Rel_User_Categories> Rel_User_Categories { get; set; }
 
@@ -95,9 +99,8 @@ public partial class MYGAMEContext : DbContext
         {
             entity.HasKey(e => e.LogId);
 
-            entity.Property(e => e.CreateTime).HasColumnType("datetime");
-            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
-            entity.Property(e => e.ModifiedTime).HasColumnType("datetime");
+            entity.Property(e => e.ActionTime).HasColumnType("datetime");
+            entity.Property(e => e.ActionType).HasMaxLength(512);
         });
 
         modelBuilder.Entity<Member>(entity =>
@@ -115,6 +118,17 @@ public partial class MYGAMEContext : DbContext
                 .IsRequired()
                 .HasMaxLength(50)
                 .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<Pages>(entity =>
+        {
+            entity.HasKey(e => e.PageId);
+
+            entity.Property(e => e.CreateTime).HasColumnType("datetime");
+            entity.Property(e => e.PageUrl)
+                .IsRequired()
+                .HasMaxLength(512);
+            entity.Property(e => e.UpdateTime).HasColumnType("datetime");
         });
 
         modelBuilder.Entity<Product>(entity =>
@@ -148,13 +162,19 @@ public partial class MYGAMEContext : DbContext
                 .HasConstraintName("FK_RelCategoriesProduct_Products");
         });
 
+        modelBuilder.Entity<Rel_Page_Role>(entity =>
+        {
+            entity.HasKey(e => new { e.PageId, e.RoleId });
+
+            entity.Property(e => e.CreateTime).HasColumnType("datetime");
+            entity.Property(e => e.ModifiedTime).HasColumnType("datetime");
+        });
+
         modelBuilder.Entity<Rel_User_Categories>(entity =>
         {
             entity.HasKey(e => new { e.UserId, e.IssueCategoriesId });
 
             entity.Property(e => e.CreateTime).HasColumnType("datetime");
-            entity.Property(e => e.IsDeleted).HasDefaultValue(true);
-            entity.Property(e => e.ModifiedTime).HasColumnType("datetime");
 
             entity.HasOne(d => d.IssueCategories).WithMany(p => p.Rel_User_Categories)
                 .HasForeignKey(d => d.IssueCategoriesId)

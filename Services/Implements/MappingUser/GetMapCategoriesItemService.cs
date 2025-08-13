@@ -27,8 +27,7 @@ namespace Services.Implements.MappingUser
                         .Where(c => c.IsActive &&
                                !_context.Rel_User_Categories
                                    .Any(rc => rc.UserId == userId 
-                                     && rc.IssueCategoriesId == c.IssueCategoriesId
-                                     && rc.IsDeleted == false))
+                                     && rc.IssueCategoriesId == c.IssueCategoriesId))
                         .ToListAsync();
 
             return unmappedCategories;
@@ -41,8 +40,7 @@ namespace Services.Implements.MappingUser
                     .Where(c => c.IsActive &&
                            _context.Rel_User_Categories
                                .Any(rc => rc.UserId == userId
-                                 && rc.IssueCategoriesId == c.IssueCategoriesId
-                                 && rc.IsDeleted == false))
+                                 && rc.IssueCategoriesId == c.IssueCategoriesId))
                     .ToListAsync();
 
             return mappedCategories;

@@ -36,7 +36,15 @@
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[Pages]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[Product]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Rel_Page_Role]",
          "ObjectType": 0
       },
       {

@@ -5,15 +5,15 @@ using System.Collections.Generic;
 
 namespace Domain.Models;
 
-public partial class Rel_User_Categories
+public partial class Pages
 {
-    public int UserId { get; set; }
+    public int PageId { get; set; }
 
-    public int IssueCategoriesId { get; set; }
+    public string PageUrl { get; set; }
 
     public DateTime CreateTime { get; set; }
 
-    public virtual IssueCategories IssueCategories { get; set; }
+    public DateTime UpdateTime { get; set; }
 
-    public virtual User User { get; set; }
+    public bool IsDeleted { get; set; }
 }

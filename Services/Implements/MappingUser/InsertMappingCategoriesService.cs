@@ -1,4 +1,5 @@
-﻿using Domain.Exceptions;
+﻿using Domain.Enums;
+using Domain.Exceptions;
 using Domain.Interfaces.MappingCategories;
 using Domain.Models;
 using Domain.ViewModels.MappingCategories;
@@ -65,18 +66,25 @@ namespace Services.Implements.MappingUser
 
             try
             {
-                Log_Rel_User_Categories logs = await IsExists(req, validat);
+                //Log_Rel_User_Categories logs = await IsExists(req, validat);
+
+
                 Rel_User_Categories rel = await IsRelExists(req, validat);
 
 
                 validat.Throw();
 
                 //update log
-                logs.IsDeleted = true;
-                logs.ModifiedTime = dateNow;
-                //update rel
-                rel.IsDeleted = true;
-                rel.ModifiedTime = dateNow;
+                Log_Rel_User_Categories logs = new Log_Rel_User_Categories();
+
+                logs.UserId = req.UserId;
+                logs.IssueCategoriesId = rel.IssueCategoriesId;
+                logs.ActionTime = dateNow;
+                logs.ActionBy = Constance.AdminId;
+                logs.ActionType = "Remove Categories";
+
+                _context.Rel_User_Categories.Remove(rel);
+                _context.Log_Rel_User_Categories.Add(logs);
 
                 await _context.SaveChangesAsync();
                 await transaction.CommitAsync();
@@ -153,9 +161,10 @@ namespace Services.Implements.MappingUser
             {
                 UserId = req.UserId,
                 IssueCategoriesId = req.IssueCategoriesId,
-                IsDeleted = false,
-                CreateTime = dateNow,
-                ModifiedTime = dateNow
+                ActionType = "Add Categories",
+                ActionTime = dateNow,
+                ActionBy = Constance.AdminId
+
             };
         }
 
@@ -165,9 +174,7 @@ namespace Services.Implements.MappingUser
             {
                 UserId = req.UserId,
                 IssueCategoriesId = req.IssueCategoriesId,
-                IsDeleted = false,
                 CreateTime = dateNow,
-                ModifiedTime = dateNow
             };
         }
 
