@@ -5,12 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Interfaces
+namespace Domain.Interfaces.RegisterLogin
 {
-    public interface IUserLoginService
+    public interface ILoginService
     {
-
-
         public Task<string> UserLoginAsync(LoginViewModel request);
+
     }
 }

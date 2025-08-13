@@ -1,4 +1,4 @@
-﻿using Domain.Interfaces;
+﻿using Domain.Interfaces.RegisterLogin;
 using Domain.Models;
 using FMS.Server.Handlers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;

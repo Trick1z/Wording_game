@@ -7,17 +7,19 @@ namespace Domain.Models;
 
 public partial class User
 {
-    public int Id { get; set; }
+    public int UserId { get; set; }
 
     public string Username { get; set; }
 
     public string Password { get; set; }
 
-    public string Role { get; set; }
+    public int RoleId { get; set; }
 
     public DateTime CreatedTime { get; set; }
 
     public DateTime ModifiedTime { get; set; }
 
     public virtual ICollection<FormTask> FormTask { get; set; } = new List<FormTask>();
+
+    public virtual ICollection<Rel_User_Categories> Rel_User_Categories { get; set; } = new List<Rel_User_Categories>();
 }

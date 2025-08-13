@@ -1,7 +1,7 @@
 ﻿using Domain.Exceptions;
-using Domain.Interfaces;
+using Domain.Interfaces.CategoriesProduct;
 using Domain.Models;
-using Domain.ViewModels;
+using Domain.ViewModels.CategoriesProduct;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Services.Implements.CategoriesProduct;
@@ -32,7 +32,10 @@ namespace Services.Implements.CategoriesProduct
 
             validate.Throw();
 
-            await UpdateCategoriesData(req, resp);
+            var dateNow = DateTime.Now;
+            resp.IssueCategoriesName = req.IssueCategoriesName;
+            resp.IsProgramIssue = req.IsProgramIssue;
+            resp.ModifiedTime = dateNow;
 
             await _context.SaveChangesAsync();
 
@@ -51,13 +54,14 @@ namespace Services.Implements.CategoriesProduct
             IsProductFieldNullOrEmptyString(req, validate);
             Product resp = await IsProductInDatabase(req, validate);
 
-            validate.Throw();
+             validate.Throw();
 
-            await UpdateProductData(req, resp);
+            var dateNow = DateTime.Now;
+            resp.ProductName = req.ProductName;
+            resp.ModifiedTime = dateNow;
+
             await _context.SaveChangesAsync();
 
-
-            //return new List<Product> { resp };
             return  resp ;
 
         }
@@ -66,15 +70,6 @@ namespace Services.Implements.CategoriesProduct
         //futures
 
 
-        private async Task<bool> UpdateCategoriesData(UpdateCategories req, IssueCategories resp)
-        {
-            var dateNow = DateTime.Now;
-            resp.IssueCategoriesName = req.IssueCategoriesName;
-            resp.IsProgramIssue = req.IsProgramIssue;
-            resp.ModifiedTime = dateNow;
-
-            return true; 
-        }
 
         private async Task<IssueCategories> IsCategoriesInDatabase(UpdateCategories req, ValidateException validate)
         {
@@ -144,15 +139,12 @@ namespace Services.Implements.CategoriesProduct
 
         }
 
-        private async Task<bool> UpdateProductData(UpdateProduct req, Product resp)
-        {
-            var dateNow = DateTime.Now;
+        //private static UpdateProductData(UpdateProduct req, Product resp)
+        //{
+           
 
-            resp.ProductName = req.ProductName;
-            resp.ModifiedTime = dateNow;
-
-            return true;
-        }
+        //    //return true;
+        //}
 
 
     }

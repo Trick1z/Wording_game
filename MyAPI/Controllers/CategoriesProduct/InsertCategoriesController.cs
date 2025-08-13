@@ -1,9 +1,9 @@
-﻿using Domain.Interfaces;
+﻿using Domain.Interfaces.CategoriesProduct;
 using Domain.Models;
 using Domain.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MyAPI.Controllers
+namespace MyAPI.Controllers.CategoriesProduct
 {
     [ApiController]
     [Route("api/[controller]")]

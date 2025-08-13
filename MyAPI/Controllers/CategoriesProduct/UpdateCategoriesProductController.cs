@@ -1,8 +1,8 @@
-﻿using Domain.Interfaces;
-using Domain.ViewModels;
+﻿using Domain.Interfaces.CategoriesProduct;
+using Domain.ViewModels.CategoriesProduct;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MyAPI.Controllers
+namespace MyAPI.Controllers.CategoriesProduct
 {
     [ApiController]
     [Route("api/UPDATE")]
@@ -15,13 +15,13 @@ namespace MyAPI.Controllers
         }
 
         [HttpPost("Categories")]
-        public async Task<IActionResult> DeleteCategoryItem([FromBody] UpdateCategories req)
+        public async Task<IActionResult> UpdateCategoryItem([FromBody] UpdateCategories req)
         {
             return Ok(await _updateCategoriesProducts.UpdateCategoriesItems(req));
         }
 
         [HttpPost("Product")]
-        public async Task<IActionResult> DeleteProductItem([FromBody] UpdateProduct req)
+        public async Task<IActionResult> UpdateProductItem([FromBody] UpdateProduct req)
         {
             return Ok(await _updateCategoriesProducts.UpdateProductItems(req));
         }

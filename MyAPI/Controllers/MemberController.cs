@@ -1,5 +1,5 @@
 ﻿using Braintree;
-using Domain.Interfaces;
+using Domain.Interfaces.RegisterLogin;
 using Domain.Models;   // login request model
 using Domain.ViewModels;
 using Microsoft.AspNetCore.Authorization;

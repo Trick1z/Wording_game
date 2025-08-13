@@ -1,5 +1,5 @@
 ﻿using Domain.Exceptions;
-using Domain.Interfaces;
+using Domain.Interfaces.CategoriesProduct;
 using Domain.Models;
 using Domain.ViewModels;
 using Microsoft.EntityFrameworkCore;

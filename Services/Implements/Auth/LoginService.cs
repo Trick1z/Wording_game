@@ -1,7 +1,7 @@
 ﻿using Azure.Core;
 using Braintree;
 using Domain.Exceptions;
-using Domain.Interfaces;
+using Domain.Interfaces.RegisterLogin;
 using Domain.Models;
 using Domain.ViewModels;
 using Microsoft.AspNetCore.Identity;

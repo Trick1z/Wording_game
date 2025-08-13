@@ -19,11 +19,17 @@ public partial class MYGAMEContext : DbContext
 
     public virtual DbSet<IssueCategories> IssueCategories { get; set; }
 
+    public virtual DbSet<Log_Rel_User_Categories> Log_Rel_User_Categories { get; set; }
+
     public virtual DbSet<Member> Member { get; set; }
 
     public virtual DbSet<Product> Product { get; set; }
 
     public virtual DbSet<RelCategoriesProduct> RelCategoriesProduct { get; set; }
+
+    public virtual DbSet<Rel_User_Categories> Rel_User_Categories { get; set; }
+
+    public virtual DbSet<Role> Role { get; set; }
 
     public virtual DbSet<SystemConfig> SystemConfig { get; set; }
 
@@ -85,6 +91,15 @@ public partial class MYGAMEContext : DbContext
             entity.Property(e => e.ModifiedTime).HasColumnType("datetime");
         });
 
+        modelBuilder.Entity<Log_Rel_User_Categories>(entity =>
+        {
+            entity.HasKey(e => e.LogId);
+
+            entity.Property(e => e.CreateTime).HasColumnType("datetime");
+            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
+            entity.Property(e => e.ModifiedTime).HasColumnType("datetime");
+        });
+
         modelBuilder.Entity<Member>(entity =>
         {
             entity.HasKey(e => e.UserId);
@@ -113,9 +128,8 @@ public partial class MYGAMEContext : DbContext
 
         modelBuilder.Entity<RelCategoriesProduct>(entity =>
         {
-            entity.HasKey(e => e.IssueCategoriesId).HasName("PK_rel_Categories_Product");
+            entity.HasKey(e => new { e.IssueCategoriesId, e.ProductId }).HasName("PK_rel_Categories_Product");
 
-            entity.Property(e => e.IssueCategoriesId).ValueGeneratedNever();
             entity.Property(e => e.CreateTime).HasColumnType("datetime");
             entity.Property(e => e.DeleteFlag)
                 .IsRequired()
@@ -123,8 +137,8 @@ public partial class MYGAMEContext : DbContext
                 .IsFixedLength();
             entity.Property(e => e.ModifiedTime).HasColumnType("datetime");
 
-            entity.HasOne(d => d.IssueCategories).WithOne(p => p.RelCategoriesProduct)
-                .HasForeignKey<RelCategoriesProduct>(d => d.IssueCategoriesId)
+            entity.HasOne(d => d.IssueCategories).WithMany(p => p.RelCategoriesProduct)
+                .HasForeignKey(d => d.IssueCategoriesId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_RelCategoriesProduct_IssueCategoriies");
 
@@ -132,6 +146,34 @@ public partial class MYGAMEContext : DbContext
                 .HasForeignKey(d => d.ProductId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_RelCategoriesProduct_Products");
+        });
+
+        modelBuilder.Entity<Rel_User_Categories>(entity =>
+        {
+            entity.HasKey(e => new { e.UserId, e.IssueCategoriesId });
+
+            entity.Property(e => e.CreateTime).HasColumnType("datetime");
+            entity.Property(e => e.IsDeleted).HasDefaultValue(true);
+            entity.Property(e => e.ModifiedTime).HasColumnType("datetime");
+
+            entity.HasOne(d => d.IssueCategories).WithMany(p => p.Rel_User_Categories)
+                .HasForeignKey(d => d.IssueCategoriesId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Rel_User_Categories_Categories");
+
+            entity.HasOne(d => d.User).WithMany(p => p.Rel_User_Categories)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Rel_User_Categories_User");
+        });
+
+        modelBuilder.Entity<Role>(entity =>
+        {
+            entity.Property(e => e.CreateTime).HasColumnType("datetime");
+            entity.Property(e => e.ModifiedTime).HasColumnType("datetime");
+            entity.Property(e => e.RoleName)
+                .IsRequired()
+                .HasMaxLength(50);
         });
 
         modelBuilder.Entity<SystemConfig>(entity =>
@@ -156,10 +198,6 @@ public partial class MYGAMEContext : DbContext
             entity.Property(e => e.Password)
                 .IsRequired()
                 .HasMaxLength(512)
-                .IsUnicode(false);
-            entity.Property(e => e.Role)
-                .IsRequired()
-                .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.Username)
                 .IsRequired()

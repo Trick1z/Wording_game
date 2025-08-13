@@ -1,7 +1,7 @@
 ﻿using Domain.Exceptions;
-using Domain.Interfaces;
+using Domain.Interfaces.CategoriesProduct;
 using Domain.Models;
-using Domain.ViewModels;
+using Domain.ViewModels.CategoriesProduct;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System;

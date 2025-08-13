@@ -1,5 +1,5 @@
 ﻿using Domain.Exceptions;
-using Domain.Interfaces;
+using Domain.Interfaces.RegisterLogin;
 using Domain.Models;
 using Domain.ViewModels;
 using Microsoft.AspNetCore.Identity;
@@ -55,7 +55,7 @@ namespace Services.Implements.Auth
             var member = new User();
             member.Username = request.Username;
             member.Password = hashed;
-            member.Role = request.Role;
+            member.RoleId = request.Role;
             member.CreatedTime = dateNow;
             member.ModifiedTime = dateNow;
 
@@ -64,7 +64,7 @@ namespace Services.Implements.Auth
 
         public async Task<bool> IsPasswordLengthMinimum(UserRegisterViewModel request, ValidateException validate)
         {
-            if (request.Password.Length < 6)
+            if (request.Password.Length < 4)
 
                 validate.Add("Password","Password Length minimum Required 6");
 
@@ -91,8 +91,13 @@ namespace Services.Implements.Auth
             if (string.IsNullOrWhiteSpace(request.ConfirmPassword))
                 validate.Add("ConfirmPassword", "Field ConfirmPassword are required");
 
-            if (string.IsNullOrWhiteSpace(request.Role))
-                validate.Add("Role", "Field Role are required");
+            //if (string.IsNullOrWhiteSpace(request.Role))
+            //    validate.Add("Role", "Field Role are required");
+
+            if (request.Role <= 0)
+            {
+                validate.Add("Role", "Field Role is required and must be greater than 0");
+            }
 
 
             return false;

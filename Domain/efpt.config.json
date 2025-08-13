@@ -28,6 +28,10 @@
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[Log_Rel_User_Categories]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[Member]",
          "ObjectType": 0
       },
@@ -36,7 +40,15 @@
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[Rel_User_Categories]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[RelCategoriesProduct]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Role]",
          "ObjectType": 0
       },
       {

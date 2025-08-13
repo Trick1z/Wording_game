@@ -1,5 +1,5 @@
 ﻿using Domain.Exceptions;
-using Domain.Interfaces;
+using Domain.Interfaces.RegisterLogin;
 using Domain.Models;
 using Domain.ViewModels;
 using Microsoft.AspNetCore.Identity;
@@ -22,7 +22,7 @@ namespace Services.Implements.Auth
             _context = context;
         }
 
-        public async Task<string> UserLoginAsync(LoginViewModel request)
+        public async Task<User> UserLoginAsync(LoginViewModel request)
         {
 
             var validateException = new ValidateException();
@@ -44,7 +44,7 @@ namespace Services.Implements.Auth
 
             validateException.Throw();
 
-            return user.Role;
+            return user;
 
         }
 
