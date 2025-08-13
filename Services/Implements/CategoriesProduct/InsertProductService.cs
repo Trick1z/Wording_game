@@ -26,7 +26,7 @@ namespace Services.Implements.CategoriesProduct
         {
             var validate = new ValidateException();
 
-            await IsNullOrEmpty(requried, validate);
+            IsNullOrEmpty(requried, validate);
             await IsProductInTable(requried, validate);
 
             validate.Throw();
@@ -53,7 +53,7 @@ namespace Services.Implements.CategoriesProduct
             return data;
         }
 
-        public async Task<bool> IsNullOrEmpty(InsertProduct requried , ValidateException validate) {
+        public bool IsNullOrEmpty(InsertProduct requried , ValidateException validate) {
 
 
             if (string.IsNullOrEmpty(requried.ProductName))

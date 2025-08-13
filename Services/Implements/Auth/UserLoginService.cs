@@ -29,7 +29,7 @@ namespace Services.Implements.Auth
 
 
             //checked null 
-            await IsNullOrEmptyString(request , validateException);
+            IsNullOrEmptyString(request , validateException);
             var user = await IsUsernameInTable(request , validateException);
 
             validateException.Throw();
@@ -49,7 +49,7 @@ namespace Services.Implements.Auth
         }
 
        
-        public async Task<bool> IsNullOrEmptyString(LoginViewModel request, ValidateException validateException)
+        public bool IsNullOrEmptyString(LoginViewModel request, ValidateException validateException)
         {
 
 

@@ -28,7 +28,7 @@ namespace Services.Implements.Auth
         public async Task<string> UserRegisterAsync(UserRegisterViewModel request)
         {
             var validate = new ValidateException();
-            await IsNullOrEmptyString(request, validate);
+             IsNullOrEmptyString(request, validate);
             await IsUsernameInTable(request, validate);
             await IsPasswordLengthMinimum(request, validate);
             await ArePasswordsMatching(request, validate);
@@ -75,7 +75,7 @@ namespace Services.Implements.Auth
 
 
 
-        public async Task<bool> IsNullOrEmptyString(UserRegisterViewModel request, ValidateException validate )
+        public bool IsNullOrEmptyString(UserRegisterViewModel request, ValidateException validate )
         {
            
 
@@ -83,10 +83,9 @@ namespace Services.Implements.Auth
                 validate.Add("Username","Field Username are required");
 
             if (string.IsNullOrWhiteSpace(request.Password))
-            {
                 validate.Add("Password", "Field Password are required");
 
-            }
+            
 
 
             if (string.IsNullOrWhiteSpace(request.ConfirmPassword))
@@ -96,11 +95,6 @@ namespace Services.Implements.Auth
                 validate.Add("Role", "Field Role are required");
 
 
-            
-
-
-
-
             return false;
         }
 
@@ -108,10 +102,9 @@ namespace Services.Implements.Auth
         {
             //var validat = new ValidateException();
 
-            var isExists = await _context.User
-     .AnyAsync(u => u.Username == request.Username);
+            var isExists = await _context.User.FirstOrDefaultAsync(u => u.Username == request.Username);
 
-            if (isExists)
+            if (isExists != null)
                 validate.Add("Username", "This Username are already taken!");
 
             return false;

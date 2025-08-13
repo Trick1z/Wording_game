@@ -25,7 +25,7 @@ namespace Services.Implements.Auth
 
             var validateException = new ValidateException();
 
-            await IsNullOrEmptySpace(request, validateException);
+            IsNullOrEmptySpace(request, validateException);
 
             User user = await IsUserInTable(request , validateException);
 
@@ -45,12 +45,10 @@ namespace Services.Implements.Auth
 
         }
 
-        public async Task<bool> IsNullOrEmptySpace(LoginViewModel request , ValidateException validateException) {
+        public bool IsNullOrEmptySpace(LoginViewModel request , ValidateException validateException) {
 
             if (string.IsNullOrWhiteSpace(request.Username) || string.IsNullOrWhiteSpace(request.Password))
                 validateException.Add("Username","Field Username Much Not Empty");
-            //if (string.IsNullOrWhiteSpace(request.Password))
-            //    validateException.Add("Password", "Field Password Much Not Empty");
 
             return false;
 

@@ -5,20 +5,6 @@ namespace Services.Implements.CalculateScore
 {
     public class CalculateScore
     {
-        // 🔹 เมธอดหลัก เริ่มต้นโปรแกรม
-        //public static void Main()
-        //{
-        //    string word = "Education"; // คุณสามารถเปลี่ยนคำได้ตรงนี้
-        //    int score = WordCalculate(word);
-
-        //    string formatted = FormatWord(word);
-
-        //    Console.WriteLine($"Input Word: {word}");
-        //    Console.WriteLine($"Formatted Word: {formatted}");
-        //    Console.WriteLine($"Total Score: {score}");
-        //}
-
-        // 🔹 เมธอดคำนวณคะแนน
         public async Task<int> WordCalculate(string word)
         {
             int total = 0;

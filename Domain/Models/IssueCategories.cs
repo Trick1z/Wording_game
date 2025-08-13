@@ -5,11 +5,11 @@ using System.Collections.Generic;
 
 namespace Domain.Models;
 
-public partial class IssueCategoiries
+public partial class IssueCategories
 {
     public int IssueCategoriesId { get; set; }
 
-    public string CategoryName { get; set; }
+    public string IssueCategoriesName { get; set; }
 
     public bool IsProgramIssue { get; set; }
 

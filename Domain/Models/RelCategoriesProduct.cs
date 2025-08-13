@@ -19,7 +19,7 @@ public partial class RelCategoriesProduct
 
     public DateTime ModifiedTime { get; set; }
 
-    public virtual IssueCategoiries IssueCategories { get; set; }
+    public virtual IssueCategories IssueCategories { get; set; }
 
     public virtual Product Product { get; set; }
 }

@@ -23,7 +23,7 @@ namespace Domain.ViewModels
 public class InsertCategories
 {
 
-    public string CategoryName { get; set; }
+    public string IssueCategoriesName { get; set; }
     public bool IsProgramIssue { get; set; }
 
 

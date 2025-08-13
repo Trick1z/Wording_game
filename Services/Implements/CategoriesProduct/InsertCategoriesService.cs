@@ -24,7 +24,7 @@ namespace Services.Implements.CategoriesProduct
             _context = context;
         }
 
-        public async Task<IEnumerable<IssueCategoiries>>InsertCategoriesItems(InsertCategories requried)
+        public async Task<IEnumerable<IssueCategories>>InsertCategoriesItems(InsertCategories requried)
         {
             var validate = new ValidateException();
             await IsNullOrEmptyString(requried, validate);
@@ -34,27 +34,27 @@ namespace Services.Implements.CategoriesProduct
 
             validate.Throw();
 
-            
 
-            IssueCategoiries data = PackedData(requried);
 
-            _context.IssueCategoiries.Add(data);
+            IssueCategories data = PackedData(requried);
+
+            _context.IssueCategories.Add(data);
             await _context.SaveChangesAsync();
 
             //return data;
-            return new List<IssueCategoiries> { data };
+            return new List<IssueCategories> { data };
 
         }
 
-        private static IssueCategoiries PackedData(InsertCategories requried)
+        private static IssueCategories PackedData(InsertCategories requried)
 
         {
 
             var dateNow = DateTime.Now;
 
 
-            IssueCategoiries data = new IssueCategoiries();
-            data.CategoryName = requried.CategoryName;
+            IssueCategories data = new IssueCategories();
+            data.IssueCategoriesName = requried.IssueCategoriesName;
             data.IsProgramIssue = requried.IsProgramIssue;
             data.IsActive = true;
             data.CreateTime = dateNow;
@@ -64,8 +64,8 @@ namespace Services.Implements.CategoriesProduct
 
         public async Task<bool> IsCategoryInTable(InsertCategories request, ValidateException validate)
         {
-            var isExists = await _context.IssueCategoiries
-     .FirstOrDefaultAsync(u => u.CategoryName == request.CategoryName);
+            var isExists = await _context.IssueCategories
+     .FirstOrDefaultAsync(u => u.IssueCategoriesName == request.IssueCategoriesName);
 
             if (isExists != null)
                 validate.Add("CategoryName", "This CategoryName are already added!");
@@ -76,7 +76,7 @@ namespace Services.Implements.CategoriesProduct
 
         public async Task<bool> IsNullOrEmptyString(InsertCategories requried, ValidateException validate)
         {
-            if (string.IsNullOrWhiteSpace(requried.CategoryName))
+            if (string.IsNullOrWhiteSpace(requried.IssueCategoriesName))
                 validate.Add("CategoryName", "Field CategoryName Much Not Empty");
 
 

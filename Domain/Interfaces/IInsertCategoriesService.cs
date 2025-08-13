@@ -9,6 +9,6 @@ namespace Domain.Interfaces
 {
     public interface IInsertCategoriesService
     {
-        public Task<IEnumerable<IssueCategoiries>> InsertCategoriesItems(InsertCategories requried);
+        public Task<IEnumerable<IssueCategories>> InsertCategoriesItems(InsertCategories requried);
     }
 }

@@ -9,7 +9,7 @@ namespace Domain.Interfaces
 {
     public interface IGetCategoriesProductItemService
     {
-        public Task<IEnumerable<IssueCategoiries>> GetCategoriesItems();
+        public Task<IEnumerable<IssueCategories>> GetCategoriesItems();
         public Task<IEnumerable<Product>> GetProductItems();
         //public Task<IEnumerable<ProductItems>> GetRelCategoriesProduct();
     }

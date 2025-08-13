@@ -17,7 +17,7 @@ public partial class MYGAMEContext : DbContext
 
     public virtual DbSet<FormTask> FormTask { get; set; }
 
-    public virtual DbSet<IssueCategoiries> IssueCategoiries { get; set; }
+    public virtual DbSet<IssueCategories> IssueCategories { get; set; }
 
     public virtual DbSet<Member> Member { get; set; }
 
@@ -73,15 +73,15 @@ public partial class MYGAMEContext : DbContext
                 .HasConstraintName("FK_FormTask_Form");
         });
 
-        modelBuilder.Entity<IssueCategoiries>(entity =>
+        modelBuilder.Entity<IssueCategories>(entity =>
         {
-            entity.HasKey(e => e.IssueCategoriesId);
+            entity.HasKey(e => e.IssueCategoriesId).HasName("PK_IssueCategoiries");
 
-            entity.Property(e => e.CategoryName)
-                .IsRequired()
-                .HasMaxLength(50);
             entity.Property(e => e.CreateTime).HasColumnType("datetime");
             entity.Property(e => e.IsActive).HasDefaultValue(true);
+            entity.Property(e => e.IssueCategoriesName)
+                .IsRequired()
+                .HasMaxLength(50);
             entity.Property(e => e.ModifiedTime).HasColumnType("datetime");
         });
 

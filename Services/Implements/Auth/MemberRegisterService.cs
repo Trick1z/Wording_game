@@ -31,9 +31,9 @@ namespace Services.Implements.Auth
 
             var validateException = new ValidateException();
 
-            await IsNullOrEmptyString(request, validateException);
+            IsNullOrEmptyString(request, validateException);
             await IsUsernameInTable(request, validateException);
-            await ArePasswordsMatching(request, validateException);
+            ArePasswordsMatching(request, validateException);
 
 
             validateException.Throw();
@@ -69,12 +69,8 @@ namespace Services.Implements.Auth
             return member;
         }
 
-        public async Task<bool> IsNullOrEmptyString(MemberRegisterViewModel request , ValidateException validateException)
+        public bool IsNullOrEmptyString(MemberRegisterViewModel request , ValidateException validateException)
         {
-
-
-            var errors = new List<string>();
-
             if (string.IsNullOrWhiteSpace(request.Username))
                 validateException.Add("Username","Field Username must not be empty");
 
@@ -104,7 +100,7 @@ namespace Services.Implements.Auth
             return false;
         }
 
-        public async Task<bool> ArePasswordsMatching(MemberRegisterViewModel request, ValidateException validateException)
+        public bool ArePasswordsMatching(MemberRegisterViewModel request, ValidateException validateException)
         {
             if (request.Password != request.ConfirmPassword)
                 validateException.Add("Password", "Password and ConfirmPassword do not match !");

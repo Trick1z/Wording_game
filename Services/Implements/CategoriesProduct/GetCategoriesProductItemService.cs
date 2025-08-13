@@ -21,14 +21,14 @@ namespace Services.Implements.CategoriesProduct
             _context = context;
         }
 
-        public async Task<IEnumerable<IssueCategoiries>> GetCategoriesItems()
+        public async Task<IEnumerable<IssueCategories>> GetCategoriesItems()
         {
-            var categories = await _context.IssueCategoiries
+            var categories = await _context.IssueCategories
                 .Where(c => c.IsActive == true)
-                        .Select(c => new IssueCategoiries
+                        .Select(c => new IssueCategories
                         {
                             IssueCategoriesId = c.IssueCategoriesId,
-                            CategoryName = c.CategoryName,
+                            IssueCategoriesName = c.IssueCategoriesName,
                             IsProgramIssue = c.IsProgramIssue,
                             IsActive = c.IsActive,
                             CreateTime = c.CreateTime,
