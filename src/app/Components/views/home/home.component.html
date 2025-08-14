@@ -35,13 +35,13 @@
 
     <app-button [message]="'test'"></app-button>
 
-    <app-button (click)="openPopup()" [message]="'open popup'"></app-button>
+    <app-button (clicked)="openPopup()" [message]="'open popup'"></app-button>
     <app-popup [visible]="showPopup" [title]="'Edit User'" [data]="popupData" (close)="handleClose()"
         (save)="handleSave($event)">
     </app-popup>
 
 
-    <app-button (click)="triggerError()" [message]="'Show Error Panel'"></app-button>
+    <app-button (clicked)="triggerError()" [message]="'Show Error Panel'"></app-button>
     <app-error-panel [visible]="showError" [messages]="errorMessages" (close)="handleCloseError()">
     </app-error-panel>
 

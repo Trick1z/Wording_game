@@ -3,7 +3,9 @@
 <!-- grid category -->
 <div class="mt-20 ml-20 mr-20 categroy-box ">
     <app-head-underline [title]="'Issue Categories'"></app-head-underline>
-    <app-button (click)="categoryPopupShow()" class="flex ml-10 mr-10 text-end" [message]="'Add'"></app-button>
+
+    <!-- (click)="categoryPopupShow()" -->
+    <app-button (clicked)="categoryPopupShow()"  class="flex ml-10 mr-10 text-end" [message]="'Add'"></app-button>
 
     <dx-data-grid  class="flex m-10 max-w-max " [dataSource]="categoryDataList" [showBorders]="true" [paging]="{ pageSize: 5 }" [columnAutoWidth]="true">
         <dxi-column dataField="issueCategoriesId" caption="ID" width="80" alignment="center"></dxi-column>
@@ -34,7 +36,7 @@
 <!-- grid product -->
 <div class="mt-20 ml-20 mr-20 Product-box ">
     <app-head-underline [title]="'Product'"></app-head-underline>
-    <app-button (click)="productPopupShow()" class="flex ml-10 mr-10 text-end" [message]="'Add'"></app-button>
+    <app-button (clicked)="productPopupShow()" class="flex ml-10 mr-10 text-end" [message]="'Add'"></app-button>
 
 
 
@@ -103,9 +105,9 @@
                 <!-- <button (click)="categoryPopupHide()">ปิด</button> -->
 
 
-                <app-button (click)="onCategoriesSubmit()" [message]="'Save'"></app-button>
+                <app-button (clicked)="onCategoriesSubmit()" [message]="'Save'"></app-button>
 
-                <app-button (click)="categoryPopupHide()" color="red" [message]="'Close'"></app-button>
+                <app-button (clicked)="categoryPopupHide()" color="red" [message]="'Close'"></app-button>
 
             </div>
         </div>
@@ -137,9 +139,9 @@
                 <!-- <button (click)="categoryPopupHide()">ปิด</button> -->
 
 
-                <app-button (click)="onProductSubmit()" [message]="'Save'"></app-button>
+                <app-button (clicked)="onProductSubmit()" [message]="'Save'"></app-button>
 
-                <app-button (click)="productPopupHide()" color="red" [message]="'Close'"></app-button>
+                <app-button (clicked)="productPopupHide()" color="red" [message]="'Close'"></app-button>
 
             </div>
         </div>
@@ -174,9 +176,9 @@
                 <!-- <button (click)="categoryPopupHide()">ปิด</button> -->
 
 
-                <app-button (click)="onEditPopupSubmit()" [message]="'Save'"></app-button>
+                <app-button (clicked)="onEditPopupSubmit()" [message]="'Save'"></app-button>
 
-                <app-button (click)="onEditProductPopupHide()" color="red" [message]="'Close'"></app-button>
+                <app-button (clicked)="onEditProductPopupHide()" color="red" [message]="'Close'"></app-button>
 
             </div>
         </div>
@@ -213,9 +215,9 @@
             <div class="flex justify-center gap-2 mt-10">
 
 
-                <app-button (click)="onEditCategoriesPopupSubmit()"  [message]="'Save'"></app-button>
+                <app-button (clicked)="onEditCategoriesPopupSubmit()"  [message]="'Save'"></app-button>
 
-                <app-button (click)="onEditCategoriesPopupHide()" color="red" [message]="'Close'"></app-button>
+                <app-button (clicked)="onEditCategoriesPopupHide()" color="red" [message]="'Close'"></app-button>
 
             </div>
         </div>

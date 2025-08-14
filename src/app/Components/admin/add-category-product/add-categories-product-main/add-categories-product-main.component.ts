@@ -251,18 +251,23 @@ export class AddCategoriesProductMainComponent implements OnInit {
       isProgramIssue: this.editCategoriesFormData.isProgramIssue
     }
 
-    
-
-      this.api.post("api/UPDATE/Categories", newData ).subscribe((res: any) => {
-        console.log(res);
-         this.onEditCategoriesPopupHide();
-         this.getCategoriesProductDataList();
-      })
-
-      // console.log(this.editFormData);
-
-    }
 
 
+    this.api.post("api/UPDATE/Categories", newData).subscribe((res: any) => {
+      console.log(res);
+      this.onEditCategoriesPopupHide();
+      this.getCategoriesProductDataList();
+    })
+
+    // console.log(this.editFormData);
 
   }
+
+  onAddProduct() {
+    console.log('Button clicked in parent!');
+    // ทำงานอื่น ๆ เช่น เปิด popup, call API
+  }
+
+
+
+}

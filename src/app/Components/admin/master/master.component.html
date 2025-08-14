@@ -2,7 +2,6 @@
 
 <div class="mt-20 ml-20 mr-20 products-box">
     <app-head-underline [title]="'Map Categories Product'"></app-head-underline>
-    <!-- <app-button (click)="productPopupShow()" class="flex ml-10 mr-10 text-end" [message]="'Add'"></app-button> -->
 
     <dx-data-grid class="flex m-10 max-w-max " [dataSource]="categoriesDataList" [showBorders]="true"
         [paging]="{ pageSize: 5 }" [columnAutoWidth]="true">
@@ -39,8 +38,8 @@
                 [(value)]="productSelectedTags" [showSelectionControls]="true">
             </dx-tag-box>
             <div class="flex justify-center gap-2 mt-4">
-                <app-button (click)="onProductSaveData()" [message]="'Save'"></app-button>
-                <app-button color="red" (click)="productPopupHide()" [message]="'Close'"></app-button>
+                <app-button (clicked)="onProductSaveData()" [message]="'Save'"></app-button>
+                <app-button color="red" (clicked)="productPopupHide()" [message]="'Close'"></app-button>
             </div>
         </div>
     </dx-popup>
