@@ -3,6 +3,7 @@ using Domain.Exceptions;
 using Domain.Interfaces.MappingCategories;
 using Domain.Models;
 using Domain.ViewModels.MappingCategories;
+using Domain.ViewModels.MappingCategoriesProduct;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -23,85 +24,123 @@ namespace Services.Implements.MappingUser
         }
 
         
-           public async Task<ServiceResult> InsertMapUserCategoryAsync(MappingItem req)
-           {
-                using var transaction = await _context.Database.BeginTransactionAsync();
+        //   public async Task<RelCategoriesProduct> InsertMapUserCategoryAsync(MappingUserCategoriesItem param)
+        //{
+            //     using var transaction = await _context.Database.BeginTransactionAsync();
 
-                var validat = new ValidateException();
-                var dateNow = DateTime.Now;
+            //     var validat = new ValidateException();
+            //     var dateNow = DateTime.Now;
 
-               
-                    await IsExists(req, validat);
-                    validat.Throw();
 
-                    // Insert Rel
-                    Rel_User_Categories rel = NewRelData(req, dateNow);
-                    _context.Rel_User_Categories.Add(rel);
+            //         await IsExists(req, validat);
+            //         validat.Throw();
 
-                    // Insert Log
-                    Log_Rel_User_Categories log = NewLogData(req, dateNow);
-                    _context.Log_Rel_User_Categories.Add(log);
+            //         // Insert Rel
+            //         Rel_User_Categories rel = NewRelData(req, dateNow);
+            //         _context.Rel_User_Categories.Add(rel);
 
-                    await _context.SaveChangesAsync();
-                    await transaction.CommitAsync();
-               
+            //         // Insert Log
+            //         Log_Rel_User_Categories log = NewLogData(req, dateNow);
+            //         _context.Log_Rel_User_Categories.Add(log);
 
-                return new ServiceResult { Success = true, Message = "Mapping completed" };
-           }
+            //         await _context.SaveChangesAsync();
+            //         await transaction.CommitAsync();
+
+
+            //     return new ServiceResult { Success = true, Message = "Mapping completed" };
+
+           
+           //}
+
+        
+
+        public async Task<Rel_User_Categories> InsertMapUserCategories(MappingUserCategoriesItem param)
+        {
+            // ดึง user พร้อม relation ปัจจุบัน
+            var user = await _context.User
+                .Include(u => u.Rel_User_Categories)
+                .FirstOrDefaultAsync(u => u.UserId == param.UserId);
+
+            if (user == null)
+                throw new Exception("User not found");
+
+            // ดึง categories ที่ active และอยู่ใน request
+            var categories = await _context.IssueCategories
+                .Where(c => c.IsActive && param.CategoriesId.Contains(c.IssueCategoriesId))
+                .ToListAsync();
+
+            // สร้าง relation ใหม่
+            var newRelations = categories.Select(c => new Rel_User_Categories
+            {
+                User = user,
+                IssueCategories = c,
+                CreatedTime = DateTime.Now
+            }).ToList();
+
+            // แทนที่ relation เดิม
+            user.Rel_User_Categories = newRelations;
+
+            await _context.SaveChangesAsync();
+
+            return null;
+        }
+
+
+
 
         //unmap
-        public async Task<ServiceResult> UpdateUnMapUserCategoryAsync(UnMappingItem req)
-        {
-            using var transaction = await _context.Database.BeginTransactionAsync();
+        //public async Task<ServiceResult> UpdateUnMapUserCategoryAsync(UnMappingItem req)
+        //{
+        //    using var transaction = await _context.Database.BeginTransactionAsync();
 
-            var validat = new ValidateException();
-            var dateNow = DateTime.Now;
+        //    var validat = new ValidateException();
+        //    var dateNow = DateTime.Now;
 
-            try
-            {
-                //Log_Rel_User_Categories logs = await IsExists(req, validat);
-
-
-                Rel_User_Categories rel = await IsRelExists(req, validat);
+        //    try
+        //    {
+        //        //Log_Rel_User_Categories logs = await IsExists(req, validat);
 
 
-                validat.Throw();
+        //        Rel_User_Categories rel = await IsRelExists(req, validat);
 
-                //update log
-                Log_Rel_User_Categories logs = new Log_Rel_User_Categories();
 
-                logs.UserId = req.UserId;
-                logs.IssueCategoriesId = rel.IssueCategoriesId;
-                logs.ActionTime = dateNow;
-                logs.ActionBy = Constance.AdminId;
-                logs.ActionType = "Remove Categories";
+        //        validat.Throw();
 
-                _context.Rel_User_Categories.Remove(rel);
-                _context.Log_Rel_User_Categories.Add(logs);
+        //        //update log
+        //        Log_Rel_User_Categories logs = new Log_Rel_User_Categories();
 
-                await _context.SaveChangesAsync();
-                await transaction.CommitAsync();
-            }
-            catch
-            {
-                await transaction.RollbackAsync();
-                throw;
-            }
+        //        logs.UserId = req.UserId;
+        //        logs.IssueCategoriesId = rel.IssueCategoriesId;
+        //        logs.ActionTime = dateNow;
+        //        logs.ActionBy = Constance.AdminId;
+        //        logs.ActionType = "Remove Categories";
 
-            return new ServiceResult { Success = true, Message = "Mapping completed" };
-        }
+        //        _context.Rel_User_Categories.Remove(rel);
+        //        _context.Log_Rel_User_Categories.Add(logs);
 
-        private async Task<Rel_User_Categories> IsRelExists(UnMappingItem req, ValidateException validat)
-        {
-            var exists = await _context.Rel_User_Categories
-                                       .FirstOrDefaultAsync(x => x.UserId == req.UserId
-                                       && x.IssueCategoriesId == req.IssueCategoriesId);
+        //        await _context.SaveChangesAsync();
+        //        await transaction.CommitAsync();
+        //    }
+        //    catch
+        //    {
+        //        await transaction.RollbackAsync();
+        //        throw;
+        //    }
 
-            if (exists == null)
-                validat.Add("relations", "Map Not found in database");
+        //    return new ServiceResult { Success = true, Message = "Mapping completed" };
+        //}
 
-            return exists;
-        }
+        //private async Task<Rel_User_Categories> IsRelExists(UnMappingItem req, ValidateException validat)
+        //{
+        //    var exists = await _context.Rel_User_Categories
+        //                               .FirstOrDefaultAsync(x => x.UserId == req.UserId
+        //                               && x.IssueCategoriesId == req.IssueCategoriesId);
+
+        //    if (exists == null)
+        //        validat.Add("relations", "Map Not found in database");
+
+        //    return exists;
+        //}
 
         //private async Task<Rel_User_Categories> IsRelExists(UnMappingItem req, ValidateException validat)
         //{
@@ -133,52 +172,52 @@ namespace Services.Implements.MappingUser
 
 
 
-        private async Task<Log_Rel_User_Categories> IsExists(UnMappingItem req, ValidateException validat)
-        {
-            var exists = await _context.Log_Rel_User_Categories
-                                           .FirstOrDefaultAsync(x => x.UserId == req.UserId
-                                           && x.IssueCategoriesId == req.IssueCategoriesId
-                                          );
+        //private async Task<Log_Rel_User_Categories> IsExists(UnMappingItem req, ValidateException validat)
+        //{
+        //    var exists = await _context.Log_Rel_User_Categories
+        //                                   .FirstOrDefaultAsync(x => x.UserId == req.UserId
+        //                                   && x.IssueCategoriesId == req.IssueCategoriesId
+        //                                  );
 
-            if (exists == null)
-                validat.Add("Categories", "Map Not found in database");
+        //    if (exists == null)
+        //        validat.Add("Categories", "Map Not found in database");
 
-            return exists;
-        }
+        //    return exists;
+        //}
 
         //futures
 
-        private static Log_Rel_User_Categories NewLogData(MappingItem req, DateTime dateNow)
-        {
-            return new Log_Rel_User_Categories
-            {
-                UserId = req.UserId,
-                IssueCategoriesId = req.IssueCategoriesId,
-                ActionType = "Add Categories",
-                ActionTime = dateNow,
-                ActionBy = Constance.AdminId
+        //private static Log_Rel_User_Categories NewLogData(MappingItem req, DateTime dateNow)
+        //{
+        //    return new Log_Rel_User_Categories
+        //    {
+        //        UserId = req.UserId,
+        //        IssueCategoriesId = req.IssueCategoriesId,
+        //        ActionType = "Add Categories",
+        //        ActionTime = dateNow,
+        //        ActionBy = Constance.AdminId
 
-            };
-        }
+        //    };
+        //}
 
-        private static Rel_User_Categories NewRelData(MappingItem req, DateTime dateNow)
-        {
-            return new Rel_User_Categories
-            {
-                UserId = req.UserId,
-                IssueCategoriesId = req.IssueCategoriesId,
-                CreatedTime = dateNow,
-            };
-        }
+        //private static Rel_User_Categories NewRelData(MappingItem req, DateTime dateNow)
+        //{
+        //    return new Rel_User_Categories
+        //    {
+        //        UserId = req.UserId,
+        //        IssueCategoriesId = req.IssueCategoriesId,
+        //        CreatedTime = dateNow,
+        //    };
+        //}
 
-        private async Task IsExists(MappingItem req, ValidateException validat)
-        {
-            var exists = await _context.Rel_User_Categories
-                                .AnyAsync(x => x.UserId == req.UserId && x.IssueCategoriesId == req.IssueCategoriesId);
+        //private async Task IsExists(MappingItem req, ValidateException validat)
+        //{
+        //    var exists = await _context.Rel_User_Categories
+        //                        .AnyAsync(x => x.UserId == req.UserId && x.IssueCategoriesId == req.IssueCategoriesId);
 
-            if (exists)
-                validat.Add("Categories", "This Categories is already mapped to the user.");
-        }
+        //    if (exists)
+        //        validat.Add("Categories", "This Categories is already mapped to the user.");
+        //}
     }
-    }
+}
 

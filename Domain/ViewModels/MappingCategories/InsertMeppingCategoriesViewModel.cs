@@ -23,4 +23,11 @@ namespace Domain.ViewModels.MappingCategories
         public string? Message { get; set; }
     }
 
+    public class MappingUserCategoriesItem
+    {
+        public int UserId { get; set; }
+        public List<int> CategoriesId { get; set; }
+    }
+
+
 }

@@ -1,5 +1,6 @@
 ﻿using Domain.Models;
 using Domain.ViewModels;
+using Domain.ViewModels.MappingCategories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,11 @@ namespace Domain.Interfaces.MappingCategories
 
     public interface IGetMapCategoriesItemService
     {
-        public Task<IEnumerable<IssueCategories>> GetMappedCategories(int categoryId);
+        //public Task<IEnumerable<IssueCategories>> GetMappedCategories(int categoryId);
 
-        public Task<IEnumerable<IssueCategories>> GetUnmappedCategories(int categoryId);
+        //public Task<IEnumerable<IssueCategories>> GetUnmappedCategories(int categoryId);
+
+
+        public Task<CategoriesWithSelectionDto> GetUserMapCategoriesDropDown(int userId);
     }
 }

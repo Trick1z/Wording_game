@@ -19,15 +19,22 @@ namespace MyAPI.Controllers.MappingCategories
             _getMapCategoriesItemService = getMapCategoriesItemService;
         }
 
-        [HttpGet("unmappedUserId/{id}")]
-        public async Task<IActionResult> GetUnmappedCategoryItems(int id)
-        {
-            return Ok(await _getMapCategoriesItemService.GetUnmappedCategories(id));
-        }
-        [HttpGet("mappedUserId/{id}")]
+        //[HttpGet("unmappedUserId/{id}")]
+        //public async Task<IActionResult> GetUnmappedCategoryItems(int id)
+        //{
+        //    return Ok(await _getMapCategoriesItemService.GetUnmappedCategories(id));
+        //}
+        //[HttpGet("mappedUserId/{id}")]
+        //public async Task<IActionResult> GetmappedCategoryItems(int id)
+        //{
+        //    return Ok(await _getMapCategoriesItemService.GetMappedCategories(id));
+        //}
+
+        [HttpGet("userMapCategoriesByUserId/{id}")]
         public async Task<IActionResult> GetmappedCategoryItems(int id)
         {
-            return Ok(await _getMapCategoriesItemService.GetMappedCategories(id));
+            return Ok(await _getMapCategoriesItemService.GetUserMapCategoriesDropDown(id));
         }
     }
 }
+    
