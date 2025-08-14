@@ -1,13 +1,13 @@
 export interface UserData {
-  username: string | null
-  password: string | null
+  username: string | ""
+  password: string | ""
 }
 
 
 export interface RegisterData {
-  username: string | null
-  password: string | null
-  confirmPassword: string | null
+  username: string | ""
+  password: string | ""
+  confirmPassword: string | ""
   role: number | 0
 
 } 

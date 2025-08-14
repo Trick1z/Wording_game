@@ -8,6 +8,6 @@ import { Component, Input } from '@angular/core';
 export class TextBoxComponent {
 
   formData:any ;
-  @Input('label') public label: string = '';
   @Input('value') public value: string = '';
+  @Input('placeHolder') public placeHolder: string = '';
 }

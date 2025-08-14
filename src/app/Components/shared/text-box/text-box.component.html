@@ -1,17 +1,2 @@
-<!-- <div class="m-5">
-
-
-  <dx-form [formData]="formData">
-  <dxi-item dataField="username" [label]="{ text: 'ชื่อ' }"></dxi-item>
-  <dxi-item dataField="lastName" [label]="{ text: 'นามสกุล' }"></dxi-item>
-</dx-form>
-
-
-
-</div> -->
-
-<div class="mb-2 w-full">
-  <label>{{ label }}</label>
-  <input type="text" class="form-control" [value]="value" />
-</div>
-
+<dx-text-box [(ngModel)]="value" [placeholder]="placeHolder">
+</dx-text-box>

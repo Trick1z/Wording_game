@@ -70,7 +70,7 @@ export class MasterComponent implements OnInit {
     this.productVisible = true;
     this.CategoriesName = data.issueCategoriesName;
     this.globalId = data.issueCategoriesId;
-    this.getProductItem(data.issueCategoriesId);
+    this.loadProductsForCategory(data.issueCategoriesId);
   }
 
   productPopupHide() {
@@ -91,20 +91,44 @@ export class MasterComponent implements OnInit {
   }
 
 
-  getProductItem(id: number) {
-    this.api.get(`api/GET/unmappedCategories/${id}`).subscribe((res: any) => {
-      this.ProductTagOptions = res
-      console.log(res);
+  // getProductItem(id: number) {
+  //   this.api.get(`api/GET/unmappedCategories/${id}`).subscribe((res: any) => {
+  //     this.ProductTagOptions = res
+  //     console.log(res);
+  //     this.getMapItem(id)
 
-    })
+  //   })
+  // }
+
+  // getMapItem(id: number){
+
+  //   this.api.get(`api/GET/mappedCategories/${id}`).subscribe((res :any )=>{
+  //     this.productSelectedTags= res
+
+  //   })
+  // }
+
+loadProductsForCategory(id: number) {
+  // ดึงข้อมูลทั้งหมดจาก backend (รวม mapped/unmapped)
+  this.api.get(`api/GetMapCategoriesProduct/GetProductsWithSelection/${id}`).subscribe((res: any) => {
+    // products สำหรับ TagBox
+    this.ProductTagOptions = res.allProducts.map((p: any) => ({
+      productId: p.productId,
+      productName: p.productName,
+      isActive: p.isActive
+    }));
+
+    // ค่าเริ่มต้น selected สำหรับ TagBox
+    this.productSelectedTags = res.selectedProductIds;
+
+    console.log('All Products:', this.ProductTagOptions);
+    console.log('Selected Products:', this.productSelectedTags);
+  });
+}
 
 
-  }
 
     onProductSaveData() {
-    // console.log('id:', this.globalId);
-    // console.log('Tags:', this.productSelectedTags);
-    // สามารถส่งไป backend หรือทำอย่างอื่นต่อ
 
 
     var newData = {
@@ -112,19 +136,21 @@ export class MasterComponent implements OnInit {
       productsId : this.productSelectedTags
 
     }
-    this.api.post(`api/MAPS/MappingCategoriesProduct` , newData).subscribe((res :any )=> {
+
+    this.api.post(`api/InsertMapCategoriesProduct/MappingCategoriesProduct`,newData).subscribe((res : any)=> {
 
       console.log(res);
       
     })
+
+    // console.log(newData);
+    // console.log(this.ProductTagOptions);
+
+
+    
+  
   }
 
 
 
-  // getCategoriesProductData(){
-  //   this.api.get("api/GET/Products").subscribe((res: any) => {
-  //     this.ProductTagOptions = res
-  //   })
-
-  // }
 }

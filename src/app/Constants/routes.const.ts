@@ -63,3 +63,12 @@ export class AdminRoute {
 
 
 }
+
+export class LandingRoute {
+  static prefix: string = `error`;
+
+  static Landing: string = `landing`;
+  static LandingFullPath: string = `${LandingRoute.prefix}/${LandingRoute.Landing}`;
+  static LandingName: string = `landing`;
+
+}

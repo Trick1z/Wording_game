@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
-import { AuthRoute } from 'src/app/Constants/routes.const';
+import { AuthRoute, LandingRoute } from 'src/app/Constants/routes.const';
 import { RegisterComponent } from './register/register.component';
+import { LandingComponent } from './landing/landing.component';
 
 const routes: Routes = [
 
@@ -15,10 +16,10 @@ const routes: Routes = [
         path: AuthRoute.Register ,
         component: RegisterComponent
     },
-    // {
-    //     path: AuthRoute.LandingPage ,
-    //     component: RegisterComponent
-    // },
+    {
+        path: LandingRoute.Landing ,
+        component: LandingComponent
+    },
 ]
 
 

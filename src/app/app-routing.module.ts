@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './Components/Pages/login/login.component';
-import { AdminRoute, AuthRoute, CustomerRoute, GamesRoute, UserRoute, ViewsRoute } from './Constants/routes.const';
+import { AdminRoute, AuthRoute, CustomerRoute, GamesRoute, LandingRoute, UserRoute, ViewsRoute } from './Constants/routes.const';
 import { ViewsRoutingModule } from './Components/views/views-routing.module';
 import { AuthGuard } from './guards/auth.guard';
 import { NoAuthGuard } from './guards/no-auth.guard';
@@ -43,6 +43,11 @@ const routes: Routes = [
         // canActivate: [AuthGuard],
         path: AdminRoute.prefix,
         loadChildren: () => import('./Components/admin/admin-route.module').then(m => m.AdminRoutingModule)
+      } ,
+      {
+        // canActivate: [AuthGuard],
+        path: LandingRoute.prefix,
+        loadChildren: () => import('./Components/Pages/pages-routing.module').then(m => m.PagesRoutingModule)
       }
     ]
 

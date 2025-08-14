@@ -19,9 +19,9 @@ ngOnInit(): void {
   ];
   registerData: RegisterData = {
 
-    username: null,
-    password: null,
-    confirmPassword: null, 
+    username: "",
+    password: "",
+    confirmPassword: "", 
     role: 0
   }
 

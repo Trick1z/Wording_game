@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-popup',
@@ -7,16 +7,24 @@ import { Component, Input } from '@angular/core';
 })
 export class PopupComponent {
 
-  @Input() width = '400px';
-  visible = false;
+ @Input() title: string = 'Popup';       // ชื่อหัวข้อ Popup
+  @Input() visible: boolean = false;      // กำหนดให้ Popup แสดงหรือไม่
+  @Input() data: any = {};                // ข้อมูลที่จะส่งเข้า Popup
 
-  show() {
-    this.visible = true;
+  @Output() close = new EventEmitter<void>();          // Event ปิด Popup
+  @Output() save = new EventEmitter<any>();           // Event บันทึกข้อมูล
+
+  onClose() {
+    this.close.emit();
   }
 
-  hide() {
-    this.visible = false;
+  onSave() {
+    this.save.emit(this.data);
   }
+
+  objectKeys(obj: any): string[] {
+  return obj ? Object.keys(obj) : [];
+}
 
 
 

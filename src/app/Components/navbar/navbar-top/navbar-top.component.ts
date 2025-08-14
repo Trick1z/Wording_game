@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 // import { AdminRoute, AuthRoute } from 'src/app/Constants/routes.const';
 
-import { AdminRoute, AuthRoute, UserRoute } from 'src/app/Constants/routes.const';
+import { AdminRoute, AuthRoute, LandingRoute, UserRoute } from 'src/app/Constants/routes.const';
+import { ApiService } from 'src/app/Services/api-service.service';
 
 
 
@@ -45,7 +46,9 @@ export class NavbarTopComponent {
   ngOnInit(): void {
     this.setUser();
   }
-  constructor(private route: Router) { }
+  constructor(private route: Router,
+    private api : ApiService
+  ) { }
 
   setUser() {
     const data = sessionStorage.getItem('user');
@@ -75,10 +78,38 @@ export class NavbarTopComponent {
  
 
 
+  // navigateTo(path: string) {
+  //   console.log(path);
+  //   this.route.navigate([path]);
+  // }
   navigateTo(path: string) {
-    console.log(path);
-    this.route.navigate([path]);
+  console.log('Trying to navigate to:', path);
+
+  const token = localStorage.getItem('token');
+  if (!token) {
+    this.route.navigate([AuthRoute.Login]);
+    return;
   }
+
+  // เรียก backend ตรวจสอบสิทธิ์
+  this.api.post('api/User/check-access', { pageUrl: path }).subscribe({
+    next: (res: any) => {
+      if (res.allowed) {
+        this.route.navigate([path]); 
+        
+        // ถ้า allowed → navigate
+      } else {
+        this.route.navigate([LandingRoute.LandingFullPath]); // ถ้าไม่ allowed → redirect
+      }
+    },
+    error: () => {
+    this.route.navigate([LandingRoute.LandingFullPath]);
+    }
+  });
+}
+
+
+
   // AdminRoute = AuthRoute.AdminFormFullPath;
 
   onLogout() {
