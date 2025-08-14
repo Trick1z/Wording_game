@@ -11,9 +11,11 @@ public partial class Pages
 
     public string PageUrl { get; set; }
 
-    public DateTime CreateTime { get; set; }
+    public DateTime CreatedTime { get; set; }
 
-    public DateTime UpdateTime { get; set; }
+    public DateTime ModifiedTime { get; set; }
 
     public bool IsDeleted { get; set; }
+
+    public virtual ICollection<Rel_Page_Role> Rel_Page_Role { get; set; } = new List<Rel_Page_Role>();
 }

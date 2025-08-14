@@ -11,9 +11,13 @@ public partial class Role
 
     public string RoleName { get; set; }
 
-    public DateTime CreateTime { get; set; }
+    public DateTime CreatedTime { get; set; }
 
     public DateTime ModifiedTime { get; set; }
 
     public bool IsActive { get; set; }
+
+    public virtual ICollection<Rel_Page_Role> Rel_Page_Role { get; set; } = new List<Rel_Page_Role>();
+
+    public virtual ICollection<User> User { get; set; } = new List<User>();
 }

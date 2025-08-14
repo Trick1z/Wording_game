@@ -15,7 +15,7 @@ public partial class RelCategoriesProduct
 
     public string DeleteFlag { get; set; }
 
-    public DateTime CreateTime { get; set; }
+    public DateTime CreatedTime { get; set; }
 
     public DateTime ModifiedTime { get; set; }
 

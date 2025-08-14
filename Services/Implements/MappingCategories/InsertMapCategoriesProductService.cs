@@ -40,7 +40,7 @@ namespace Services.Implements.MappingCategories
                     IssueCategories = category,
                     IsActive = true,
                     DeleteFlag = "N",
-                    CreateTime = DateTime.Now,
+                    CreatedTime = DateTime.Now,
                      ModifiedTime = DateTime.Now
                 });
             }

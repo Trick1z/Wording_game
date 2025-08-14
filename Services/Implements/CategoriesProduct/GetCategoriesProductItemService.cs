@@ -31,7 +31,7 @@ namespace Services.Implements.CategoriesProduct
                             IssueCategoriesName = c.IssueCategoriesName,
                             IsProgramIssue = c.IsProgramIssue,
                             IsActive = c.IsActive,
-                            CreateTime = c.CreateTime,
+                            CreatedTime = c.CreatedTime,
                             ModifiedTime = c.ModifiedTime
                         })
                         .ToListAsync();
@@ -50,7 +50,7 @@ namespace Services.Implements.CategoriesProduct
                             ProductName = p.ProductName,
                             IsActive = p.IsActive,
                             
-                            CreateTime =p.CreateTime
+                            CreatedTime =p.CreatedTime
                             ,ModifiedTime  = p.ModifiedTime
                         
 

@@ -22,4 +22,6 @@ public partial class User
     public virtual ICollection<FormTask> FormTask { get; set; } = new List<FormTask>();
 
     public virtual ICollection<Rel_User_Categories> Rel_User_Categories { get; set; } = new List<Rel_User_Categories>();
+
+    public virtual Role Role { get; set; }
 }

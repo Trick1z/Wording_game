@@ -87,7 +87,7 @@ public partial class MYGAMEContext : DbContext
         {
             entity.HasKey(e => e.IssueCategoriesId).HasName("PK_IssueCategoiries");
 
-            entity.Property(e => e.CreateTime).HasColumnType("datetime");
+            entity.Property(e => e.CreatedTime).HasColumnType("datetime");
             entity.Property(e => e.IsActive).HasDefaultValue(true);
             entity.Property(e => e.IssueCategoriesName)
                 .IsRequired()
@@ -124,16 +124,16 @@ public partial class MYGAMEContext : DbContext
         {
             entity.HasKey(e => e.PageId);
 
-            entity.Property(e => e.CreateTime).HasColumnType("datetime");
+            entity.Property(e => e.CreatedTime).HasColumnType("datetime");
+            entity.Property(e => e.ModifiedTime).HasColumnType("datetime");
             entity.Property(e => e.PageUrl)
                 .IsRequired()
                 .HasMaxLength(512);
-            entity.Property(e => e.UpdateTime).HasColumnType("datetime");
         });
 
         modelBuilder.Entity<Product>(entity =>
         {
-            entity.Property(e => e.CreateTime).HasColumnType("datetime");
+            entity.Property(e => e.CreatedTime).HasColumnType("datetime");
             entity.Property(e => e.ModifiedTime).HasColumnType("datetime");
             entity.Property(e => e.ProductName)
                 .IsRequired()
@@ -144,7 +144,7 @@ public partial class MYGAMEContext : DbContext
         {
             entity.HasKey(e => new { e.IssueCategoriesId, e.ProductId }).HasName("PK_rel_Categories_Product");
 
-            entity.Property(e => e.CreateTime).HasColumnType("datetime");
+            entity.Property(e => e.CreatedTime).HasColumnType("datetime");
             entity.Property(e => e.DeleteFlag)
                 .IsRequired()
                 .HasMaxLength(1)
@@ -166,15 +166,25 @@ public partial class MYGAMEContext : DbContext
         {
             entity.HasKey(e => new { e.PageId, e.RoleId });
 
-            entity.Property(e => e.CreateTime).HasColumnType("datetime");
+            entity.Property(e => e.CreatedTime).HasColumnType("datetime");
             entity.Property(e => e.ModifiedTime).HasColumnType("datetime");
+
+            entity.HasOne(d => d.Page).WithMany(p => p.Rel_Page_Role)
+                .HasForeignKey(d => d.PageId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Rel_Role_Page");
+
+            entity.HasOne(d => d.Role).WithMany(p => p.Rel_Page_Role)
+                .HasForeignKey(d => d.RoleId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Rel_Page_Role");
         });
 
         modelBuilder.Entity<Rel_User_Categories>(entity =>
         {
             entity.HasKey(e => new { e.UserId, e.IssueCategoriesId });
 
-            entity.Property(e => e.CreateTime).HasColumnType("datetime");
+            entity.Property(e => e.CreatedTime).HasColumnType("datetime");
 
             entity.HasOne(d => d.IssueCategories).WithMany(p => p.Rel_User_Categories)
                 .HasForeignKey(d => d.IssueCategoriesId)
@@ -189,7 +199,7 @@ public partial class MYGAMEContext : DbContext
 
         modelBuilder.Entity<Role>(entity =>
         {
-            entity.Property(e => e.CreateTime).HasColumnType("datetime");
+            entity.Property(e => e.CreatedTime).HasColumnType("datetime");
             entity.Property(e => e.ModifiedTime).HasColumnType("datetime");
             entity.Property(e => e.RoleName)
                 .IsRequired()
@@ -223,6 +233,11 @@ public partial class MYGAMEContext : DbContext
                 .IsRequired()
                 .HasMaxLength(50)
                 .IsUnicode(false);
+
+            entity.HasOne(d => d.Role).WithMany(p => p.User)
+                .HasForeignKey(d => d.RoleId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Roles_User");
         });
 
         modelBuilder.Entity<Word>(entity =>

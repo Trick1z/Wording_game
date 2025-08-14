@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Domain.ViewModels
 {
-    public class LoginViewModel
+    public class CheckAccessRequestViewModel
     {
+        public string PageUrl { get; set; }
 
-        public  string Username { get; set; }
-        public  string Password { get; set; }
     }
 }

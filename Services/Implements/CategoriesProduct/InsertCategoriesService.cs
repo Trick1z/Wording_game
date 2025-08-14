@@ -57,7 +57,7 @@ namespace Services.Implements.CategoriesProduct
             data.IssueCategoriesName = requried.IssueCategoriesName;
             data.IsProgramIssue = requried.IsProgramIssue;
             data.IsActive = true;
-            data.CreateTime = dateNow;
+            data.CreatedTime = dateNow;
             data.ModifiedTime = dateNow;
             return data;
         }

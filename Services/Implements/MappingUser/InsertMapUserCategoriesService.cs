@@ -167,7 +167,7 @@ namespace Services.Implements.MappingUser
             {
                 UserId = req.UserId,
                 IssueCategoriesId = req.IssueCategoriesId,
-                CreateTime = dateNow,
+                CreatedTime = dateNow,
             };
         }
 

@@ -11,7 +11,7 @@ public partial class Rel_User_Categories
 
     public int IssueCategoriesId { get; set; }
 
-    public DateTime CreateTime { get; set; }
+    public DateTime CreatedTime { get; set; }
 
     public virtual IssueCategories IssueCategories { get; set; }
 

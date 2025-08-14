@@ -11,7 +11,11 @@ public partial class Rel_Page_Role
 
     public int RoleId { get; set; }
 
-    public DateTime CreateTime { get; set; }
+    public DateTime CreatedTime { get; set; }
 
     public DateTime ModifiedTime { get; set; }
+
+    public virtual Pages Page { get; set; }
+
+    public virtual Role Role { get; set; }
 }

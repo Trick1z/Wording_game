@@ -46,7 +46,7 @@ namespace Services.Implements.CategoriesProduct
             Product data = new Product();
 
             data.ProductName = requried.ProductName;
-            data.CreateTime = date;
+            data.CreatedTime = date;
             data.IsActive = true;
             data.ModifiedTime = date;
 

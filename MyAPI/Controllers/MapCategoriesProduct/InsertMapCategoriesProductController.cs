@@ -8,7 +8,7 @@ namespace MyAPI.Controllers.MapCategoriesProduct
 {
 
     [ApiController]
-    [Route("api/MAPS")]
+    [Route("api/[controller]")]
     public class InsertMapCategoriesProductController : Controller
     {
         private readonly IInsertMapCategoriesProductService _insertMapCategoriesProductService;
@@ -24,7 +24,6 @@ namespace MyAPI.Controllers.MapCategoriesProduct
         [HttpPost("MappingCategoriesProduct")]
         public async Task<IActionResult> InsertMappingCategoriesProductItem(MappingCategoriesProductItem req)
         {
-            //return Ok(await _insertMapCategoriesProductService.InsertMapCategoriesProduct(req));
 
             return Ok(await _insertMapCategoriesProductService.InsertMapCategoriesProduct(req));
         }

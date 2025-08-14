@@ -15,7 +15,7 @@ public partial class IssueCategories
 
     public bool IsActive { get; set; }
 
-    public DateTime CreateTime { get; set; }
+    public DateTime CreatedTime { get; set; }
 
     public DateTime ModifiedTime { get; set; }
 
