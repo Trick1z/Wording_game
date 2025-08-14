@@ -91,23 +91,6 @@ export class MasterComponent implements OnInit {
   }
 
 
-  // getProductItem(id: number) {
-  //   this.api.get(`api/GET/unmappedCategories/${id}`).subscribe((res: any) => {
-  //     this.ProductTagOptions = res
-  //     console.log(res);
-  //     this.getMapItem(id)
-
-  //   })
-  // }
-
-  // getMapItem(id: number){
-
-  //   this.api.get(`api/GET/mappedCategories/${id}`).subscribe((res :any )=>{
-  //     this.productSelectedTags= res
-
-  //   })
-  // }
-
 loadProductsForCategory(id: number) {
   // ดึงข้อมูลทั้งหมดจาก backend (รวม mapped/unmapped)
   this.api.get(`api/GetMapCategoriesProduct/GetProductsWithSelection/${id}`).subscribe((res: any) => {
@@ -126,8 +109,6 @@ loadProductsForCategory(id: number) {
   });
 }
 
-
-
     onProductSaveData() {
 
 
@@ -142,10 +123,6 @@ loadProductsForCategory(id: number) {
       console.log(res);
       
     })
-
-    // console.log(newData);
-    // console.log(this.ProductTagOptions);
-
 
     
   

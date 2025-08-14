@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/Services/api-service.service';
 import { MappingCategoriesModel, SetUserIdUserName, UnMappingCategoriesModel } from '../models/mapping.model';
+import { CategoriesDataModel, ProductsDataModel } from '../master/model/tag-option.model';
 
 @Component({
   selector: 'app-map-user-categories',
@@ -48,8 +49,7 @@ export class MapUserCategoriesComponent implements OnInit {
     this.labelUsername = data.username
     this.labelRole = data.roleName
 
-    this.getUnmappedCategoriesItem(data.userId)
-    this.getMappedCategoriesItem(data.userId)
+    this.getCategoriesForUser(data.userId)
 
     this.mapDetailVisible = true;
     // console.log(data);
@@ -61,63 +61,45 @@ export class MapUserCategoriesComponent implements OnInit {
     this.mapDetailVisible = false
   }
 
-  getUnmappedCategoriesItem(id: number) {
-    this.api.get(`api/GET/mappedUserId/${id}`).subscribe((res: any) => {
-      this.mappedItem = res
-      // console.log(res);
 
 
+  categoriesVisible = false;
+  categoriesTagOptions: CategoriesDataModel[] = [];
 
-    })
+  categoriesSelectedTags: number[] = [];
+
+  getCategoriesForUser(id: number) {
+    // ดึงข้อมูลทั้งหมดจาก backend (รวม mapped/unmapped)
+    this.api.get(`api/GET/userMapCategoriesByUserId/${id}`).subscribe((res: any) => {
+      // products สำหรับ TagBox
+      this.categoriesTagOptions = res.allProducts.map((res: any) => ({
+        issueCategoriesId : res.issueCategoriesId,
+        issueCategoriesName: res.issueCategoriesName,
+        isActive: res.isActive
+      }));
+
+      // ค่าเริ่มต้น selected สำหรับ TagBox
+      this.categoriesSelectedTags = res.selectedCategories;
+    });
   }
 
-  getMappedCategoriesItem(id: number) {
-    this.api.get(`api/GET/unmappedUserId/${id}`).subscribe((res: any) => {
-      this.unmappedItem = res
-      // console.log(res);
+  onSaveSubmit(){
 
 
-    })
-  }
-
-  onMapSubmit(data: any) {
-    var newData = {
-      userId: this.globalId,
-      issueCategoriesId: data.issueCategoriesId
+     var newData = {
+      userId : this.globalId,
+      categoriesId : this.categoriesSelectedTags
 
     }
 
-
-    this.api.post(`api/MAP/MappingUserCategories`, newData).subscribe((res: any) => {
-      // console.log(res);
-
-      this.getMappedCategoriesItem(this.globalId)
-      this.getUnmappedCategoriesItem(this.globalId)
-    })
-
-  }
-
-  onUnMapSubmit(data: any) {
-    var newData  = {
-      userId: this.globalId,
-      issueCategoriesId: data.issueCategoriesId,
-      createTime : data.createTime
-
-    }
-
-    // console.log(newData);
     
-    
-    this.api.post(`api/MAP/UnmappingUserCategories`, newData).subscribe((res: any) => {
+    this.api.post(`api/InsertMappingCategories/InsertMappingUserCategories`,newData).subscribe((res : any )=>{
+
       // console.log(res);
-
-      this.getMappedCategoriesItem(this.globalId)
-      this.getUnmappedCategoriesItem(this.globalId)
+      this.productPopupHide() ;
+      
     })
-
   }
-
-
 
   // 
 }
