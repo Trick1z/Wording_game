@@ -21,8 +21,6 @@ public partial class MYGAMEContext : DbContext
 
     public virtual DbSet<Log_Rel_User_Categories> Log_Rel_User_Categories { get; set; }
 
-    public virtual DbSet<Member> Member { get; set; }
-
     public virtual DbSet<Pages> Pages { get; set; }
 
     public virtual DbSet<Product> Product { get; set; }
@@ -38,8 +36,6 @@ public partial class MYGAMEContext : DbContext
     public virtual DbSet<SystemConfig> SystemConfig { get; set; }
 
     public virtual DbSet<User> User { get; set; }
-
-    public virtual DbSet<Word> Word { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -101,23 +97,6 @@ public partial class MYGAMEContext : DbContext
 
             entity.Property(e => e.ActionTime).HasColumnType("datetime");
             entity.Property(e => e.ActionType).HasMaxLength(512);
-        });
-
-        modelBuilder.Entity<Member>(entity =>
-        {
-            entity.HasKey(e => e.UserId);
-
-            entity.Property(e => e.CreatedTime).HasColumnType("datetime");
-            entity.Property(e => e.IsVip).HasDefaultValue(true);
-            entity.Property(e => e.ModifiedTime).HasColumnType("datetime");
-            entity.Property(e => e.Password)
-                .IsRequired()
-                .HasMaxLength(512)
-                .IsUnicode(false);
-            entity.Property(e => e.Username)
-                .IsRequired()
-                .HasMaxLength(50)
-                .IsUnicode(false);
         });
 
         modelBuilder.Entity<Pages>(entity =>
@@ -238,22 +217,6 @@ public partial class MYGAMEContext : DbContext
                 .HasForeignKey(d => d.RoleId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Roles_User");
-        });
-
-        modelBuilder.Entity<Word>(entity =>
-        {
-            entity.Property(e => e.CreatedTime).HasColumnType("datetime");
-            entity.Property(e => e.ModifiedTime).HasColumnType("datetime");
-            entity.Property(e => e.Word1)
-                .IsRequired()
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("Word");
-
-            entity.HasOne(d => d.User).WithMany(p => p.Word)
-                .HasForeignKey(d => d.UserId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Word_Member1");
         });
 
         OnModelCreatingPartial(modelBuilder);

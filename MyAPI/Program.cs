@@ -1,14 +1,14 @@
-﻿using Domain.Interfaces.RegisterLogin;
+﻿using Domain.Interfaces.Auth;
 using Domain.Models;
 using FMS.Server.Handlers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
 //using Services.CalculateScore;
 //using Services.Form;
 using Services.Implements.Auth;
-using Services.Word;
 using System.Globalization;
 using System.Reflection;
 using System.Text;
@@ -52,13 +52,14 @@ internal class Program
         ////builder.Services.AddScoped<IUserLoginService, LoginService>();
         //builder.Services.AddScoped<IUserLoginService, UserLoginService>();
         //builder.Services.AddScoped<IInsertFormService , InsertFormService>();
+        builder.Services.AddScoped<IPasswordHasher<object>, PasswordHasher<object>>();
 
 
         //builder.Services.AddScoped<CalculateScore>();
         //builder.Services.AddScoped<WordDataService>();
 
-        var interfaceAssembly = Assembly.GetAssembly(typeof(ILoginService)).GetTypes().Where(x => x.Name.EndsWith("Service"));
-        var assembly = Assembly.GetAssembly(typeof(LoginService)).GetTypes().Where(x => x.Name.EndsWith("Service"));
+        var interfaceAssembly = Assembly.GetAssembly(typeof(IAuthenticationService)).GetTypes().Where(x => x.Name.EndsWith("Service"));
+        var assembly = Assembly.GetAssembly(typeof(AuthenticationService)).GetTypes().Where(x => x.Name.EndsWith("Service"));
         foreach (var @interface in interfaceAssembly)
         {
             var interfaceName = @interface.Name;
