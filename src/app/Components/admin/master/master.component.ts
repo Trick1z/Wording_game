@@ -122,13 +122,6 @@ loadProductsForCategory(id: number) {
 
       this.productVisible = false;
 
-      
     })
-
-    
-  
   }
-
-
-
 }
