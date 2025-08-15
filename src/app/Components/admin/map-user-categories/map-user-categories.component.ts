@@ -31,7 +31,7 @@ export class MapUserCategoriesComponent implements OnInit {
 
 
   getUserByRoleSupport() {
-    this.api.get("api/GET/userByRole").subscribe((res: any) => {
+    this.api.get("api/ConfigSupport/userByRole").subscribe((res: any) => {
       // console.log(res);
 
       this.userDataList = res
@@ -70,7 +70,7 @@ export class MapUserCategoriesComponent implements OnInit {
 
   getCategoriesForUser(id: number) {
     // ดึงข้อมูลทั้งหมดจาก backend (รวม mapped/unmapped)
-    this.api.get(`api/GET/userMapCategoriesByUserId/${id}`).subscribe((res: any) => {
+    this.api.get(`api/DropDown/userMapCategoriesByUserId/${id}`).subscribe((res: any) => {
       // products สำหรับ TagBox
       this.categoriesTagOptions = res.allProducts.map((res: any) => ({
         issueCategoriesId : res.issueCategoriesId,
@@ -93,7 +93,7 @@ export class MapUserCategoriesComponent implements OnInit {
     }
 
     
-    this.api.post(`api/InsertMappingCategories/InsertMappingUserCategories`,newData).subscribe((res : any )=>{
+    this.api.post(`api/ConfigSupport/InsertMappingUserCategories`,newData).subscribe((res : any )=>{
 
       // console.log(res);
       this.productPopupHide() ;

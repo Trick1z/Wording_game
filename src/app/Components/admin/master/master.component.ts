@@ -81,7 +81,7 @@ export class MasterComponent implements OnInit {
   // get [products , category ] data
   getCategoryProductItemDetail() {
 
-    this.api.get("api/GET/Categories/item").subscribe((res: any) => {
+    this.api.get("api/IssueProduct/Categories/item").subscribe((res: any) => {
       this.categoriesDataList = res
       // console.log(res);
 
@@ -93,7 +93,7 @@ export class MasterComponent implements OnInit {
 
 loadProductsForCategory(id: number) {
   // ดึงข้อมูลทั้งหมดจาก backend (รวม mapped/unmapped)
-  this.api.get(`api/GetMapCategoriesProduct/GetProductsWithSelection/${id}`).subscribe((res: any) => {
+  this.api.get(`api/DropDown/GetProductsWithSelection/${id}`).subscribe((res: any) => {
     // products สำหรับ TagBox
     this.ProductTagOptions = res.allProducts.map((p: any) => ({
       productId: p.productId,
@@ -118,9 +118,10 @@ loadProductsForCategory(id: number) {
 
     }
 
-    this.api.post(`api/InsertMapCategoriesProduct/MappingCategoriesProduct`,newData).subscribe((res : any)=> {
+    this.api.post(`api/IssueProduct/SaveIssueMapProduct`,newData).subscribe((res : any)=> {
 
-      console.log(res);
+      this.productVisible = false;
+
       
     })
 
