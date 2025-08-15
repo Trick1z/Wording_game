@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './Components/Pages/login/login.component';
 import { RegisterComponent } from './Components/Pages/register/register.component';
 import { HomeComponent } from './Components/views/home/home.component';
 import { WordScoringComponent } from './Components/games/word-scoring/word-scoring.component';
@@ -42,6 +41,7 @@ import { DataGridComponent } from './Components/shared/data-grid/data-grid.compo
 import { DataGridGroupComponent } from './Components/shared/data-grid-group/data-grid-group.component';
 import { ErrorPanelComponent } from './Components/shared/error-panel/error-panel.component';
 import { AuthInterceptor } from './Services/auth.interceptor';
+import { LoginComponent } from './Components/Pages/login/login.component';
 
 
 @NgModule({
@@ -65,7 +65,11 @@ import { AuthInterceptor } from './Services/auth.interceptor';
     MasterComponent,
     AddCategoriesProductMainComponent,
     MapUserCategoriesComponent,
-    RadioComponent, DateBoxComponent, NumberBoxComponent, CheckBoxComponent, SelectBoxComponent, TagBoxComponent, FileUploadComponent, DataGridComponent, DataGridGroupComponent, ErrorPanelComponent,
+    RadioComponent, DateBoxComponent, 
+    NumberBoxComponent, CheckBoxComponent,
+     SelectBoxComponent, TagBoxComponent,
+      FileUploadComponent, DataGridComponent, 
+      DataGridGroupComponent, ErrorPanelComponent,
     
   ],
   imports: [

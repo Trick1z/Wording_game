@@ -28,7 +28,6 @@ ngOnInit(): void {
   onSubmit() {
 
 
-    console.log(this.registerData);
     
 
     // 1 จำเป็นต้อง validate ตรงหน้าบ้านมั้ย 
@@ -46,8 +45,8 @@ ngOnInit(): void {
 
     }
 
-
-    this.api.post
+// register apth : /api/User/register
+    // this.api.post
 
     // if (this.registerData.password !== this.registerData.confirmPassword) {
     //   return Swal.fire({
@@ -59,14 +58,15 @@ ngOnInit(): void {
 
 
     // true
-    return console.log(this.registerData);
+    return 
+    // return console.log(this.registerData);
   }
 
   getRoleItem(){
-    this.api.get("api/User/role").subscribe((res : any ) =>{
+    this.api.get("api/DropDown/role").subscribe((res : any ) =>{
 
       this.customerRole = res
-      console.log(res);
+      // console.log(res);
       
     })
   }

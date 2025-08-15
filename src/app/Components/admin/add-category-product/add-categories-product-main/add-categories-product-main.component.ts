@@ -74,13 +74,13 @@ export class AddCategoriesProductMainComponent implements OnInit {
 
   getCategoriesProductDataList() {
 
-    this.api.get("api/GET/Categories/item").subscribe((res: any) => {
+    this.api.get("api/IssueProduct/Categories/item").subscribe((res: any) => {
 
 
       this.categoryDataList = res
     })
 
-    this.api.get("api/GET/Products/item").subscribe((res: any) => {
+    this.api.get("api/IssueProduct/Products/item").subscribe((res: any) => {
 
 
       this.productDataList = res
@@ -97,7 +97,7 @@ export class AddCategoriesProductMainComponent implements OnInit {
 
     }
 
-    this.api.post('api/InsertCategories/add-categories', data).subscribe((res: any) => {
+    this.api.post('api/IssueProduct/SaveCategories', data).subscribe((res: any) => {
 
       console.log(res);
 
@@ -114,7 +114,7 @@ export class AddCategoriesProductMainComponent implements OnInit {
 
     }
 
-    this.api.post('api/InsertCategories/add-product', data).subscribe((res: any) => {
+    this.api.post('api/IssueProduct/SaveProduct', data).subscribe((res: any) => {
       console.log(res);
 
       this.getCategoriesProductDataList();
@@ -134,7 +134,7 @@ export class AddCategoriesProductMainComponent implements OnInit {
     }
 
 
-    this.api.post(`api/DELETE/Categories`, newData).subscribe((res: any) => {
+    this.api.post(`api/IssueProduct/DeleteCategories`, newData).subscribe((res: any) => {
 
       console.log(res);
       this.getCategoriesProductDataList();
@@ -152,7 +152,7 @@ export class AddCategoriesProductMainComponent implements OnInit {
     }
 
 
-    this.api.post(`api/DELETE/Product`, newData).subscribe((res: any) => {
+    this.api.post(`api/IssueProduct/DeleteProduct`, newData).subscribe((res: any) => {
 
       console.log(res);
       this.getCategoriesProductDataList();
@@ -197,7 +197,7 @@ export class AddCategoriesProductMainComponent implements OnInit {
     }
 
 
-    this.api.post("api/UPDATE/Product", newData).subscribe((res: any) => {
+    this.api.post("api/IssueProduct/UpdateProduct", newData).subscribe((res: any) => {
       console.log(res);
       this.onEditProductPopupHide();
       this.getCategoriesProductDataList();
@@ -253,7 +253,7 @@ export class AddCategoriesProductMainComponent implements OnInit {
 
 
 
-    this.api.post("api/UPDATE/Categories", newData).subscribe((res: any) => {
+    this.api.post("api/IssueProduct/UpdateCategories", newData).subscribe((res: any) => {
       console.log(res);
       this.onEditCategoriesPopupHide();
       this.getCategoriesProductDataList();

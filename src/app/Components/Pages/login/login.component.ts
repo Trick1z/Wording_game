@@ -13,10 +13,9 @@ import { AuthServiceService } from 'src/app/Services/auth-service.service';
 })
 export class LoginComponent {
   constructor(
-    private Route: Router,
-    private api: ApiService,
-
-    private authService: AuthServiceService
+    private router: Router,
+  private api: ApiService,
+  private authService: AuthServiceService
 
   ) { }
 
@@ -31,7 +30,7 @@ export class LoginComponent {
 
   NavigateToRegisterPage() {
 
-    return this.Route.navigate([AuthRoute.RegisterFullPath])
+    return this.router.navigate([AuthRoute.RegisterFullPath])
   }
 
   //   onSubmit() {
@@ -43,8 +42,10 @@ export class LoginComponent {
   onSubmit() {
     this.authService.login(this.userData).subscribe({
       next: () => {
+        console.log('next work');
+        
         this.usernameError = ''
-        this.Route.navigate([ViewsRoute.HomeFullPath]);
+
       },
       error: (err) => {
        if (err.error && err.error.messages) {
@@ -52,6 +53,11 @@ export class LoginComponent {
         }
       }
     });
+
+
+                this.router.navigate([ViewsRoute.HomeFullPath]);
+
+
   }
 }
 

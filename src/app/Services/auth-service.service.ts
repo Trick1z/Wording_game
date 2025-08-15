@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { ApiService } from './api-service.service';
 import { Router } from '@angular/router';
+import { AuthRoute } from '../Constants/routes.const';
 
 @Injectable({
   providedIn: 'root'
@@ -70,7 +71,7 @@ export class AuthServiceService {
     localStorage.removeItem(this.TOKEN_KEY);
     localStorage.removeItem(this.ROLE_KEY);
     localStorage.removeItem(this.ACCESS_PAGES_KEY);
-    this.router.navigate(['/login']);
+    this.router.navigate([AuthRoute.LoginFullPath]);
   }
 
   // Getters
